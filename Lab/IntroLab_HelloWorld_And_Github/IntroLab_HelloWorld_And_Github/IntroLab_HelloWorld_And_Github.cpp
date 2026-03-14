@@ -28,7 +28,7 @@ int main(int argc, char** argv) {
     //Maps known values to the unknown objectives
 
     //Display the Inputs/Outputs
-    cout << "Hello World!";
+    cout << endl  << "Hello World!" << endl;
 
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
