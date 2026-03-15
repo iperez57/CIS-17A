@@ -18,24 +18,23 @@ using namespace std;
 
 //Function Prototypes
 void linearSearch(int[], int, int);
-
+void binarySearch(int[], int, int);
 //Execution of Code Begins Here
 int main(int argc, char** argv) {
     //Set the random number seed here
     srand(time(0));
     //Declare all variables for this function
-    int numbers[20] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19};
+    int numbers[20] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 };
     int size = 20;
     int value = rand() % 20;
     //Initialize all known variables
 
     //Process Inputs to Outputs -> Mapping Process
     //Maps known values to the unknown objectives
-    
+
     //Display the Inputs/Outputs
     linearSearch(numbers, size, value);
-
-
+    binarySearch(numbers, size, value);
 
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
@@ -55,5 +54,36 @@ void linearSearch(int numbers[], int size, int value)
             break;
         }
         counter++;
+    }
+}
+
+void binarySearch(int numbers[], int size, int value)
+{
+    int left = 0;
+    int right = size - 1 ;
+    int counter = 0;
+
+    cout << "Binary search for value: " << value << endl;
+
+    while (left <= right)
+    {
+        int mid = left + (right - left) / 2;
+        if (numbers[mid] == value)
+        {
+            counter++;
+            cout << "It took " << counter << " comparisons to find the value " << value << endl;
+            break;
+        }
+        else if (numbers[mid] < value)
+        {
+            counter++;
+            left = mid + 1;
+        }
+        else
+        {
+            counter++;
+            right = mid - 1;
+        }
+           
     }
 }
