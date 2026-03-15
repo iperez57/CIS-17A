@@ -1,5 +1,5 @@
 /*
- * File:   Gaddis_8thEd_Chap5_Prob11_CelsiusTable
+ * File:   Gaddis_8thEd_Chap6_Prob7_CelsiusTable
  * Author: Isaac Perez
  * Created: 03/15/2026
  * Purpose:  Convert fahrenheit to ceslius and display a table using functions
