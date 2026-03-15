@@ -2,7 +2,7 @@
  * File:   Gaddis_8thEd_Chap7_Prob6_RainOrShine
  * Author: Isaac Perez
  * Created: 03/15/2026
- * Purpose:     using an array to display characters
+ * Purpose:     using txt file to display values
  */
 
  //System Libraries
