@@ -23,12 +23,16 @@ int main(int argc, char** argv) {
     //Declare all variables for this function
 
     //Initialize all known variables
-
+    double cel;
+    double fah;
     //Process Inputs to Outputs -> Mapping Process
     //Maps known values to the unknown objectives
 
     //Display the Inputs/Outputs
-
+    cout << "Enter a temperature in Celsius: ";
+    cin >> cel;
+    fah = (9 / 5.0f) * cel + 32;
+    cout << "The temperature in Fahrenheit is: " << fah;
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
     return 0;
