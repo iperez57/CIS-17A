@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Gaddis_8thEd_Chap3_Prob12_C
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Gaddis_8thEd_Chap3_Prob12_CurrencyConversion", "Gaddis_8thEd_Chap3_Prob12_CurrencyConversion\Gaddis_8thEd_Chap3_Prob12_CurrencyConversion.vcxproj", "{D70DE8FA-CE70-4815-B7A6-D75EAD2BAFAA}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Gaddis_8thEd_Chap4_Prob10_DaysInMonth", "Gaddis_8thEd_Chap4_Prob10_DaysInMonth\Gaddis_8thEd_Chap4_Prob10_DaysInMonth.vcxproj", "{BC10B3C4-6E4D-433E-9A3A-B2C6A7227E37}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{D70DE8FA-CE70-4815-B7A6-D75EAD2BAFAA}.Release|x64.Build.0 = Release|x64
 		{D70DE8FA-CE70-4815-B7A6-D75EAD2BAFAA}.Release|x86.ActiveCfg = Release|Win32
 		{D70DE8FA-CE70-4815-B7A6-D75EAD2BAFAA}.Release|x86.Build.0 = Release|Win32
+		{BC10B3C4-6E4D-433E-9A3A-B2C6A7227E37}.Debug|x64.ActiveCfg = Debug|x64
+		{BC10B3C4-6E4D-433E-9A3A-B2C6A7227E37}.Debug|x64.Build.0 = Debug|x64
+		{BC10B3C4-6E4D-433E-9A3A-B2C6A7227E37}.Debug|x86.ActiveCfg = Debug|Win32
+		{BC10B3C4-6E4D-433E-9A3A-B2C6A7227E37}.Debug|x86.Build.0 = Debug|Win32
+		{BC10B3C4-6E4D-433E-9A3A-B2C6A7227E37}.Release|x64.ActiveCfg = Release|x64
+		{BC10B3C4-6E4D-433E-9A3A-B2C6A7227E37}.Release|x64.Build.0 = Release|x64
+		{BC10B3C4-6E4D-433E-9A3A-B2C6A7227E37}.Release|x86.ActiveCfg = Release|Win32
+		{BC10B3C4-6E4D-433E-9A3A-B2C6A7227E37}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
