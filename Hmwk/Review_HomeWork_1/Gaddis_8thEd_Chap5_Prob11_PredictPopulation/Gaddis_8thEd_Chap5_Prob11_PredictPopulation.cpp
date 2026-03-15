@@ -64,4 +64,11 @@ int main(int argc, char** argv) {
 double orgPopulation(int stOrg, double incOrg, int days)
 {
 
+    double prePop = stOrg;
+    for (int i = 0; i < days; i++)
+    {
+        prePop = prePop * (1 + incOrg/100);
+        cout << "For day " << i << " the population is: " << prePop << endl;
+    }
+    return prePop;
 }
