@@ -22,11 +22,10 @@ int main(int argc, char** argv) {
     //Set the random number seed here
 
     //Declare all variables for this function
-
+    char cast;
     //Initialize all known variables
     const int MONTHS = 3;
     const int DAYS = 30;
-
     char weather[MONTHS][DAYS];
     //Process Inputs to Outputs -> Mapping Process
     //Maps known values to the unknown objectives
@@ -38,6 +37,27 @@ int main(int argc, char** argv) {
     {
         cout << "Error opening file!" << endl;
         return 1;
+    }
+
+    for (int i = 0; i < MONTHS; i++)
+    {
+        switch (i)
+        {
+        case 0:
+            cout << "June" << endl;
+            break;
+        case 1:
+            cout << "July" << endl;
+            break;
+        case 2: cout << "August" << endl;
+            break;
+        }
+        for (int j = 0; j < DAYS; j++)
+        {
+            inputFile >> weather[MONTHS][DAYS];
+            cout << weather[MONTHS][DAYS] << " ";
+        }
+        cout << endl;
     }
 
     inputFile.close();
