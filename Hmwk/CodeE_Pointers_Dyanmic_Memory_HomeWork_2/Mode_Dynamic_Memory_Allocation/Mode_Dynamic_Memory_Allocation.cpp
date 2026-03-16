@@ -175,7 +175,19 @@ int* mode(const int* array, int arySize) {
     //Sort the copy
     mrkSort(ary, arySize);
     //Find the max Frequency
-
+    int counter = 1;
+    int maxFreq = 1;
+    for (int i = 1; i < arySize; i++)
+    {
+        if (ary[i] == ary[i - 1])
+            counter++;
+        if (counter > maxFreq)
+            maxFreq = counter;
+        if (ary[i] != ary[i -1])
+            counter = 1;
+    }
+    if (counter > maxFreq)
+        maxFreq = counter;
     //Find the number of modes
 
     //Allocate the mode array
@@ -183,7 +195,7 @@ int* mode(const int* array, int arySize) {
     int nmodes = 0;
     int* modeAry = new int[nmodes + 2];
     modeAry[0] = 0;//Stub returns no modes
-    modeAry[1] = 1;//Stub returns Frequency 1
+    modeAry[1] = maxFreq;//Stub returns Frequency 1
 
 
     //Fill the mode array
