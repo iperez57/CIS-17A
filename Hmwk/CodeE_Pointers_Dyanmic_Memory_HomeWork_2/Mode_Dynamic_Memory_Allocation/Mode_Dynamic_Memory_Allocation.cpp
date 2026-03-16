@@ -177,14 +177,17 @@ int* mode(const int* array, int arySize) {
     //Find the max Frequency
     int counter = 1;
     int maxFreq = 1;
+    
     for (int i = 1; i < arySize; i++)
     {
         if (ary[i] == ary[i - 1])
             counter++;
-        if (counter > maxFreq)
-            maxFreq = counter;
-        if (ary[i] != ary[i -1])
+        else
+        {
+            if (counter > maxFreq)
+                maxFreq = counter;
             counter = 1;
+        }
     }
     if (counter > maxFreq)
         maxFreq = counter;
