@@ -191,13 +191,27 @@ int* mode(const int* array, int arySize) {
     }
     if (counter > maxFreq)
         maxFreq = counter;
-    //Find the number of modes
 
+    //Find the number of modes
+    int nmodes = 0;
+    counter = 1;
+    for (int i = 1; i < arySize; i++)
+    {
+        if (ary[i] == ary[i - 1])
+            counter++;
+        else
+        {
+            if (counter == maxFreq)
+                nmodes++;
+            counter = 1;
+        }
+    }
+    if (counter == maxFreq)
+        nmodes++;
     //Allocate the mode array
     //Again this is just a stub.
-    int nmodes = 0;
     int* modeAry = new int[nmodes + 2];
-    modeAry[0] = 0;//Stub returns no modes
+    modeAry[0] = nmodes;//Stub returns no modes
     modeAry[1] = maxFreq;//Stub returns Frequency 1
 
 
