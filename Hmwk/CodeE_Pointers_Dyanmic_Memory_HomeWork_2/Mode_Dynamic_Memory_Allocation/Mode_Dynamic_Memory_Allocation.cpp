@@ -195,19 +195,23 @@ int* mode(const int* array, int arySize) {
     //Find the number of modes
     int nmodes = 0;
     counter = 1;
-    for (int i = 1; i < arySize; i++)
+    if (maxFreq > 1)
     {
-        if (ary[i] == ary[i - 1])
-            counter++;
-        else
+        for (int i = 1; i < arySize; i++)
         {
-            if (counter == maxFreq)
-                nmodes++;
-            counter = 1;
+            if (ary[i] == ary[i - 1])
+                counter++;
+            else
+            {
+                if (counter == maxFreq)
+                    nmodes++;
+                counter = 1;
+            }
         }
+        if (counter == maxFreq)
+            nmodes++;
     }
-    if (counter == maxFreq)
-        nmodes++;
+    else nmodes = 0;
     //Allocate the mode array
     //Again this is just a stub.
     int* modeAry = new int[nmodes + 2];
