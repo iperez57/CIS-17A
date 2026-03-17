@@ -216,6 +216,27 @@ int* mode(const int* array, int arySize) {
 
 
     //Fill the mode array
+    counter = 1;
+    int index = 2;
+
+    for (int i = 1; i < arySize; i++)
+    {
+        if (ary[i] == ary[i - 1])
+            counter++;
+        else
+        {
+            if (counter == maxFreq)
+            {
+                modeAry[index] = ary[i - 1];
+                index++;
+            }
+            counter = 1;
+        }
+    }
+    if (counter == maxFreq)
+    {
+        modeAry[index] = ary[arySize - 1];
+    }
 
     //Delete the allocated copy and return
     delete[]ary;
