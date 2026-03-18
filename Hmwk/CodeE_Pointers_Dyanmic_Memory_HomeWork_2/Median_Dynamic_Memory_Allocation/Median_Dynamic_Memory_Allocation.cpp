@@ -25,17 +25,30 @@ int main(int argc, char** argv) {
     //Set the random number seed here
 
     //Declare all variables for this function
-
+    int arySize;
+    int* ary;
     //Initialize all known variables
 
     //Process Inputs to Outputs -> Mapping Process
     //Maps known values to the unknown objectives
 
     //Display the Inputs/Outputs
-    // 
+    cin >> arySize;
+    ary = getData(arySize);
     //Clean up the code, close files, deallocate memory, etc....
+    delete[]ary;
     //Exit stage right
     return 0;
 }
 
 //Function Implementations
+int* getData(int& arySize)
+{
+    int* array = new int[arySize];
+
+    for (int i = 0; i < arySize; i++)
+    {
+        cin >> array[i];
+    }
+    return array;
+}
