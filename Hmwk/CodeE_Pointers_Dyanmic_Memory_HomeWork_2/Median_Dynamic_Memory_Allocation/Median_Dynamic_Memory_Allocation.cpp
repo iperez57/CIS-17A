@@ -16,7 +16,7 @@ using namespace std;
 
 //Function Prototypes
 int* getData(int&);         //Return the array size and the array
-void prntDat(int*, int);    //Print the integer array
+void prntData(int*, int);    //Print the integer array
 float* median(int*, int);  //Fill the median Array with the Float array size, the median, and the integer array data
 void prntMed(float*);     //Print the median Array
 
@@ -35,6 +35,7 @@ int main(int argc, char** argv) {
     //Display the Inputs/Outputs
     cin >> arySize;
     ary = getData(arySize);
+    prntData(ary, arySize);
     //Clean up the code, close files, deallocate memory, etc....
     delete[]ary;
     //Exit stage right
@@ -51,4 +52,16 @@ int* getData(int& arySize)
         cin >> array[i];
     }
     return array;
+}
+
+void prntData(int* ary, int arySize)
+{
+    for (int i = 0; i < arySize; i++)
+    {
+        cout << *(ary + i);
+        if (i != arySize - 1)
+            cout << " ";
+    }
+    cout << endl;
+
 }
