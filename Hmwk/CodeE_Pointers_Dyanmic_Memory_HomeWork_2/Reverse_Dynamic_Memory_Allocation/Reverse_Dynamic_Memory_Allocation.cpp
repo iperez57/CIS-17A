@@ -35,8 +35,9 @@ int main(int argc, char** argv) {
     //Display the Inputs/Outputs
     cin >> arySize;
     ary = getData(arySize);
+    sort(ary, arySize);
     //Clean up the code, close files, deallocate memory, etc....
-
+    delete[]ary;
     //Exit stage right
     return 0;
 }
@@ -51,4 +52,29 @@ int* getData(int& arySize)
         cin >> array[i];
     }
     return array;
+}
+
+int* sort(const int* ary, int arySize)
+{
+    int* sortAry = new int[arySize];
+    //copy array into sortAry
+    for (int i = 0; i < arySize; i++)
+    {
+        sortAry[i] = ary[i];
+    }
+
+    //sort array
+    for (int i = 0; i < arySize - 1; i++)
+    {
+        for (int j = i + 1; j < arySize; j++)
+        {
+            if (sortAry[i] > sortAry[j])
+            {
+                int temp = sortAry[j];
+                sortAry[j] = sortAry[i];
+                sortAry[i] = temp;
+            }
+        }
+    }
+    return sortAry;
 }
