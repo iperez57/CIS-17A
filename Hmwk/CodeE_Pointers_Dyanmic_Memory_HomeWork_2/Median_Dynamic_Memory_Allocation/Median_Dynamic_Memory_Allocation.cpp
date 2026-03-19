@@ -7,6 +7,7 @@
 
  //System Libraries
 #include <iostream>  //I/O Library
+#include <iomanip>
 using namespace std;
 
 //User Libraries
@@ -38,6 +39,7 @@ int main(int argc, char** argv) {
     ary = getData(arySize);
     prntData(ary, arySize);
     medAry = median(ary, arySize);
+    prntMed(medAry);
     //Clean up the code, close files, deallocate memory, etc....
     delete[]ary;
     delete[]medAry;
@@ -95,4 +97,16 @@ float* median(int* ary, int size)
     }
     return medAry;
     
+}
+
+void prntMed(float* medAry)
+{
+    for (int i = 0; i < medAry[0]; i++)
+    {
+        cout << *(medAry + i) << showpoint << setprecision(3);
+        if (i != medAry[0] - 1)
+        {
+            cout << " ";
+        }
+    }
 }
