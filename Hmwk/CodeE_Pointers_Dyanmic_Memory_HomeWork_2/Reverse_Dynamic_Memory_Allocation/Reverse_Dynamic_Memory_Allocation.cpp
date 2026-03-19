@@ -39,6 +39,9 @@ int main(int argc, char** argv) {
     ary = getData(arySize);
     sortedAry = sort(ary, arySize);
     reverseAry = reverse(sortedAry, arySize);
+    prntData(sortedAry, arySize);
+    cout << endl;
+    prntData(reverseAry, arySize);
 
     //Clean up the code, close files, deallocate memory, etc....
     delete[]ary;
@@ -100,4 +103,14 @@ int* reverse(const int* sortAry, int arySize)
     }
 
     return revAry;
+}
+
+void prntData(const int* ary, int arySize)
+{
+    for (int i = 0; i < arySize; i++)
+    {
+        cout << *(ary + i);
+        if (i != arySize - 1)
+            cout << " ";
+    }
 }
