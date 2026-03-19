@@ -27,6 +27,8 @@ int main(int argc, char** argv) {
     //Declare all variables for this function
     int arySize;
     int* ary;
+    int* sortedAry;
+    int* reverseAry;
     //Initialize all known variables
 
     //Process Inputs to Outputs -> Mapping Process
@@ -35,7 +37,9 @@ int main(int argc, char** argv) {
     //Display the Inputs/Outputs
     cin >> arySize;
     ary = getData(arySize);
-    sort(ary, arySize);
+    sortedAry = sort(ary, arySize);
+    reverseAry = reverse(sortedAry, arySize);
+
     //Clean up the code, close files, deallocate memory, etc....
     delete[]ary;
     //Exit stage right
@@ -77,4 +81,23 @@ int* sort(const int* ary, int arySize)
         }
     }
     return sortAry;
+}
+
+int* reverse(const int* sortAry, int arySize)
+{
+    int* revAry = new int[arySize];
+    // copy sort array into reverse array
+    for (int i = 0; i < arySize; i++)
+    {
+        revAry[i] = sortAry[i];
+    }
+
+    for (int i = 0; i < arySize / 2; i++)
+    {
+        int temp = revAry[i];
+        revAry[i] = revAry[arySize - 1 - i];
+        revAry[arySize - 1 - i] = temp;
+    }
+
+    return revAry;
 }
