@@ -27,6 +27,8 @@ int main(int argc, char** argv) {
     //Declare all variables for this function
     int arySize;
     int* ary;
+    int* sumArry;
+
     //Initialize all known variables
 
     //Process Inputs to Outputs -> Mapping Process
@@ -35,7 +37,7 @@ int main(int argc, char** argv) {
     //Display the Inputs/Outputs
     cin >> arySize;
     ary = getData(arySize);
-
+    sumArry = sumAry(ary, arySize);
     //Clean up the code, close files, deallocate memory, etc....
 
     //Exit stage right
@@ -52,4 +54,15 @@ int* getData(int& arySize)
         cin >> array[i];
     }
     return array;
+}
+
+int* sumAry(const int* ary, int arySize)
+{
+    int* sumAr = new int[arySize];
+
+    for (int i = 0; i < arySize; i++)
+    {
+        sumAr += ary[i];
+    }
+    return sumAr;
 }
