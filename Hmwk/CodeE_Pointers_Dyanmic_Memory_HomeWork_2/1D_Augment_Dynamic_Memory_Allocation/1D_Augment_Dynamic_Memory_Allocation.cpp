@@ -27,12 +27,15 @@ int main(int argc, char** argv) {
     //Initialize all known variables
     int arySize;
     int* ary;
+    int* augArry;
     //Process Inputs to Outputs -> Mapping Process
     //Maps known values to the unknown objectives
 
     //Display the Inputs/Outputs
     cin >> arySize;
     ary = getData(arySize);
+    cout << endl;
+    augArry = augment(ary, arySize);
 
     //Clean up the code, close files, deallocate memory, etc....
 
@@ -48,4 +51,16 @@ int* getData(int& arySize)
     {
         cin >> array[i];
     }
+    return array;
+}
+
+int* augment(const int* ary, int arySize)
+{
+    int* augAry = new int[arySize + 1];
+    augAry[0] = 0;
+    for (int i = 0; i < arySize; i++)
+    {
+        augAry[i + 1] = ary[i];
+    }
+    return augAry;
 }
