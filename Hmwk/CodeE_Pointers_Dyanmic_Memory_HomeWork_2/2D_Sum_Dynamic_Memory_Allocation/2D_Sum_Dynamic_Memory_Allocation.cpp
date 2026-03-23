@@ -31,6 +31,7 @@ int main(int argc, char** argv) {
     int row;
     int col; 
     int** ary2D;
+    int grndSum;
     //Process Inputs to Outputs -> Mapping Process
     //Maps known values to the unknown objectives
     
@@ -39,6 +40,8 @@ int main(int argc, char** argv) {
     cin >> col;
     ary2D = getData(row, col);
     prntData(ary2D, row, col);
+    grndSum = sum(ary2D, row, col);
+    cout << "Grand sum is " << grndSum;
     //Clean up the code, close files, deallocate memory, etc....
 
     //Exit stage right
@@ -73,4 +76,15 @@ void prntData(const int* const* ary2D, int rows, int cols)
         }
         cout << endl;
     }
+}
+
+int sum(const int* const* ary2D, int rows, int cols)
+{
+    int sum2D = 0;
+    for (int i = 0; i < rows; i++)
+    {
+        for (int j = 0; j < cols; j++)
+            sum2D += ary2D[i][j];
+    }
+    return sum2D;
 }
