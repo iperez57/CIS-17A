@@ -40,7 +40,8 @@ int main(int argc, char** argv) {
     sumArry = sumAry(ary, arySize);
     prntAry(sumArry, arySize);
     //Clean up the code, close files, deallocate memory, etc....
-
+    delete[]ary;
+    delete[]sumArry;
     //Exit stage right
     return 0;
 }
