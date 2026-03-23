@@ -38,6 +38,7 @@ int main(int argc, char** argv) {
     cin >> arySize;
     ary = getData(arySize);
     sumArry = sumAry(ary, arySize);
+    prntAry(sumArry, arySize);
     //Clean up the code, close files, deallocate memory, etc....
 
     //Exit stage right
@@ -65,4 +66,14 @@ int* sumAry(const int* ary, int arySize)
         sumAr += ary[i];
     }
     return sumAr;
+}
+
+void prntAry(const int* ary, int arySize)
+{
+    for (int i = 0; i < arySize; i++)
+    {
+        cout << *(ary + i);
+        if (i != arySize - 1)
+            cout << " ";
+    }
 }
