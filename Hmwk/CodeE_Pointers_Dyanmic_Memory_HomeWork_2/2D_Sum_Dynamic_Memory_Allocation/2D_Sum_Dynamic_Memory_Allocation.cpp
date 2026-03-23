@@ -26,18 +26,19 @@ int main(int argc, char** argv) {
     //Set the random number seed here
 
     //Declare all variables for this function
-
+    
     //Initialize all known variables
     int row;
     int col; 
     int** ary2D;
     //Process Inputs to Outputs -> Mapping Process
     //Maps known values to the unknown objectives
-
+    
     //Display the Inputs/Outputs
     cin >> row;
     cin >> col;
     ary2D = getData(row, col);
+    prntData(ary2D, row, col);
     //Clean up the code, close files, deallocate memory, etc....
 
     //Exit stage right
@@ -58,4 +59,18 @@ int** getData(int& rows, int& cols)
         }
     }
     return array;
+}
+
+void prntData(const int* const* ary2D, int rows, int cols)
+{
+    for (int i = 0; i < rows; i++)
+    {
+        for (int j = 0; j < cols; j++)
+        {
+            cout << ary2D[i][j];
+            if (j != cols - 1)
+                cout << " ";
+        }
+        cout << endl;
+    }
 }
