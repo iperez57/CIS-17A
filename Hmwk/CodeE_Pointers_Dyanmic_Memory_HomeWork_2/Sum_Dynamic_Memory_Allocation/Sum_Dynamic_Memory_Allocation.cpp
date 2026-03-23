@@ -60,10 +60,12 @@ int* getData(int& arySize)
 int* sumAry(const int* ary, int arySize)
 {
     int* sumAr = new int[arySize];
+    int sum = 0;
 
     for (int i = 0; i < arySize; i++)
     {
-        sumAr += ary[i];
+        sum += ary[i];
+        sumAr[i] = sum;
     }
     return sumAr;
 }
