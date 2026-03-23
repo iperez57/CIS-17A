@@ -43,7 +43,7 @@ int main(int argc, char** argv) {
     grndSum = sum(ary2D, row, col);
     cout << "Grand sum is " << grndSum;
     //Clean up the code, close files, deallocate memory, etc....
-
+    destroy(ary2D, row, col);
     //Exit stage right
     return 0;
 }
@@ -87,4 +87,9 @@ int sum(const int* const* ary2D, int rows, int cols)
             sum2D += ary2D[i][j];
     }
     return sum2D;
+}
+
+void destroy(int** ary2D, int rows, int cols)
+{
+    delete[] ary2D;
 }
