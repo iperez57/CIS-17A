@@ -25,11 +25,14 @@ int main(int argc, char** argv) {
     //Declare all variables for this function
 
     //Initialize all known variables
-
+    int arySize;
+    int* ary;
     //Process Inputs to Outputs -> Mapping Process
     //Maps known values to the unknown objectives
 
     //Display the Inputs/Outputs
+    cin >> arySize;
+    ary = getData(arySize);
 
     //Clean up the code, close files, deallocate memory, etc....
 
@@ -38,3 +41,11 @@ int main(int argc, char** argv) {
 }
 
 //Function Implementations
+int* getData(int& arySize)
+{
+    int* array = new int[arySize];
+    for (int i = 0; i < arySize; i++)
+    {
+        cin >> array[i];
+    }
+}
