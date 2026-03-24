@@ -38,6 +38,7 @@ int main(int argc, char** argv) {
     cin >> row;
     cin >> col;
     ary = getData(row, col);
+    prntData(ary, row, col);
     //Clean up the code, close files, deallocate memory, etc....
 
     //Exit stage right
@@ -59,4 +60,18 @@ int** getData(int& rows, int& cols)
         }
     }
     return array;
+}
+
+void prntData(const int* const* ary2D, int rows, int cols)
+{
+    for (int i = 0; i < rows; i++)
+    {
+        for (int j = 0; j < cols; j++)
+        {
+            cout << ary2D[i][j];
+            if (j != cols - 1)
+                cout << " ";
+        }
+        cout << endl;
+    }
 }
