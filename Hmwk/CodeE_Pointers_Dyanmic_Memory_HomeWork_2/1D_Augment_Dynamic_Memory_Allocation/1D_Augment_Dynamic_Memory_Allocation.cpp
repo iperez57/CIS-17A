@@ -56,11 +56,13 @@ int* getData(int& arySize)
 
 int* augment(const int* ary, int arySize)
 {
+    int index = 1;
     int* augAry = new int[arySize + 1];
     augAry[0] = 0;
     for (int i = 0; i < arySize; i++)
     {
-        augAry[i + 1] = ary[i];
+        augAry[index] = ary[i];
+        index++;
     }
     return augAry;
 }
