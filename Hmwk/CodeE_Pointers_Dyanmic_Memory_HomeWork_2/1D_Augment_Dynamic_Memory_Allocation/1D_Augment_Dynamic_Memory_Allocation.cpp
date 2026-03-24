@@ -34,8 +34,12 @@ int main(int argc, char** argv) {
     //Display the Inputs/Outputs
     cin >> arySize;
     ary = getData(arySize);
+
+    prntAry(ary, arySize);
     cout << endl;
     augArry = augment(ary, arySize);
+    prntAry(augArry, arySize + 1);
+
 
     //Clean up the code, close files, deallocate memory, etc....
 
@@ -65,4 +69,13 @@ int* augment(const int* ary, int arySize)
         index++;
     }
     return augAry;
+}
+void prntAry(const int* ary, int arySize)
+{
+    for (int i = 0; i < arySize; i++)
+    {
+        cout << *(ary + i);
+        if (i != arySize - 1)
+            cout << " ";
+    }
 }
