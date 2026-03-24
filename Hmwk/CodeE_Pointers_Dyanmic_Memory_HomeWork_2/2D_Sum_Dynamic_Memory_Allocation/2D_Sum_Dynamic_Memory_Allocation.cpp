@@ -91,5 +91,9 @@ int sum(const int* const* ary2D, int rows, int cols)
 
 void destroy(int** ary2D, int rows, int cols)
 {
+    for (int i = 0; i < rows; i++)
+    {
+        delete[]ary2D[i];
+    }
     delete[] ary2D;
 }
