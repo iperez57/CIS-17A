@@ -26,22 +26,22 @@ int main(int argc, char** argv) {
     //Set the random number seed here
 
     //Declare all variables for this function
-    
+
     //Initialize all known variables
     int row;
-    int col; 
+    int col;
     int** ary2D;
     int grndSum;
     //Process Inputs to Outputs -> Mapping Process
     //Maps known values to the unknown objectives
-    
+
     //Display the Inputs/Outputs
     cin >> row;
     cin >> col;
     ary2D = getData(row, col);
     prntData(ary2D, row, col);
     grndSum = sum(ary2D, row, col);
-    cout << "Grand sum is " << grndSum;
+    cout << grndSum;
     //Clean up the code, close files, deallocate memory, etc....
     destroy(ary2D, row, col);
     //Exit stage right
@@ -51,9 +51,9 @@ int main(int argc, char** argv) {
 //Function Implementations
 int** getData(int& rows, int& cols)
 {
-    int** array = new int*[rows];
+    int** array = new int* [rows];
 
-    for (int i = 0;i < rows;i++) 
+    for (int i = 0;i < rows;i++)
     {
         array[i] = new int[cols];
         for (int j = 0; j < cols; j++)
