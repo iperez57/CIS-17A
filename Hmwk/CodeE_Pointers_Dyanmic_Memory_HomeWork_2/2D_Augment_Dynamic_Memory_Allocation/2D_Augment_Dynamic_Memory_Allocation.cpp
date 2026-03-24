@@ -15,6 +15,10 @@ using namespace std;
 //Well known Science, Mathematical and Laboratory Constants
 
 //Function Prototypes
+int** getData(int&, int&);
+void prntData(const int* const*, int, int);
+int** augment(const int* const*, int, int);
+void destroy(int**, int);
 
 //Execution of Code Begins Here
 int main(int argc, char** argv) {
@@ -23,12 +27,17 @@ int main(int argc, char** argv) {
     //Declare all variables for this function
 
     //Initialize all known variables
+    int** ary;
+    int row;
+    int col;
 
     //Process Inputs to Outputs -> Mapping Process
     //Maps known values to the unknown objectives
 
     //Display the Inputs/Outputs
-
+    cin >> row;
+    cin >> col;
+    ary = getData(row, col);
     //Clean up the code, close files, deallocate memory, etc....
 
     //Exit stage right
@@ -36,3 +45,18 @@ int main(int argc, char** argv) {
 }
 
 //Function Implementations
+
+int** getData(int& rows, int& cols)
+{
+    int** array = new int* [rows];
+
+    for (int i = 0;i < rows;i++)
+    {
+        array[i] = new int[cols];
+        for (int j = 0; j < cols; j++)
+        {
+            cin >> array[i][j];
+        }
+    }
+    return array;
+}
