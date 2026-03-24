@@ -18,7 +18,7 @@ using namespace std;
 int** getData(int&, int&);
 void prntData(const int* const*, int, int);
 int** augment(const int* const*, int, int);
-void destroy(int**, int);
+//void destroy(int**, int);
 
 //Execution of Code Begins Here
 int main(int argc, char** argv) {
@@ -28,9 +28,10 @@ int main(int argc, char** argv) {
 
     //Initialize all known variables
     int** ary;
+    int** augAry;
     int row;
     int col;
-
+    
     //Process Inputs to Outputs -> Mapping Process
     //Maps known values to the unknown objectives
 
@@ -39,6 +40,9 @@ int main(int argc, char** argv) {
     cin >> col;
     ary = getData(row, col);
     prntData(ary, row, col);
+    cout << endl;
+    augAry = augment(ary, row, col);
+    prntData(augAry, row + 1, col + 1);
     //Clean up the code, close files, deallocate memory, etc....
 
     //Exit stage right
@@ -74,4 +78,19 @@ void prntData(const int* const* ary2D, int rows, int cols)
         }
         cout << endl;
     }
+}
+
+int** augment(const int* const* ary, int row, int col)
+{
+    int** augArry = new int* [row + 1];
+
+    for (int i = 0; i < row; i++)
+    {
+        augArry[i] = new int[col + 1];
+        for (int j = 0; j < col; j++)
+        {
+            augArry[i][j] = ary[i][j];
+        }
+    }
+    return augArry;
 }
