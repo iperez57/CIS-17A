@@ -40,6 +40,7 @@ int main(int argc, char** argv) {
     cin >> col;
     ary = getData(row, col);
     prntData(ary, row, col);
+    cout << endl;
     augAry = augment(ary, row, col);
     prntData(augAry, row + 1, col + 1);
     destroy(augAry, row + 1);
@@ -77,7 +78,10 @@ void prntData(const int* const* ary2D, int rows, int cols)
             if (j != cols - 1)
                 cout << " ";
         }
-        cout << endl;
+        if (i != rows - 1)
+        {
+            cout << endl;
+        }
     }
 }
 
