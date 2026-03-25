@@ -31,7 +31,7 @@ int main(int argc, char** argv) {
     int** augAry;
     int row;
     int col;
-    
+
     //Process Inputs to Outputs -> Mapping Process
     //Maps known values to the unknown objectives
 
@@ -40,7 +40,6 @@ int main(int argc, char** argv) {
     cin >> col;
     ary = getData(row, col);
     prntData(ary, row, col);
-    cout << endl;
     augAry = augment(ary, row, col);
     prntData(augAry, row + 1, col + 1);
     destroy(augAry, row + 1);
@@ -85,24 +84,23 @@ void prntData(const int* const* ary2D, int rows, int cols)
 int** augment(const int* const* ary, int row, int col)
 {
     int** augArry = new int* [row + 1];
-    int iIndx = 0;
-    int jIndx = 1;
 
-    
-    for (int i = 0; i < row; i++)
+    for (int i = 0; i < row + 1; i++)
     {
         augArry[i] = new int[col + 1];
-        for (int j = 0; j < col; j++)
+        for (int j = 0; j < col + 1; j++)
         {
-            augArry[iIndx][jIndx] = ary[i][j];
-            jIndx++;
+            if (i == 0 || j == 0)
+            {
+                augArry[i][j] = 0;
+            }
+            else
+            {
+                augArry[i][j] = ary[i - 1][j - 1];
+            }
         }
-        jIndx = 1;
-        iIndx++;
     }
-    augArry[0][0] = 0;
-    augArry[1][0] = 0;
-    
+
     return augArry;
 }
 
