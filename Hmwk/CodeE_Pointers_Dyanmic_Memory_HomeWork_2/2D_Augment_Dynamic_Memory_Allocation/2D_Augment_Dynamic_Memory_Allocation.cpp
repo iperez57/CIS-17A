@@ -18,7 +18,7 @@ using namespace std;
 int** getData(int&, int&);
 void prntData(const int* const*, int, int);
 int** augment(const int* const*, int, int);
-//void destroy(int**, int);
+void destroy(int**, int);
 
 //Execution of Code Begins Here
 int main(int argc, char** argv) {
@@ -43,6 +43,8 @@ int main(int argc, char** argv) {
     cout << endl;
     augAry = augment(ary, row, col);
     prntData(augAry, row + 1, col + 1);
+    destroy(augAry, row + 1);
+    destroy(ary, row);
     //Clean up the code, close files, deallocate memory, etc....
 
     //Exit stage right
@@ -102,4 +104,13 @@ int** augment(const int* const* ary, int row, int col)
     augArry[1][0] = 0;
     
     return augArry;
+}
+
+void destroy(int** ary, int row)
+{
+    for (int i = 0; i < row; i++)
+    {
+        delete[]ary[i];
+    }
+    delete[]ary;
 }
