@@ -83,14 +83,23 @@ void prntData(const int* const* ary2D, int rows, int cols)
 int** augment(const int* const* ary, int row, int col)
 {
     int** augArry = new int* [row + 1];
+    int iIndx = 0;
+    int jIndx = 1;
 
+    
     for (int i = 0; i < row; i++)
     {
         augArry[i] = new int[col + 1];
         for (int j = 0; j < col; j++)
         {
-            augArry[i][j] = ary[i][j];
+            augArry[iIndx][jIndx] = ary[i][j];
+            jIndx++;
         }
+        jIndx = 1;
+        iIndx++;
     }
+    augArry[0][0] = 0;
+    augArry[1][0] = 0;
+    
     return augArry;
 }
