@@ -68,9 +68,6 @@ int main(int argc, char** argv) {
     prntAry(table, rowsize, colsize);
 
     //Cleanup
-    delete[]array;
-    delete[]brray;
-    delete[]crray;
     destroy(table, rowsize);
 
     //Exit
