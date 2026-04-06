@@ -10,6 +10,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <iomanip>
+#include <vector>
 using namespace std;
 
 //User Libraries Here
@@ -21,7 +22,7 @@ using namespace std;
 //Function Prototypes Here
 void prntAry(const int*, int, int);
 void prntAry(int**, int, int);
-int* fillAry(int, int, int);
+void fillVctr(vector<int>&, int, int, int);
 int** fillAry(int, int);
 void fillAry(int**, int*, int, int);
 void destroy(int**, int);
@@ -38,17 +39,17 @@ int main(int argc, char** argv) {
     //Declare all Variables Here
     int rowsize = 4;//Row size for both 1 and 2 D arrays
     int colsize = 3;//The column size for a 2 dimensional Array
-    int* array;
-    int* brray;
-    int* crray;
+    vector<int>avec(rowsize);
+    vector<int>bvec(rowsize);
+    vector<int>cvec(rowsize);
     int** table;
     int lowRng = 100, highRng = 999;
     int perLine = 4;
 
     //Fill each parallel array
-    array = fillAry(rowsize, highRng, lowRng);
-    brray = fillAry(rowsize, highRng / 10, lowRng / 10);
-    crray = fillAry(rowsize, highRng / 100, lowRng / 100);
+    fillVctr(avec, rowsize, highRng, lowRng);
+    fillVctr(bvec, rowsize, highRng, lowRng);
+    fillVctr(cvec, rowsize, highRng, lowRng);
 
     //Sort the array the for all positions
     mrkSort(array, rowsize);
@@ -90,13 +91,10 @@ void fillAry(int** a, int* c, int rowSize, int wchCol) {
     }
 }
 
-int* fillAry(int n, int hr, int lr) {
-    n = n < 2 ? 2 : n;
-    int* a = new int[n];
-    for (int indx = 0;indx < n;indx++) {
+void fillVctr(vector<int>& a,int n, int hr, int lr) {
+    for (int indx = 0;indx < a.size();indx++) {
         a[indx] = rand() % (hr - lr + 1) + lr;
     }
-    return a;
 }
 
 int** fillAry(int rows, int cols) {
