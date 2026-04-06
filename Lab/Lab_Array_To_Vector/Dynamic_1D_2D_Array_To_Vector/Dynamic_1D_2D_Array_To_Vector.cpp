@@ -20,7 +20,7 @@ using namespace std;
 
 
 //Function Prototypes Here
-void prntAry(const int*, int, int);
+void prntVctr(vector<int>& ,int);
 void prntAry(int**, int, int);
 void fillVctr(vector<int>&, int, int, int);
 int** fillAry(int, int);
@@ -62,9 +62,9 @@ int main(int argc, char** argv) {
     fillAry(table, cvec, rowsize, 2);
 
     //Print the values in the array
-    prntAry(array, rowsize, perLine);
-    prntAry(brray, rowsize, perLine);
-    prntAry(crray, rowsize, perLine);
+    prntVctr(avec, perLine);
+    prntVctr(bvec, perLine);
+    prntVctr(cvec, perLine);
     prntAry(table, rowsize, colsize);
 
     //Cleanup
@@ -125,10 +125,12 @@ void prntAry(int** a, int rowsize, int colsize) {
     }
 }
 
-void prntAry(const int* a, int n, int perLine) {
+void prntVctr(vector<int>& a, int perLine) 
+{
     //Print the values in the array
-    cout << endl << "The Array Values" << endl;
-    for (int indx = 0;indx < n;indx++) {
+    cout << endl << "The Vector Values" << endl;
+    for (int indx = 0;indx < a.size();indx++) 
+    {
         cout << a[indx] << " ";
         if (indx % perLine == (perLine - 1))cout << endl;
     }
