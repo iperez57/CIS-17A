@@ -29,7 +29,7 @@ void destroy(int**, int);
 void fillAry(int**, int*, int, int, int);
 void swap(int&, int&);
 void smlLst(int[], int, int);
-void mrkSort(int[], int);
+void mrkSort(vector<int>&);
 
 //Program Execution Begins Here
 int main(int argc, char** argv) {
@@ -52,9 +52,9 @@ int main(int argc, char** argv) {
     fillVctr(cvec, rowsize, highRng, lowRng);
 
     //Sort the array the for all positions
-    mrkSort(array, rowsize);
-    mrkSort(brray, rowsize);
-    mrkSort(crray, rowsize);
+    mrkSort(avec);
+    mrkSort(bvec);
+    mrkSort(cvec);
 
     //Fill the 2-D array
     table = fillAry(rowsize, colsize);
@@ -134,9 +134,11 @@ void prntAry(const int* a, int n, int perLine) {
     cout << endl;
 }
 
-void mrkSort(int a[], int n) {
-    for (int pos = 0;pos < n - 1;pos++) {
-        smlLst(a, n, pos);
+void mrkSort(vector<int>& a) 
+{
+    for (int pos = 0;pos < a.size() - 1;pos++)
+    {
+        smlLst(a, pos);
     }
 }
 
