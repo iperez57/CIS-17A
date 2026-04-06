@@ -28,7 +28,7 @@ void fillAry(int**, int*, int, int);
 void destroy(int**, int);
 void fillAry(int**, int*, int, int, int);
 void swap(int&, int&);
-void smlLst(int[], int, int);
+void smlLst(vector<int>&, int);
 void mrkSort(vector<int>&);
 
 //Program Execution Begins Here
@@ -142,8 +142,8 @@ void mrkSort(vector<int>& a)
     }
 }
 
-void smlLst(int a[], int n, int pos) {
-    for (int i = pos + 1;i < n;i++) {
+void smlLst(vector<int>& a, int pos) {
+    for (int i = pos + 1;i < a.size();i++) {
         if (a[pos] > a[i]) {
             swap(a[pos], a[i]);
         }
