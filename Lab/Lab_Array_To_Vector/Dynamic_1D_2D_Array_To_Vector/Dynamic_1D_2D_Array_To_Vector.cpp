@@ -24,9 +24,8 @@ void prntAry(const int*, int, int);
 void prntAry(int**, int, int);
 void fillVctr(vector<int>&, int, int, int);
 int** fillAry(int, int);
-void fillAry(int**, int*, int, int);
+void fillAry(int**, vector<int>& , int, int);
 void destroy(int**, int);
-void fillAry(int**, int*, int, int, int);
 void swap(int&, int&);
 void smlLst(vector<int>&, int);
 void mrkSort(vector<int>&);
@@ -58,9 +57,9 @@ int main(int argc, char** argv) {
 
     //Fill the 2-D array
     table = fillAry(rowsize, colsize);
-    fillAry(table, array, rowsize, 0);
-    fillAry(table, brray, rowsize, 1);
-    fillAry(table, crray, rowsize, 2);
+    fillAry(table, avec, rowsize, 0);
+    fillAry(table, bvec, rowsize, 1);
+    fillAry(table, cvec, rowsize, 2);
 
     //Print the values in the array
     prntAry(array, rowsize, perLine);
@@ -85,8 +84,10 @@ void destroy(int** a, int rows) {
     delete[]a;
 }
 
-void fillAry(int** a, int* c, int rowSize, int wchCol) {
-    for (int row = 0;row < rowSize;row++) {
+void fillAry(int** a, vector<int>& c, int rowSize, int wchCol) 
+{
+    for (int row = 0;row < rowSize;row++) 
+    {
         a[row][wchCol] = c[row];
     }
 }
