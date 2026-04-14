@@ -18,7 +18,8 @@ using namespace std;
 //Function Prototypes
 struct CompanyDiv
 {
-    string divName;
+    enum Division { North, East, South, West };
+    string name;
     float q1;
     float q2;
     float q3;
@@ -33,12 +34,17 @@ int main(int argc, char** argv) {
     //Declare all variables for this function
 
     //Initialize all known variables
-
+    CompanyDiv div[4];
+    string names[4] = { "North", "East", "South", "West" };
     //Process Inputs to Outputs -> Mapping Process
     //Maps known values to the unknown objectives
 
     //Display the Inputs/Outputs
-
+    for (int i = 0; i < 4; i++)
+    {
+        div[i].name = names[i];
+        cout << div[i].name << endl;
+    }
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
     return 0;
