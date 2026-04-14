@@ -44,6 +44,14 @@ int main(int argc, char** argv) {
     {
         div[i].name = names[i];
         cout << div[i].name << endl;
+        cout << "Enter first quarter sales: ";
+        cin >> div[i].q1;
+        cout << "Enter second quarter sales: ";
+        cin >> div[i].q2;
+        cout << "Enter third quarter sales: ";
+        cin >> div[i].q3;
+        cout << "Enter fourth quarter sales: ";
+        cin >> div[i].q4;
     }
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
