@@ -7,6 +7,7 @@
 
  //System Libraries
 #include <iostream>  //I/O Library
+#include <string>
 using namespace std;
 
 //User Libraries
@@ -15,7 +16,16 @@ using namespace std;
 //Well known Science, Mathematical and Laboratory Constants
 
 //Function Prototypes
-
+struct CompanyDiv
+{
+    string divName;
+    float q1;
+    float q2;
+    float q3;
+    float q4;
+    float annSales;
+    float avgQSales;
+};
 //Execution of Code Begins Here
 int main(int argc, char** argv) {
     //Set the random number seed here
@@ -28,7 +38,6 @@ int main(int argc, char** argv) {
     //Maps known values to the unknown objectives
 
     //Display the Inputs/Outputs
-    cout << endl << "Hello World!" << endl;
 
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
