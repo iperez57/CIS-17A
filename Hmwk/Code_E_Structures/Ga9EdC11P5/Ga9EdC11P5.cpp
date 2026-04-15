@@ -13,11 +13,11 @@ using namespace std;
 //User Libraries
 struct MonthInfo
 {
-    enum months { January, February, March, April, May, June, July, August, September, October, November, December };
     float rainfall = 0;
     float hTemp = 0;
     float lTemp = 0;
 };
+enum months { January, February, March, April, May, June, July, August, September, October, November, December };
 //Global Constants Only
 //Well known Science, Mathematical and Laboratory Constants
 
@@ -41,7 +41,7 @@ int main(int argc, char** argv) {
     //Maps known values to the unknown objectives
 
     //Display the Inputs/Outputs
-    for (int i = 0; i < 6; i++)
+    for (months i = January; i <= June; i = static_cast<months>(i + 1))
     {
         cout << "Enter the total rainfall for the month:" << endl;
         cin >> m[i].rainfall;
