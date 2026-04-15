@@ -28,7 +28,7 @@ int main(int argc, char** argv) {
     //Set the random number seed here
 
     //Declare all variables for this function
-    MonthInfo m[6];
+    MonthInfo m[12];
     float avgRain = 0;
     float highTemp = 0;
     float lowTemp = 200;
