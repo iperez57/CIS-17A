@@ -2,7 +2,7 @@
  * File:   Ga9EdC11P3
  * Author: Isaac Perez
  * Created: 04/14/2026
- * Purpose:  Use structures 
+ * Purpose:  Use structures
  */
 
  //System Libraries
@@ -62,7 +62,7 @@ int main(int argc, char** argv) {
         div[i].annSales += div[i].q4;
         div[i].avgQSales += div[i].q4;
         cout << "Total Annual sales:$";
-        cout << fixed <<showpoint << setprecision(2) <<  div[i].annSales << endl;
+        cout << fixed << showpoint << setprecision(2) << div[i].annSales << endl;
         cout << "Average Quarterly Sales:$";
         cout << fixed << showpoint << setprecision(2) << div[i].avgQSales / 4;
         if (i < 3)
