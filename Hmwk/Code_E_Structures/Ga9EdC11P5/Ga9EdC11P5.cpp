@@ -33,6 +33,8 @@ int main(int argc, char** argv) {
     float highTemp = 0;
     float lowTemp = 200;
     float avgTemp = 0;
+    float tempCount = 0;
+    float rainCount = 0;
     //Initialize all known variables
 
     //Process Inputs to Outputs -> Mapping Process
@@ -43,11 +45,25 @@ int main(int argc, char** argv) {
     {
         cout << "Enter the total rainfall for the month:" << endl;
         cin >> m[i].rainfall;
+        rainCount++;
         cout << "Enter the high temp:" << endl;
         cin >> m[i].hTemp;
+        tempCount++;
         cout << "Enter the low temp:" << endl;
         cin >> m[i].lTemp;
+        tempCount++;
+        avgRain += m[i].rainfall;
+        if (m[i].hTemp > highTemp)
+            highTemp = m[i].hTemp;
+        if (m[i].lTemp < lowTemp)
+            lowTemp = m[i].lTemp;
+        avgTemp += m[i].hTemp + m[i].lTemp;
     }
+    cout << "Average monthly rainfall:" << avgRain / rainCount << endl;
+    cout << "High Temp:" << highTemp << endl;
+    cout << "Low Temp:" << lowTemp << endl;
+    cout << "Average Temp:" << avgTemp / tempCount;
+    
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
     return 0;
