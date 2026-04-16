@@ -24,7 +24,7 @@ struct VendingMachine
 
 //Function Prototypes
 void display(VendingMachine drinks[]);
-
+void selection(string choice, VendingMachine drinks[]);
 //Execution of Code Begins Here
 int main(int argc, char** argv) {
     //Set the random number seed here
@@ -56,12 +56,19 @@ int main(int argc, char** argv) {
     //Maps known values to the unknown objectives
     
     //Display the Inputs/Outputs
-    do
+    while (true)
     {
         display(drinks);
         cin >> choice;
-    } while ((choice != "Quit" && choice != "quit" &&
-        choice != "q" && choice != "Q"));
+
+        if (choice == "Quit" || choice == "quit" ||
+            choice == "q" || choice == "Q")
+        {
+            break;
+        }
+
+        selection(choice, drinks);
+    }
 
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
@@ -76,4 +83,45 @@ void display(VendingMachine drinks[])
         cout << left << setw(11) << drinks[i].name << setw(4) << drinks[i].cost << drinks[i].numOfDrink << endl;
     }
     cout << "Quit" << endl;
+}
+
+void selection(string choice, VendingMachine drinks[])
+{
+    int payment = 0;
+    int change;
+    int more;
+    int index;
+    if (choice == "Cola" || choice == "cola") index = 0;
+    else if (choice == "Root Beer" || choice == "root beer") index = 1;
+    else if (choice == "Lemon-Lime" || choice == "lemon-lime") index = 2;
+    else if (choice == "Grape Soda" || choice == "grape soda") index = 3;
+    else if (choice == "Cream Soda" || choice == "cream soda") index = 4;
+    else return;
+
+    if (drinks[index].numOfDrink > 0)
+    {
+        cin >> payment;
+        while (payment <= 0 || payment > 100)
+        {
+            cin >> payment;
+        }
+    
+        while (payment < drinks[index].cost)
+        {
+            cin >> more;
+            while (more <= 0 || more > 100)
+            {
+                cin >> more;
+            }
+            payment += more;
+        }
+    
+        change = payment - drinks[index].cost;
+        drinks[index].numOfDrink--;
+        cout << change << endl;
+    }
+    else
+    {
+        cout << "Out of stock" << endl;
+    }
 }
