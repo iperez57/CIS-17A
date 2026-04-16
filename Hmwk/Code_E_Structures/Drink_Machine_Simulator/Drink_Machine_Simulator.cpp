@@ -8,6 +8,7 @@
  //System Libraries
 #include <iostream>  //I/O Library
 #include <iomanip>
+#include <string>
 
 using namespace std;
 
@@ -24,13 +25,14 @@ struct VendingMachine
 
 //Function Prototypes
 void display(VendingMachine drinks[]);
-void selection(string choice, VendingMachine drinks[]);
+int selection(string choice, VendingMachine drinks[], int total);
 //Execution of Code Begins Here
 int main(int argc, char** argv) {
     //Set the random number seed here
 
     //Declare all variables for this function
     string choice;
+    int total = 0;
     //Initialize all known variables
     VendingMachine drinks[5];
     drinks[0].name = "Cola";
@@ -59,15 +61,16 @@ int main(int argc, char** argv) {
     while (true)
     {
         display(drinks);
-        cin >> choice;
-
+        getline(cin >> ws , choice);
+        
         if (choice == "Quit" || choice == "quit" ||
             choice == "q" || choice == "Q")
         {
+            cout << total << endl;
             break;
         }
 
-        selection(choice, drinks);
+        total = selection(choice, drinks, total);
     }
 
     //Clean up the code, close files, deallocate memory, etc....
@@ -85,7 +88,7 @@ void display(VendingMachine drinks[])
     cout << "Quit" << endl;
 }
 
-void selection(string choice, VendingMachine drinks[])
+int selection(string choice, VendingMachine drinks[], int total)
 {
     int payment = 0;
     int change;
@@ -96,7 +99,7 @@ void selection(string choice, VendingMachine drinks[])
     else if (choice == "Lemon-Lime" || choice == "lemon-lime") index = 2;
     else if (choice == "Grape Soda" || choice == "grape soda") index = 3;
     else if (choice == "Cream Soda" || choice == "cream soda") index = 4;
-    else return;
+    else return total;
 
     if (drinks[index].numOfDrink > 0)
     {
@@ -119,9 +122,13 @@ void selection(string choice, VendingMachine drinks[])
         change = payment - drinks[index].cost;
         drinks[index].numOfDrink--;
         cout << change << endl;
+        total += drinks[index].cost;
+        
     }
     else
     {
         cout << "Out of stock" << endl;
     }
+
+    return total;
 }
