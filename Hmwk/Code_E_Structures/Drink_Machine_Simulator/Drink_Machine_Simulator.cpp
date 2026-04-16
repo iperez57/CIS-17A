@@ -30,7 +30,7 @@ int main(int argc, char** argv) {
     //Set the random number seed here
 
     //Declare all variables for this function
-
+    string choice;
     //Initialize all known variables
     VendingMachine drinks[5];
     drinks[0].name = "Cola";
@@ -56,7 +56,13 @@ int main(int argc, char** argv) {
     //Maps known values to the unknown objectives
     
     //Display the Inputs/Outputs
-    display(drinks);
+    do
+    {
+        display(drinks);
+        cin >> choice;
+    } while ((choice != "Quit" && choice != "quit" &&
+        choice != "q" && choice != "Q"));
+
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
     return 0;
