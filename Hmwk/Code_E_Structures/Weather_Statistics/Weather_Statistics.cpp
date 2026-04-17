@@ -8,6 +8,7 @@
  //System Libraries
 #include <iostream>  //I/O Library
 #include <string>
+#include <iomanip>
 
 
 using namespace std;
@@ -37,6 +38,7 @@ struct Stats
 //Function Prototypes
 void getData(WeatherData year[], int SIZE);
 Stats calculate(WeatherData year[], int SIZE);
+void display(Stats yearlyStat);
 //Execution of Code Begins Here
 int main(int argc, char** argv) {
     //Set the random number seed here
@@ -53,6 +55,7 @@ int main(int argc, char** argv) {
     //Display the Inputs/Outputs
     getData(year, SIZE);
     yearlyStat = calculate(year, SIZE);
+    display(yearlyStat);
 
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
@@ -108,4 +111,12 @@ Stats calculate(WeatherData year[], int SIZE)
 
 
     return yearlyCalc;
+}
+
+void display(Stats yearlyStat)
+{
+    cout << setprecision(2) <<  "Average Rainfall " << yearlyStat.avgRainfall << " inches/month" << endl;
+    cout << "Lowest Temperature " << yearlyStat.lowMonth << " " << yearlyStat.lowestTemp << " Degrees Fahrenheit" << endl;
+    cout << "Highest Temperature " << yearlyStat.highMonth << " " << yearlyStat.highestTemp << " Degrees Fahrenheit" << endl;
+    cout << setprecision(2) <<  "Average Temperature for the year " << yearlyStat.avgYearTemp << " Degrees Fahrenheit" << endl;
 }
