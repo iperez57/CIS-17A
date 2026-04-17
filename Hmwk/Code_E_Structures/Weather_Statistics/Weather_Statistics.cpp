@@ -20,11 +20,23 @@ struct WeatherData
     float hTemp;
     float lTemp;
 };
+
+struct Stats
+{
+    float avgRainfall;
+    float lowestTemp;
+    float highestTemp;
+    float avgYearTemp;
+    string lowMonth;
+    string highMonth;
+};
+
 //Global Constants Only
 //Well known Science, Mathematical and Laboratory Constants
 
 //Function Prototypes
-void getData(WeatherData year[], int SIZE, int highest, int lowest, int avgRain, int avgTemp);
+void getData(WeatherData year[], int SIZE);
+Stats calculate(WeatherData year[], int SIZE);
 //Execution of Code Begins Here
 int main(int argc, char** argv) {
     //Set the random number seed here
@@ -32,17 +44,15 @@ int main(int argc, char** argv) {
     //Declare all variables for this function
     const int SIZE = 12;
     WeatherData year[SIZE];
-    float highest = year[0].hTemp;
-    float lowest = year[0].lTemp;
-    float avgRain = 0;
-    float avgTemp = 0;
+    Stats yearlyStat;
     //Initialize all known variables
 
     //Process Inputs to Outputs -> Mapping Process
     //Maps known values to the unknown objectives
 
     //Display the Inputs/Outputs
-    getData(year, SIZE, highest, lowest, avgRain, avgTemp);
+    getData(year, SIZE);
+    yearlyStat = calculate(year, SIZE);
 
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
@@ -50,9 +60,8 @@ int main(int argc, char** argv) {
 }
 
 //Function Implementations
-void getData(WeatherData year[],int SIZE, int highest, int lowest, int avgRain, int avgTemp)
+void getData(WeatherData year[],int SIZE)
 {
-    
     for (int i = 0; i < SIZE; i++)
     {
         cin >> year[i].month;
@@ -60,4 +69,43 @@ void getData(WeatherData year[],int SIZE, int highest, int lowest, int avgRain, 
         cin >> year[i].hTemp;
         cin >> year[i].lTemp;
     }
+}
+
+Stats calculate(WeatherData year[], int SIZE)
+{
+    Stats yearlyCalc;
+    float moAvgTemp = 0;
+    float highest = year[0].hTemp;
+    float lowest = year[0].lTemp;
+    float avgRain = 0;
+    float avgTemp = 0;
+    int indxLow = 0;
+    int indxHigh = 0;
+    for (int i = 0; i < SIZE; i++)
+    {
+        if (highest < year[i].hTemp)
+        {
+            highest = year[i].hTemp;
+            indxHigh = i;
+        }
+        if (lowest > year[i].lTemp)
+        {
+            lowest = year[i].lTemp;
+            indxLow = i;
+        }
+        moAvgTemp = (year[i].hTemp + year[i].lTemp) / 2;
+        avgTemp += moAvgTemp;
+
+        avgRain += year[i].totRain;
+    }
+
+    yearlyCalc.highestTemp = highest;
+    yearlyCalc.lowestTemp = lowest;
+    yearlyCalc.avgRainfall = avgRain / SIZE;
+    yearlyCalc.avgYearTemp = avgTemp / SIZE;
+    yearlyCalc.highMonth = year[indxHigh].month;
+    yearlyCalc.lowMonth = year[indxLow].month;
+
+
+    return yearlyCalc;
 }
