@@ -18,8 +18,8 @@ struct WeatherData
 {
     string month;
     float totRain;
-    float hTemp;
     float lTemp;
+    float hTemp;
 };
 
 struct Stats
@@ -69,8 +69,8 @@ void getData(WeatherData year[],int SIZE)
     {
         cin >> year[i].month;
         cin >> year[i].totRain;
-        cin >> year[i].hTemp;
         cin >> year[i].lTemp;
+        cin >> year[i].hTemp;
     }
 }
 
@@ -116,7 +116,7 @@ Stats calculate(WeatherData year[], int SIZE)
 void display(Stats yearlyStat)
 {
     cout << setprecision(2) <<  "Average Rainfall " << yearlyStat.avgRainfall << " inches/month" << endl;
-    cout << "Lowest Temperature " << yearlyStat.lowMonth << " " << yearlyStat.lowestTemp << " Degrees Fahrenheit" << endl;
-    cout << "Highest Temperature " << yearlyStat.highMonth << " " << yearlyStat.highestTemp << " Degrees Fahrenheit" << endl;
+    cout << "Lowest  Temperature " << yearlyStat.lowMonth << "  " << yearlyStat.lowestTemp << " Degrees Fahrenheit" << endl;
+    cout << setprecision(3) << "Highest Temperature " << yearlyStat.highMonth << "  " << yearlyStat.highestTemp << " Degrees Fahrenheit" << endl;
     cout << setprecision(2) <<  "Average Temperature for the year " << yearlyStat.avgYearTemp << " Degrees Fahrenheit" << endl;
 }
