@@ -69,8 +69,17 @@ void getData(WeatherData year[],int SIZE)
     {
         cin >> year[i].month;
         cin >> year[i].totRain;
-        cin >> year[i].lTemp;
-        cin >> year[i].hTemp;
+
+        do
+        {
+            cin >> year[i].lTemp;
+        } while (year[i].lTemp < -100 || year[i].lTemp > 140);
+
+        do
+        {
+            cin >> year[i].hTemp;
+        } while (year[i].hTemp < -100 || year[i].hTemp > 140);
+
     }
 }
 
