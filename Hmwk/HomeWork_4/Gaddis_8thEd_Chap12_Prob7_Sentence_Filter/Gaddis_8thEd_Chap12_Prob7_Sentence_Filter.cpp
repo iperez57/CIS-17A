@@ -2,7 +2,7 @@
  * File:   Gaddis_8thEd_Chap12_Prob7_Sentence_Filter
  * Author: Isaac Perez
  * Created: 04/18/2026
- * Purpose:  read and write to binary files
+ * Purpose:  read and write to files
  */
 
  //System Libraries
@@ -19,6 +19,7 @@ using namespace std;
 
 //Function Prototypes
 void getFileName(string& , string&);
+void editFile(ifstream& , ofstream&);
 //Execution of Code Begins Here
 int main(int argc, char** argv) {
     //Set the random number seed here
@@ -29,6 +30,8 @@ int main(int argc, char** argv) {
     //Initialize all known variables
     string inFileName;
     string outFileName;
+    char ch;
+    bool newSentence = true;
     //Process Inputs to Outputs -> Mapping Process
     //Maps known values to the unknown objectives
 
@@ -43,6 +46,8 @@ int main(int argc, char** argv) {
         cout << "Error opening file" << endl;
         return 0;
     }
+
+    editFile(inputFile, outputFile);
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
 
@@ -57,4 +62,28 @@ void getFileName(string& inFileName, string& outFileName)
 
     cout << "Enter output file name: ";
     cin >> outFileName;
+}
+
+void editFile(ifstream& inputFile, ofstream& outputFile)
+{
+    char ch;
+    bool newSentence = true;
+
+    while (inputFile.get(ch))
+    {
+        ch = tolower(ch);
+
+        if (newSentence && isalpha(ch))
+        {
+            ch = toupper(ch);
+            newSentence = false;
+        }
+
+        outputFile.put(ch);
+
+        if (ch == '.')
+        {
+            newSentence = true;
+        }
+    }
 }
