@@ -8,7 +8,6 @@
  //System Libraries
 #include <iostream>  //I/O Library
 #include <fstream>
-#include <cctype>
 
 using namespace std;
 
@@ -29,7 +28,7 @@ int main(int argc, char** argv) {
     //Declare all variables for this function
 
     //Initialize all known variables
-    string name;
+    string name = "data.bin";
     const int arySize = 5;
     int* ary;
     //Process Inputs to Outputs -> Mapping Process
@@ -37,6 +36,8 @@ int main(int argc, char** argv) {
 
     //Display the Inputs/Outputs
     ary = fillAry(arySize);
+
+    arrayToFile(name, ary, arySize);
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
 
@@ -47,7 +48,16 @@ int main(int argc, char** argv) {
 //Function Implementations
 void arrayToFile(string fileName, int* ary, int arySize)
 {
+    ofstream file(fileName, ios::binary);
 
+    if (!file)
+    {
+        cout << "Error opening file for writing" << endl;
+        return;
+    }
+
+    file.write(reinterpret_cast<char*>(ary), arySize * sizeof(int));
+    file.close();
 }
 
 void fileToArray(string fileName, int* ary, int arySize)
