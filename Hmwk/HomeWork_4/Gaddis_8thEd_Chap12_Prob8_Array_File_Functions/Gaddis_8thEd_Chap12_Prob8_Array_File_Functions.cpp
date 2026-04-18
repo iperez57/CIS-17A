@@ -38,6 +38,8 @@ int main(int argc, char** argv) {
     ary = fillAry(arySize);
 
     arrayToFile(name, ary, arySize);
+
+    fileToArray(name, ary, arySize);
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
 
@@ -62,7 +64,16 @@ void arrayToFile(string fileName, int* ary, int arySize)
 
 void fileToArray(string fileName, int* ary, int arySize)
 {
+    ifstream file(fileName, ios::binary);
 
+    if (!file)
+    {
+        cout << "Error opening file for reading" << endl;
+        return;
+    }
+
+    file.read(reinterpret_cast<char*>(ary), arySize * sizeof(int));
+    file.close();
 }
 
 int* fillAry(const int arySize)
