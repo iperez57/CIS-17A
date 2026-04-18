@@ -26,6 +26,7 @@ struct Speaker
 //Function Prototypes
 void displayMenu();
 void addSpeaker(Speaker speakersBureau[], int& counter, int arySize);
+void displaySpeakers(Speaker speaksersBureau[], int& counter);
 //Execution of Code Begins Here
 int main(int argc, char** argv) {
     //Set the random number seed here
@@ -56,7 +57,7 @@ int main(int argc, char** argv) {
             cout << "Edit Speaker" << endl;
             break;
         case 3:
-            cout << "Display All" << endl;
+            displaySpeakers(speakersBureau,counter);
             break;
         case 4:
             return 0;
@@ -100,4 +101,23 @@ void addSpeaker(Speaker speakersBureau[], int& counter, int arySize)
     cin >> speakersBureau[counter].fee;
 
     counter++;
+}
+
+void displaySpeakers(Speaker speaksersBureau[], int& counter)
+{
+    cout << "List of speakers" << endl;
+    if (counter == 0)
+    {
+        cout << "No speakers entered" << endl;
+    }
+    
+    for (int i = 0; i < counter; i++)
+    {
+        cout << i + 1 << endl;
+        cout << "Speaker Name: " << speaksersBureau[i].name << endl;
+        cout << "Phone Number: " << speaksersBureau[i].phoneNumber << endl;
+        cout << "Speaking Topic: " << speaksersBureau[i].speakingTopic << endl;
+        cout << "Fee: " << speaksersBureau[i].fee << endl;
+
+    }
 }
