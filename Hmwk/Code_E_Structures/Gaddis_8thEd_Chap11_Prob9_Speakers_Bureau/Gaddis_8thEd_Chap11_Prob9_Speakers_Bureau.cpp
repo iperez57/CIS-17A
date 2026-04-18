@@ -91,17 +91,29 @@ void addSpeaker(Speaker speakersBureau[], int& counter, int arySize)
         return;
     }
 
-    cout << "Enter name:" << endl;
-    getline(cin >> ws, speakersBureau[counter].name);
+    do 
+    {
+        cout << "Enter name:" << endl;
+        getline(cin >> ws, speakersBureau[counter].name);
+    } while (speakersBureau[counter].name.empty());
 
-    cout << "Enter phone number:" << endl;
-    getline(cin >> ws, speakersBureau[counter].phoneNumber);
+    do
+    {
+        cout << "Enter phone number:" << endl;
+        getline(cin >> ws, speakersBureau[counter].phoneNumber);
+    } while (speakersBureau[counter].phoneNumber.empty());
 
-    cout << "Enter speaking topic:" << endl;
-    getline(cin >> ws, speakersBureau[counter].speakingTopic);
+    do
+    {
+        cout << "Enter speaking topic:" << endl;
+        getline(cin >> ws, speakersBureau[counter].speakingTopic);
+    } while (speakersBureau[counter].speakingTopic.empty());
 
-    cout << "Enter fee required:" << endl;
-    cin >> speakersBureau[counter].fee;
+    do
+    {
+        cout << "Enter fee:" << endl;
+        cin >> speakersBureau[counter].fee;
+    } while (speakersBureau[counter].fee < 0);
 
     counter++;
 }
@@ -111,6 +123,7 @@ void displaySpeakers(Speaker speaksersBureau[], int& counter)
     if (counter == 0)
     {
         cout << "No speakers entered" << endl;
+        return;
     }
     
     for (int i = 0; i < counter; i++)
@@ -158,20 +171,32 @@ void editSpeaker(Speaker speakersBureau[], int& counter)
     switch (choice)
     {
     case 1:
-        cout << "Enter new name: ";
-        getline(cin >> ws, speakersBureau[spkEdit].name);
+        do
+        {
+            cout << "Enter new name: ";
+            getline(cin >> ws, speakersBureau[spkEdit].name);
+        } while (speakersBureau[spkEdit].name.empty());
         break;
     case 2:
-        cout << "Enter new phone number: ";
-        getline(cin >> ws, speakersBureau[spkEdit].phoneNumber);
+        do
+        {
+            cout << "Enter new phone number: ";
+            getline(cin >> ws, speakersBureau[spkEdit].phoneNumber);
+        } while (speakersBureau[spkEdit].phoneNumber.empty());
         break;
     case 3:
-        cout << "Enter new speaking topic: ";
-        getline(cin >> ws, speakersBureau[spkEdit].speakingTopic);
+        do
+        {
+            cout << "Enter new speaking topic: ";
+            getline(cin >> ws, speakersBureau[spkEdit].speakingTopic);
+        } while (speakersBureau[spkEdit].speakingTopic.empty());
         break;
     case 4:
-        cout << "Enter new fee: ";
-        cin >> speakersBureau[spkEdit].fee;
+        do
+        {
+            cout << "Enter new fee: ";
+            cin >> speakersBureau[spkEdit].fee;
+        } while (speakersBureau[spkEdit].fee < 0);
         break;
     default:
         cout << "Invalid choice." << endl;
