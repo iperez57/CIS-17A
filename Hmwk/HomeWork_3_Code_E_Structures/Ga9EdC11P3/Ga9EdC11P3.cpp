@@ -19,7 +19,6 @@ using namespace std;
 //Function Prototypes
 struct CompanyDiv
 {
-    enum Division { North, East, South, West };
     string name;
     float q1;
     float q2;
