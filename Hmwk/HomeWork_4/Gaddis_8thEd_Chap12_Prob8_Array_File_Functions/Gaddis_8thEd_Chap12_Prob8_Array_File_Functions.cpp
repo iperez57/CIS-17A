@@ -40,6 +40,12 @@ int main(int argc, char** argv) {
     arrayToFile(name, ary, arySize);
 
     fileToArray(name, ary, arySize);
+
+    for (int i = 0; i < arySize; i++)
+    {
+        cout << ary[i] << " ";
+    }
+    cout << endl;
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
 
