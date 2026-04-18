@@ -7,6 +7,8 @@
 
  //System Libraries
 #include <iostream>  //I/O Library
+#include <fstream>
+#include <cctype>
 
 using namespace std;
 
@@ -16,20 +18,31 @@ using namespace std;
 //Well known Science, Mathematical and Laboratory Constants
 
 //Function Prototypes
-
+void getFileName(string& , string&);
 //Execution of Code Begins Here
 int main(int argc, char** argv) {
     //Set the random number seed here
 
+    //Open text and binary files
     //Declare all variables for this function
 
     //Initialize all known variables
-
+    string inFileName;
+    string outFileName;
     //Process Inputs to Outputs -> Mapping Process
     //Maps known values to the unknown objectives
 
     //Display the Inputs/Outputs
+    getFileName(inFileName, outFileName);
 
+    ifstream inputFile(inFileName);
+    ofstream outputFile(outFileName);
+
+    if (!inputFile || !outputFile)
+    {
+        cout << "Error opening file" << endl;
+        return 0;
+    }
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
 
@@ -37,3 +50,11 @@ int main(int argc, char** argv) {
 }
 
 //Function Implementations
+void getFileName(string& inFileName, string& outFileName)
+{
+    cout << "Enter input file name: ";
+    cin >> inFileName;
+
+    cout << "Enter output file name: ";
+    cin >> outFileName;
+}
