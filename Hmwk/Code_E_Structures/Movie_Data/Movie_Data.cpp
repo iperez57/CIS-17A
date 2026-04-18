@@ -8,6 +8,7 @@
  //System Libraries
 #include <iostream>  //I/O Library
 #include <string>
+#include <iomanip>
 
 using namespace std;
 
@@ -24,7 +25,7 @@ struct MovieData
 
 //Function Prototypes
 MovieData* getData(int arySize);
-
+void displayMovieData(const MovieData* movies, int arySize);
 //Execution of Code Begins Here
 int main(int argc, char** argv) {
     //Set the random number seed here
@@ -41,6 +42,7 @@ int main(int argc, char** argv) {
     //Display the Inputs/Outputs
     cin >> arySize;
     movies = getData(arySize);
+    displayMovieData(movies, arySize);
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
     delete[] movies;
@@ -61,4 +63,25 @@ MovieData* getData(int arySize)
     }
 
     return aryMovie;
+}
+
+void displayMovieData(const MovieData* movies, int arySize)
+{
+    cout << "This program reviews structures" << endl;
+    cout << "Input how many movies, the Title of the Movie, Director, Year Released, and the Running Time in (minutes)." << endl << endl;
+
+    for (int i = 0; i < arySize; i++)
+    {
+        cout << left;
+        cout << setw(11) << "Title:" << movies[i].Title << endl;
+        cout << setw(11) << "Director:" << movies[i].Director << endl;
+        cout << setw(11) << "Year:" << movies[i].yrReleased << endl;
+        cout << setw(11) << "Length:" << movies[i].rnTime << endl;
+
+        if (i != arySize - 1)
+        {
+            cout << endl;
+        }
+    }
+
 }
