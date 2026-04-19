@@ -27,10 +27,8 @@ struct CompanyDiv
 //Well known Science, Mathematical and Laboratory Constants
 
 //Function Prototypes
-void getSales(CompanyDiv div[], string names[], int size);
-void writeFile(CompanyDiv div[], int size);
 void readFile(CompanyDiv div[], int size);
-
+void calcData(CompanyDiv div[], int size);
 //Execution of Code Begins Here
 int main(int argc, char** argv) {
     //Set the random number seed here
@@ -39,83 +37,19 @@ int main(int argc, char** argv) {
 
     //Initialize all known variables
     CompanyDiv div[4];
-    string names[4] = { "North", "West", "East", "South" };
     //Process Inputs to Outputs -> Mapping Process
     //Maps known values to the unknown objectives
 
     //Display the Inputs/Outputs
-    getSales(div, names, 4);
-    writeFile(div, 4);
     readFile(div, 4);
+    calcData(div, 4);
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
     return 0;
 }
 
 //Function Implementations
-void getSales(CompanyDiv div[], string names[], int size)
-{
-    for (int i = 0; i < size; i++)
-    {
-        strcpy_s(div[i].name, names[i].c_str());
 
-        cout << div[i].name << endl;
-
-        cout << "Enter first-quarter sales: ";
-        cin >> div[i].q1;
-        while (div[i].q1 < 0)
-        {
-            cout << "Invalid enter again: ";
-            cin >> div[i].q1;
-        }
-
-        cout << "Enter second-quarter sales: ";
-        cin >> div[i].q2;
-        while (div[i].q2 < 0)
-        {
-            cout << "Invalid enter again: ";
-            cin >> div[i].q2;
-        }
-
-        cout << "Enter third-quarter sales: ";
-        cin >> div[i].q3;
-        while (div[i].q3 < 0)
-        {
-            cout << "Invalid enter again: ";
-            cin >> div[i].q3;
-        }
-
-        cout << "Enter fourth-quarter sales: ";
-        cin >> div[i].q4;
-        while (div[i].q4 < 0)
-        {
-            cout << "Invalid enter again: ";
-            cin >> div[i].q4;
-        }
-
-
-        if (i < size - 1)
-            cout << endl;
-    }
-}
-
-void writeFile(CompanyDiv div[], int size)
-{
-    ofstream out("sales.bin", ios::binary);
-
-    if (!out)
-    {
-        cout << "Error opening file\n";
-        return;
-    }
-
-    for (int i = 0; i < size; i++)
-    {
-        out.write(reinterpret_cast<char*>(&div[i]), sizeof(CompanyDiv));
-    }
-
-    out.close();
-}
 void readFile(CompanyDiv div[], int size)
 {
     ifstream in("sales.bin", ios::binary);
@@ -131,4 +65,77 @@ void readFile(CompanyDiv div[], int size)
         in.read(reinterpret_cast<char*>(&div[i]), sizeof(CompanyDiv));
     }
     in.close();
+}
+
+void calcData(CompanyDiv div[], int size)
+{
+    float totQ1 = 0;
+    float totQ2 = 0;
+    float totQ3 = 0;
+    float totQ4 = 0;
+    float totDivSales = 0;
+    float totCorpSales = 0;
+    float avgQSales = 0;
+    float highQ = totQ1;
+    float lowQ = totQ1;
+    string highQName = "Q1";
+    string lowQName = "Q1";
+
+    for (int i = 0; i < size; i++)
+    {
+        totQ1 += div[i].q1;
+        totQ2 += div[i].q2;
+        totQ3 += div[i].q3;
+        totQ4 += div[i].q4;
+
+        totDivSales = div[i].q1 + div[i].q2 + div[i].q3 + div[i].q4;
+        totCorpSales += totDivSales;
+
+        cout << div[i].name << " yearly: $" << totDivSales << endl;
+
+    }
+    
+     cout << "Total Q1: $" << totQ1 << endl;
+     cout << "Total Q2: $" << totQ2 << endl;
+     cout << "Total Q3: $" << totQ3 << endl;
+     cout << "Total Q4: $" << totQ4 << endl;
+
+     cout << "Total Corporate Sales: $" << totCorpSales << endl;
+
+     for (int i = 0; i < size; i++)
+     {
+         avgQSales = (div[i].q1 + div[i].q2 + div[i].q3 + div[i].q4) / 4.0f;
+         cout << div[i].name << " average quarterly sales: $" << avgQSales << endl;
+     }
+
+     if (totQ2 > highQ)
+     {
+         highQ = totQ2; highQName = "Q2";
+     }
+      if (totQ3 > highQ)
+      {
+          highQ = totQ3; highQName = "Q3";
+      }
+      if (totQ4 > highQ)
+      {
+          highQ = totQ4; highQName = "Q4";
+      }
+
+
+
+      if (totQ2 < lowQ)
+      {
+          lowQ = totQ2; lowQName = "Q2";
+      }
+      if (totQ3 < lowQ)
+      {
+          lowQ = totQ3; lowQName = "Q3";
+      }      
+      if (totQ4 < lowQ)
+      {
+          lowQ = totQ4; lowQName = "Q4";
+      }
+
+      cout << "Highest Quarter: " << highQName << endl;
+      cout << "Lowest Quarter: " << lowQName << endl;
 }
