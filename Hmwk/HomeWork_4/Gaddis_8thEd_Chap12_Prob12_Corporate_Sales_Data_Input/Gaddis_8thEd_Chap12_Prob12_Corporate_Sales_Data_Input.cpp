@@ -29,6 +29,7 @@ struct CompanyDiv
 //Function Prototypes
 void getSales(CompanyDiv div[], string names[], int size);
 void writeFile(CompanyDiv div[], int size);
+void readFile(CompanyDiv div[], int size);
 
 //Execution of Code Begins Here
 int main(int argc, char** argv) {
@@ -45,6 +46,7 @@ int main(int argc, char** argv) {
     //Display the Inputs/Outputs
     getSales(div, names, 4);
     writeFile(div, 4);
+    readFile(div, 4);
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
     return 0;
@@ -113,4 +115,20 @@ void writeFile(CompanyDiv div[], int size)
     }
 
     out.close();
+}
+void readFile(CompanyDiv div[], int size)
+{
+    ifstream in("sales.bin", ios::binary);
+
+    if (!in)
+    {
+        cout << "Error opening file" << endl;
+        return;
+    }
+
+    for (int i = 0; i < size; i++)
+    {
+        in.read(reinterpret_cast<char*>(&div[i]), sizeof(CompanyDiv));
+    }
+    in.close();
 }
