@@ -17,11 +17,11 @@ using namespace std;
 //Well known Science, Mathematical and Laboratory Constants
 
 //Function Prototypes
-
+void openFile(string);
 //Execution of Code Begins Here
 int main(int argc, char** argv) {
     //Set the random number seed here
-
+    string fileName = "text.txt";
     //Open text and binary files
     //Declare all variables for this function
 
@@ -31,6 +31,7 @@ int main(int argc, char** argv) {
     //Maps known values to the unknown objectives
 
     //Display the Inputs/Outputs
+    openFile(fileName);
 
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
@@ -39,3 +40,13 @@ int main(int argc, char** argv) {
 }
 
 //Function Implementations
+void openFile(string fileName)
+{
+    ifstream inFile(fileName);
+    
+    if (!inFile)
+    {
+        cout << "Error opening file" << endl;
+        return;
+    }
+}
