@@ -79,7 +79,6 @@ void searchFile(string& fileName)
                     if (line[i + j] != searchStr[j])
                     {
                         match = false;
-                        break;
                     }
                 }
 
