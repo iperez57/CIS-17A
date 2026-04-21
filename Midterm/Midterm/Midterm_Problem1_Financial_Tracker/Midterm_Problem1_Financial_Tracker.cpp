@@ -30,6 +30,7 @@ struct Customer
 //Function Prototypes
 void getData(Customer*);
 void calculateBalance(Customer*);
+void displayData(Customer*);
 //Execution of Code Begins Here
 int main(int argc, char** argv) {
     //Set the random number seed here
@@ -43,6 +44,7 @@ int main(int argc, char** argv) {
 
     //Display the Inputs/Outputs
     getData(c);
+    displayData(c);
     calculateBalance(c);
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
@@ -95,8 +97,9 @@ void calculateBalance(Customer* c)
 {
     float balance = c->begBalance;
     float fee = 20.00;
-
-    cout << "Your balance is: $" << c->begBalance;
+    
+    cout << endl;
+    cout << "Your balance is: $" << c->begBalance << endl;
 
     for (int i = 0; i < c->checkCount; i++)
     {
@@ -105,6 +108,7 @@ void calculateBalance(Customer* c)
     //check overdraft
     if (balance < 0)
     {
+        balance -= fee;
         cout << "Account overdraw $20 fee applied" << endl;
     }
     
@@ -116,4 +120,35 @@ void calculateBalance(Customer* c)
     }
 
     cout << "After deposits balance comes out to $" << balance << endl;
+}
+
+void displayData(Customer* c)
+{
+    cout << endl;
+    cout << "Account Number: " << c->accNum << endl;
+    cout << "Name: " << c->name << endl;
+    cout << "Address: " << c->address << endl;
+    cout << "Beginning Balance: $" << c->begBalance << endl;
+    cout << "Checks written: " << c->checkCount << endl;
+    cout << "Value of checks: ";
+    for (int i = 0; i < c->checkCount; i++)
+    {
+        cout << "$" << c->checks[i];
+        if (i < c->checkCount - 1)
+        {
+            cout << ", ";
+        }
+    }
+    cout << endl;
+    cout << "Deposits made: " << c->depoCount << endl;
+    cout << "Value of deposits: ";
+    for (int i = 0; i < c->depoCount; i++)
+    {
+        cout << "$" << c->deposit[i];
+        if (i < c->depoCount - 1)
+        {
+            cout << ", ";
+        }
+    }
+    cout << endl;
 }
