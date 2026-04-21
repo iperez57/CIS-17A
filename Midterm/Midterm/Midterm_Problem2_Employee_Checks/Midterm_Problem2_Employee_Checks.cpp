@@ -45,7 +45,7 @@ int main(int argc, char** argv) {
 
     getData(e, numOfEmp);
     calculatePay(e, numOfEmp);
-    
+
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
     delete[] e;
@@ -94,19 +94,27 @@ string numberToWords(float n2Cnvrt)
 {
     string result = "";
 
-    if (n2Cnvrt >= 1 && n2Cnvrt <= 3000)
+    if (n2Cnvrt >= 1 && n2Cnvrt <= 9999)
     {
+
+        int n = (int)n2Cnvrt;
         //Process or map Inputs to Outputs
         //Determine 1000's, 100's, 10's, 1's
         unsigned char n1000s, n100s, n10s, n1s;
-        n1000s = n2Cnvrt / 1000;   //Shift 3 places to the left
-        n100s = n2Cnvrt % 1000 / 100;//Remainder of division of 1000 then shift 2 left
-        n10s = n2Cnvrt % 100 / 10;   //Remainder of division of 100 then shift 1 left
-        n1s = n2Cnvrt % 10;        //Remainder of division by 10
+        n1000s = n / 1000;   //Shift 3 places to the left
+        n100s = n % 1000 / 100;//Remainder of division of 1000 then shift 2 left
+        n10s = n % 100 / 10;   //Remainder of division of 100 then shift 1 left
+        n1s = n % 10;        //Remainder of division by 10
 
         //Output the number of 1000's in Roman Numerals
         //Using the Switch Statement
         switch (n1000s) {
+        case 9: result += "Nine thousand "; break;
+        case 8: result += "Eight thousand "; break;
+        case 7: result += "Seven thousand "; break;
+        case 6: result += "Six thousand "; break;
+        case 5: result += "Five thousand "; break;
+        case 4: result += "Four thousand "; break;
         case 3: result += "Three thousand "; break;
         case 2: result += "Two thousand "; break;
         case 1: result += "One thousand "; break;
@@ -151,7 +159,6 @@ string numberToWords(float n2Cnvrt)
             if (n10s == 4) result += "forty ";
             if (n10s == 3) result += "thirty ";
             if (n10s == 2) result += "twenty ";
-            if (n10s == 1) result += "ten ";
         }
 
         //Output the number of 1's
