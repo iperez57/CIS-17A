@@ -16,12 +16,14 @@ struct Employee
     string name;
     float hrsWorked;
     float payRate;
+    float grossPay;
 };
 //Global Constants Only
 //Well known Science, Mathematical and Laboratory Constants
 
 //Function Prototypes
 void getData(Employee*, const int);
+void calculatePay(Employee*, const int);
 //Execution of Code Begins Here
 int main(int argc, char** argv) {
     //Set the random number seed here
@@ -40,6 +42,7 @@ int main(int argc, char** argv) {
     Employee* e = new Employee[numOfEmp];
 
     getData(e, numOfEmp);
+    calculatePay(e, numOfEmp);
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
     delete[] e;
@@ -60,5 +63,26 @@ void getData(Employee* e, const int numOfEmp)
         cout << "Pay rate: $";
         cin >> e[i].payRate;
 
+    }
+}
+
+void calculatePay(Employee* e, const int numOfEmp)
+{
+    for (int i = 0; i < numOfEmp; i++)
+    {
+        if (e[i].hrsWorked <= 40)
+        {
+            e[i].grossPay = e[i].hrsWorked * e[i].payRate;
+        }
+        else if (e[i].hrsWorked > 40 && e[i].hrsWorked <= 50)
+        {
+            e[i].grossPay = (40 * e[i].payRate) + (e[i].hrsWorked - 40) * (e[i].payRate * 2);
+        }
+        else
+        {
+            e[i].grossPay = (40 * e[i].payRate) +
+                (10 * e[i].payRate * 2) +
+                (e[i].hrsWorked - 50) * (e[i].payRate * 3);
+        }
     }
 }
