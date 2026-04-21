@@ -26,6 +26,8 @@ struct Employee
 void getData(Employee*, const int);
 void calculatePay(Employee*, const int);
 string numberToWords(float);
+void displayCheck(Employee*, const int);
+
 //Execution of Code Begins Here
 int main(int argc, char** argv) {
     //Set the random number seed here
@@ -45,6 +47,7 @@ int main(int argc, char** argv) {
 
     getData(e, numOfEmp);
     calculatePay(e, numOfEmp);
+    displayCheck(e, numOfEmp);
 
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
@@ -174,4 +177,22 @@ string numberToWords(float n2Cnvrt)
         else if (n1s == 1) result += "one ";
     }
     return result;
+}
+
+void displayCheck(Employee* e, const int numOfEmp)
+{
+    for (int i = 0; i < numOfEmp; i++)
+    {
+
+        e[i].grossPayWord = numberToWords(e[i].grossPay);
+        int dollars = (int)e[i].grossPay;
+        int cents = (int)((e[i].grossPay - dollars) * 100);
+        cout << endl;
+        cout << "Best Company" << endl;
+        cout << "123 Best Way Dr " << endl;
+        cout << "Best City, CA, 13012" << endl;
+        cout << "Name: " << e[i].name << " Amount: $" << e[i].grossPay << endl;
+        cout << "Amount: " << e[i].grossPayWord << "& " << cents << "/100" << endl;
+        cout << "Signature Line: ____________________________" << endl;
+    }
 }
