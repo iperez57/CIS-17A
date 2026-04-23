@@ -18,6 +18,7 @@ using namespace std;
 //Function Prototypes
 void menu();
 void encrypt();
+void decrypt();
 //Execution of Code Begins Here
 int main(int argc, char** argv) {
     //Set the random number seed here
@@ -41,7 +42,7 @@ int main(int argc, char** argv) {
             encrypt();
             break;
         case 2:
-            cout << "Decrypt";
+            decrypt();
             break;
         default:
             cout << "Invalid option. Try again" << endl;
@@ -93,6 +94,45 @@ void encrypt()
     swap(digit[1], digit[3]);
 
     cout << "Encrypted: ";
+    for (int i = 0; i < size; i++)
+    {
+        cout << digit[i];
+    }
+    cout << endl;
+}
+
+
+void decrypt()
+{
+    const int decryptMap[8] = { 5,6,7,0,1,2,3,4 };
+    int num;
+    const int size = 4;
+    int digit[size];
+    cout << "Enter a 4-digit number to encrypt (only use numbers 0-7): ";
+    cin >> num;
+
+    digit[0] = num / 1000;
+    digit[1] = (num / 100) % 10;
+    digit[2] = (num / 10) % 10;
+    digit[3] = num % 10;
+
+    for (int i = 0; i < size; i++)
+    {
+        if (digit[i] > 7)
+        {
+            cout << "digits must be 0-7 only" << endl;
+            return;
+        }
+    }
+
+    for (int i = 0; i < size; i++)
+    {
+        digit[i] = decryptMap[digit[i]];
+    }
+    swap(digit[0], digit[2]);
+    swap(digit[1], digit[3]);
+
+    cout << "Decrypted: ";
     for (int i = 0; i < size; i++)
     {
         cout << digit[i];
