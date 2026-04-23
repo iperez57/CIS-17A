@@ -17,6 +17,7 @@ using namespace std;
 
 //Function Prototypes
 void menu();
+void encrypt();
 //Execution of Code Begins Here
 int main(int argc, char** argv) {
     //Set the random number seed here
@@ -37,7 +38,7 @@ int main(int argc, char** argv) {
         switch (option)
         {
         case 1:
-            cout << "Encrypt";
+            encrypt();
             break;
         case 2:
             cout << "Decrypt";
@@ -60,4 +61,41 @@ void menu()
     cout << "Menu" << endl;
     cout << "1. Encrypt Data" << endl;
     cout << "2. Decrypt Data" << endl;
+}
+void encrypt()
+{
+    int num;
+    const int size = 4;
+    int digit[size];
+    cout << "Enter a 4-digit number to encrypt (only use numbers 0-7): ";
+    cin >> num;
+
+    digit[0] = num / 1000;
+    digit[1] = (num / 100) % 10;
+    digit[2] = (num / 10) % 10;
+    digit[3] = num % 10;
+
+    for (int i = 0; i < size; i++)
+    {
+        if (digit[i] > 7)
+        {
+            cout << "digits must be 0-7 only" << endl;
+            return;
+        }
+    }
+
+    for (int i = 0; i < size; i++)
+    {
+        digit[i] = (digit[i] + 3) % 8;
+    }
+
+    swap(digit[0], digit[2]);
+    swap(digit[1], digit[3]);
+
+    cout << "Encrypted: ";
+    for (int i = 0; i < size; i++)
+    {
+        cout << digit[i];
+    }
+    cout << endl;
 }
