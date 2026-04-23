@@ -144,15 +144,105 @@ Array* fillAry(int n, int modNum) {
     return array;
 }
 
-Stats* stat(const Array* array) {
-    //Non-working stub to be completed by the student
-    cout << endl << "Stat function to be completed by the student" << endl;
+Stats* stat(const Array* array) 
+{
     Stats* stats = new Stats;
     stats->mode = new Array;
-    stats->mode->size = 0;
-    int nModes = 0;
-    if (nModes != 0)stats->mode->data = new int[nModes];
-    stats->modFreq = 0;
-    stats->median = 0;
+    int size = array->size;
+    int* data = array->data;
+    float sum = 0;
+
+    //Find average
+    for (int i = 0; i < size; i++)
+    {
+        sum += data[i];
+    }
+    stats->avg = sum / size;
+
+    //Find median
+    if (size % 2 == 0)
+    {
+        stats->median = (data[size / 2 - 1] + data[size / 2]) / 2.0;
+    }
+    else
+    {
+        stats->median = data[size / 2];
+    }
+
+    //Finds mode
+    int maxFreq = 1;
+    int currentFreq = 1;
+    for (int i = 1; i < size; i++)
+    {
+        if (data[i] == data[i - 1])
+        {
+            currentFreq++;
+        }
+        else
+        {
+            if (currentFreq > maxFreq)
+                maxFreq = currentFreq;
+            currentFreq = 1;
+        }
+    }
+    if (currentFreq > maxFreq)
+        maxFreq = currentFreq;
+
+    stats->modFreq = maxFreq;
+
+    if (maxFreq == 1)
+    {
+        stats->mode->size = 0;
+        stats->mode->data = new int[0];
+        stats->modFreq = 1;
+        return stats;
+    }
+    //find number of modes
+    int nmodes = 0;
+    int modeCounter = 1;
+
+    if (maxFreq > 1)
+    {
+        for (int i = 1; i < size; i++)
+        {
+            if (data[i] == data[i - 1])
+                modeCounter++;
+            else
+            {
+                if (modeCounter == maxFreq)
+                    nmodes++;
+                modeCounter = 1;
+            }
+        }
+        if (modeCounter == maxFreq)
+            nmodes++;
+    }
+    else nmodes = 0;
+
+    //Fill the mode array
+    stats->mode->size = nmodes;
+    stats->mode->data = new int[nmodes];
+
+    int index = 0;
+    int counter = 1;
+
+
+    for (int i = 1; i < size; i++)
+    {
+        if (data[i] == data[i - 1])
+            counter++;
+        else
+        {
+            if (counter == maxFreq)
+            {
+                stats->mode->data[index++] = data[i - 1];
+            }
+            counter = 1;
+        }   
+    }
+    if (counter == maxFreq)
+    {
+        stats->mode->data[index++] = data[size - 1];
+    }
     return stats;
 }
