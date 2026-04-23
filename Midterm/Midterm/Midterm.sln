@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Midterm_Problem_3_Mean_Medi
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Midterm_Problem_4_Data_Encryption_Decryption", "Midterm_Problem_4_Data_Encryption_Decryption\Midterm_Problem_4_Data_Encryption_Decryption.vcxproj", "{68F8A26F-EF77-4722-BFA4-C01821E9F5CF}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Midterm_Problem_5_Exploration_of_Data_Types", "Midterm_Problem_5_Exploration_of_Data_Types\Midterm_Problem_5_Exploration_of_Data_Types.vcxproj", "{534EC83E-51D2-450F-8F16-996AA799422C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -51,6 +53,14 @@ Global
 		{68F8A26F-EF77-4722-BFA4-C01821E9F5CF}.Release|x64.Build.0 = Release|x64
 		{68F8A26F-EF77-4722-BFA4-C01821E9F5CF}.Release|x86.ActiveCfg = Release|Win32
 		{68F8A26F-EF77-4722-BFA4-C01821E9F5CF}.Release|x86.Build.0 = Release|Win32
+		{534EC83E-51D2-450F-8F16-996AA799422C}.Debug|x64.ActiveCfg = Debug|x64
+		{534EC83E-51D2-450F-8F16-996AA799422C}.Debug|x64.Build.0 = Debug|x64
+		{534EC83E-51D2-450F-8F16-996AA799422C}.Debug|x86.ActiveCfg = Debug|Win32
+		{534EC83E-51D2-450F-8F16-996AA799422C}.Debug|x86.Build.0 = Debug|Win32
+		{534EC83E-51D2-450F-8F16-996AA799422C}.Release|x64.ActiveCfg = Release|x64
+		{534EC83E-51D2-450F-8F16-996AA799422C}.Release|x64.Build.0 = Release|x64
+		{534EC83E-51D2-450F-8F16-996AA799422C}.Release|x86.ActiveCfg = Release|Win32
+		{534EC83E-51D2-450F-8F16-996AA799422C}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
