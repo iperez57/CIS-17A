@@ -14,7 +14,7 @@ using namespace std;
 struct Prime
 {
     unsigned char power; //Power associated with the prime number
-    unsigned char prime; //Prime number factor
+    unsigned short prime; //Prime number factor
 };
 
 struct Primes
@@ -47,6 +47,7 @@ int main(int argc, char** argv) {
     cin >> num;
 
     p = factor(num);
+    prtPrms(p);
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
 
@@ -68,6 +69,7 @@ Primes* factor(int num)
     {
         if (n % i == 0)
         {
+            count = 0;
             while (n % i == 0)
             {
                 n /= i;
@@ -81,4 +83,20 @@ Primes* factor(int num)
     }
 
     return result;
+}
+
+void prtPrms(const Primes* p)
+{
+    cout << p->n << " = ";
+    for (int i = 0; i < p->nPrimes; i++)
+    {
+        cout << p->pStrAry[i].prime << "^" << (int)p->pStrAry[i].power;
+
+        if (i != p->nPrimes - 1)
+        {
+            cout << " * ";
+        }
+
+    }
+    cout << endl;
 }
