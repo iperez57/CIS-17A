@@ -48,6 +48,7 @@ struct Employee
 void displayMenu();
 void prob1();
 void prob2();
+void prob4();
 
 #pragma region Problem 1
 void getData(Customer*);
@@ -60,6 +61,12 @@ void getData(Employee*, const int);
 void calculatePay(Employee*, const int);
 string numberToWords(float);
 void displayCheck(Employee*, const int);
+#pragma endregion
+
+#pragma region Problem 4
+void menu();
+void encrypt();
+void decrypt();
 #pragma endregion
 
 
@@ -89,6 +96,10 @@ int main(int argc, char** argv) {
         case 3:
             cout << "On a different project" << endl;
             break;
+        case 4:
+            prob4();
+            break;
+        
         }
     }
     //Display the Inputs/Outputs
@@ -401,5 +412,126 @@ void displayCheck(Employee* e, const int numOfEmp)
         cout << "Amount: " << e[i].grossPayWord << "& " << cents << "/100" << endl;
         cout << "Signature Line: ____________________________" << endl << endl;
     }
+}
+#pragma endregion
+
+#pragma region Problem 4
+void prob4()
+{
+    //Set the random number seed here
+
+  //Declare all variables for this function
+
+  //Initialize all known variables
+    int option;
+    //Process Inputs to Outputs -> Mapping Process
+    //Maps known values to the unknown objectives
+
+    //Display the Inputs/Outputs
+    do
+    {
+        menu();
+        cin >> option;
+
+        switch (option)
+        {
+        case 1:
+            encrypt();
+            break;
+        case 2:
+            decrypt();
+            break;
+        default:
+            cout << "Invalid option. Try again" << endl;
+
+        }
+    } while (option != 0);
+
+    //Clean up the code, close files, deallocate memory, etc....
+    //Exit stage right
+
+}
+
+void menu()
+{
+    cout << "Menu" << endl;
+    cout << "1. Encrypt Data" << endl;
+    cout << "2. Decrypt Data" << endl;
+}
+void encrypt()
+{
+    int num;
+    const int size = 4;
+    int digit[size];
+    cout << "Enter a 4-digit number to encrypt (only use numbers 0-7): ";
+    cin >> num;
+
+    digit[0] = num / 1000;
+    digit[1] = (num / 100) % 10;
+    digit[2] = (num / 10) % 10;
+    digit[3] = num % 10;
+
+    for (int i = 0; i < size; i++)
+    {
+        if (digit[i] > 7)
+        {
+            cout << "digits must be 0-7 only" << endl;
+            return;
+        }
+    }
+
+    for (int i = 0; i < size; i++)
+    {
+        digit[i] = (digit[i] + 3) % 8;
+    }
+
+    swap(digit[0], digit[2]);
+    swap(digit[1], digit[3]);
+
+    cout << "Encrypted: ";
+    for (int i = 0; i < size; i++)
+    {
+        cout << digit[i];
+    }
+    cout << endl;
+}
+
+
+void decrypt()
+{
+    const int decryptMap[8] = { 5,6,7,0,1,2,3,4 };
+    int num;
+    const int size = 4;
+    int digit[size];
+    cout << "Enter a 4-digit number to encrypt (only use numbers 0-7): ";
+    cin >> num;
+
+    digit[0] = num / 1000;
+    digit[1] = (num / 100) % 10;
+    digit[2] = (num / 10) % 10;
+    digit[3] = num % 10;
+
+    for (int i = 0; i < size; i++)
+    {
+        if (digit[i] > 7)
+        {
+            cout << "digits must be 0-7 only" << endl;
+            return;
+        }
+    }
+
+    for (int i = 0; i < size; i++)
+    {
+        digit[i] = decryptMap[digit[i]];
+    }
+    swap(digit[0], digit[2]);
+    swap(digit[1], digit[3]);
+
+    cout << "Decrypted: ";
+    for (int i = 0; i < size; i++)
+    {
+        cout << digit[i];
+    }
+    cout << endl << endl;
 }
 #pragma endregion
