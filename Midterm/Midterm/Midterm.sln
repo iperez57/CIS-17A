@@ -17,6 +17,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Midterm_Problem_6_NASA_Form
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Midterm_Problem_7_Prime_Numbers", "Midterm_Problem_7_Prime_Numbers\Midterm_Problem_7_Prime_Numbers.vcxproj", "{F9093126-56F2-44F4-9B8E-E374EFACC960}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Midterm_Problem_8_Menu", "Midterm_Problem_8_Menu\Midterm_Problem_8_Menu.vcxproj", "{BB0E9624-A7E1-407F-9866-2E6E61ACD116}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -81,6 +83,14 @@ Global
 		{F9093126-56F2-44F4-9B8E-E374EFACC960}.Release|x64.Build.0 = Release|x64
 		{F9093126-56F2-44F4-9B8E-E374EFACC960}.Release|x86.ActiveCfg = Release|Win32
 		{F9093126-56F2-44F4-9B8E-E374EFACC960}.Release|x86.Build.0 = Release|Win32
+		{BB0E9624-A7E1-407F-9866-2E6E61ACD116}.Debug|x64.ActiveCfg = Debug|x64
+		{BB0E9624-A7E1-407F-9866-2E6E61ACD116}.Debug|x64.Build.0 = Debug|x64
+		{BB0E9624-A7E1-407F-9866-2E6E61ACD116}.Debug|x86.ActiveCfg = Debug|Win32
+		{BB0E9624-A7E1-407F-9866-2E6E61ACD116}.Debug|x86.Build.0 = Debug|Win32
+		{BB0E9624-A7E1-407F-9866-2E6E61ACD116}.Release|x64.ActiveCfg = Release|x64
+		{BB0E9624-A7E1-407F-9866-2E6E61ACD116}.Release|x64.Build.0 = Release|x64
+		{BB0E9624-A7E1-407F-9866-2E6E61ACD116}.Release|x86.ActiveCfg = Release|Win32
+		{BB0E9624-A7E1-407F-9866-2E6E61ACD116}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
