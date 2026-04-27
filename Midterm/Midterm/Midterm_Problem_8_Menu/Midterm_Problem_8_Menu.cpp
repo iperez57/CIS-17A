@@ -9,6 +9,7 @@
 #include <iostream>  //I/O Library
 #include <string>
 
+
 using namespace std;
 
 //User Libraries
@@ -82,7 +83,7 @@ void displayCheck(Employee*, const int);
 #pragma endregion
 
 #pragma region Problem 4
-void menu();
+void menuEnc();
 void encrypt();
 void decrypt();
 #pragma endregion
@@ -452,7 +453,7 @@ void prob4()
     //Display the Inputs/Outputs
     do
     {
-        menu();
+        menuEnc();
         cin >> option;
 
         switch (option)
@@ -473,7 +474,7 @@ void prob4()
 
 }
 
-void menu()
+void menuEnc()
 {
     cout << "Menu" << endl;
     cout << "1. Encrypt Data" << endl;
