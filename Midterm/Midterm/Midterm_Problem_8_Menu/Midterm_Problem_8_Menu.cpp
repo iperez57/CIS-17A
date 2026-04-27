@@ -49,6 +49,7 @@ void displayMenu();
 void prob1();
 void prob2();
 void prob4();
+void prob5();
 
 #pragma region Problem 1
 void getData(Customer*);
@@ -99,7 +100,9 @@ int main(int argc, char** argv) {
         case 4:
             prob4();
             break;
-        
+        case 5:
+            prob5();
+            break;
         }
     }
     //Display the Inputs/Outputs
@@ -533,5 +536,27 @@ void decrypt()
         cout << digit[i];
     }
     cout << endl << endl;
+}
+#pragma endregion
+
+#pragma region Problem 5
+void prob5()
+{
+
+    //Display the Inputs/Outputs
+
+    cout << "Unsigned byte = !5" << endl;
+    cout << "Signed byte = !5" << endl;
+    cout << "Short = !7" << endl;
+    cout << "Unsigned short = !8" << endl;
+    cout << "Int = !12" << endl;
+    cout << "Unsigned int = !12" << endl;
+    cout << "Long = !12" << endl;
+    cout << "Unsigned long = !12" << endl;
+    cout << "Long long = !20" << endl;
+    cout << "Unsigned long long = !20" << endl;
+    cout << "Float = !34" << endl;
+    cout << "Double = !170" << endl;
+
 }
 #pragma endregion
