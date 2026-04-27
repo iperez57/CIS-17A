@@ -164,14 +164,9 @@ void displayMenu()
 #pragma region Problem 1
 void prob1()
 {
-    //Set the random number seed here
-
-  //Declare all variables for this function
 
   //Initialize all known variables
     Customer* c = new Customer;
-    //Process Inputs to Outputs -> Mapping Process
-    //Maps known values to the unknown objectives
 
     //Display the Inputs/Outputs
     getData(c);
@@ -286,10 +281,6 @@ void displayData(Customer* c)
 #pragma region Problem 2
 void prob2()
 {
-    //Set the random number seed here
-
-//Declare all variables for this function
-
 //Initialize all known variables
     int numOfEmp;
     //Process Inputs to Outputs -> Mapping Process
@@ -306,7 +297,6 @@ void prob2()
     displayCheck(e, numOfEmp);
 
     //Clean up the code, close files, deallocate memory, etc....
-    //Exit stage right
     delete[] e;
 }
 
@@ -455,14 +445,9 @@ void displayCheck(Employee* e, const int numOfEmp)
 #pragma region Problem 4
 void prob4()
 {
-    //Set the random number seed here
-
-  //Declare all variables for this function
 
   //Initialize all known variables
     int option;
-    //Process Inputs to Outputs -> Mapping Process
-    //Maps known values to the unknown objectives
 
     //Display the Inputs/Outputs
     do
@@ -483,9 +468,6 @@ void prob4()
 
         }
     } while (option != 0);
-
-    //Clean up the code, close files, deallocate memory, etc....
-    //Exit stage right
 
 }
 
@@ -655,15 +637,10 @@ void prob6()
 #pragma region Problem 7
 void prob7()
 {
-    //Set the random number seed here
-
-    //Declare all variables for this function
 
     //Initialize all known variables
     int num;
     Primes* p;
-    //Process Inputs to Outputs -> Mapping Process
-    //Maps known values to the unknown objectives
 
     //Display the Inputs/Outputs
     cout << "Enter number: ";
@@ -671,8 +648,6 @@ void prob7()
 
     p = factor(num);
     prtPrms(p);
-    //Clean up the code, close files, deallocate memory, etc....
-    //Exit stage right
 
 }
 
