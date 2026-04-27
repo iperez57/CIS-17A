@@ -48,6 +48,7 @@ int main(int argc, char** argv) {
 
     p = factor(num);
     prtPrms(p);
+    cleanUp(p);
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
 
@@ -99,4 +100,10 @@ void prtPrms(const Primes* p)
 
     }
     cout << endl;
+}
+
+void cleanUp(Primes* p)
+{
+    delete[] p->pStrAry;
+    delete p;
 }
