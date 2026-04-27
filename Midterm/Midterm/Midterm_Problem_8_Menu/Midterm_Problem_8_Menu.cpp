@@ -86,6 +86,9 @@ int main(int argc, char** argv) {
         case 2:
             prob2();
             break;
+        case 3:
+            cout << "On a different project" << endl;
+            break;
         }
     }
     //Display the Inputs/Outputs
