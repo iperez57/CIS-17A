@@ -526,7 +526,7 @@ void decrypt()
     int num;
     const int size = 4;
     int digit[size];
-    cout << "Enter a 4-digit number to encrypt (only use numbers 0-7): ";
+    cout << "Enter a 4-digit number to decrypt (only use numbers 0-7): ";
     cin >> num;
 
     digit[0] = num / 1000;
@@ -647,8 +647,10 @@ void prob7()
     Primes* p;
 
     //Display the Inputs/Outputs
-    cout << "Enter number to find its primes: ";
-    cin >> num;
+    do {
+        cout << "Enter number to find its primes (2-65000): ";
+        cin >> num;
+    } while (num < 2 || num > 65000);
 
     p = factor(num);
     prtPrms(p);
@@ -701,5 +703,11 @@ void prtPrms(const Primes* p)
 
     }
     cout << endl << endl;
+}
+
+void cleanUp(Primes* p)
+{
+    delete[] p->pStrAry;
+    delete p;
 }
 #pragma endregion
