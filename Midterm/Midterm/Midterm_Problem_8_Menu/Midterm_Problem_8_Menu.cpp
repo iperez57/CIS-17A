@@ -243,7 +243,7 @@ void calculateBalance(Customer* c)
         balance += c->deposit[i];
     }
 
-    cout << "After deposits balance comes out to $" << balance << endl;
+    cout << "After deposits balance comes out to $" << balance << endl << endl;
 }
 
 void displayData(Customer* c)
@@ -463,6 +463,8 @@ void prob4()
         case 2:
             decrypt();
             break;
+        case 0:
+            break;
         default:
             cout << "Invalid option. Try again" << endl;
 
@@ -476,6 +478,7 @@ void menu()
     cout << "Menu" << endl;
     cout << "1. Encrypt Data" << endl;
     cout << "2. Decrypt Data" << endl;
+    cout << "0. Exit" << endl;
 }
 void encrypt()
 {
@@ -572,7 +575,7 @@ void prob5()
     cout << "Long long = !20" << endl;
     cout << "Unsigned long long = !20" << endl;
     cout << "Float = !34" << endl;
-    cout << "Double = !170" << endl;
+    cout << "Double = !170" << endl << endl;
 
 }
 #pragma endregion
@@ -630,7 +633,7 @@ void prob6()
     cout << "966667FE" << endl;
     cout << "E = -83 " << endl;
     cout << "-1.59999996 " << endl;
-    cout << "-1.59999996 x 2 ^ -83 " << endl;
+    cout << "-1.59999996 x 2 ^ -83 " << endl << endl;
 }
 #pragma endregion
 
@@ -643,12 +646,13 @@ void prob7()
     Primes* p;
 
     //Display the Inputs/Outputs
-    cout << "Enter number: ";
+    cout << "Enter number to find its primes: ";
     cin >> num;
 
     p = factor(num);
     prtPrms(p);
 
+    cleanUp(p);
 }
 
 //Function Implementations
@@ -695,6 +699,6 @@ void prtPrms(const Primes* p)
         }
 
     }
-    cout << endl;
+    cout << endl << endl;
 }
 #pragma endregion
