@@ -135,7 +135,7 @@ int main(int argc, char** argv) {
         case 0:
             break;
         default:
-                cout << "Not a valid option";
+                cout << "Not a valid option" << endl;
                 break;
         }
 
