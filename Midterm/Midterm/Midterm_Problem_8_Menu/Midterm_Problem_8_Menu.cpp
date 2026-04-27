@@ -40,6 +40,21 @@ struct Employee
 };
 #pragma endregion
 
+#pragma region Problem 7
+struct Prime
+{
+    unsigned char power; //Power associated with the prime number
+    unsigned short prime; //Prime number factor
+};
+
+struct Primes
+{
+    unsigned short n; //Number to factor into Primes
+    unsigned char nPrimes; //Number of Primes
+    Prime* pStrAry; //The Prime Structure Array
+};
+#pragma endregion
+
 //Global Constants Only
 //Well known Science, Mathematical and Laboratory Constants
 
@@ -51,6 +66,7 @@ void prob2();
 void prob4();
 void prob5();
 void prob6();
+void prob7();
 
 #pragma region Problem 1
 void getData(Customer*);
@@ -71,6 +87,11 @@ void encrypt();
 void decrypt();
 #pragma endregion
 
+#pragma region Problem 7
+Primes* factor(int); //Factor the number into it's Primes
+void prtPrms(const Primes*); //Print the prime factors
+void cleanUp(Primes*); //Clean it all up  
+#pragma endregion
 
 //Execution of Code Begins Here
 int main(int argc, char** argv) {
@@ -110,6 +131,11 @@ int main(int argc, char** argv) {
         case 7:
             prob7();
             break;
+        case 0:
+            break;
+        default:
+                cout << "Not a valid option";
+                break;
         }
 
     }
@@ -623,5 +649,77 @@ void prob6()
     cout << "E = -83 " << endl;
     cout << "-1.59999996 " << endl;
     cout << "-1.59999996 x 2 ^ -83 " << endl;
+}
+#pragma endregion
+
+#pragma region Problem 7
+void prob7()
+{
+    //Set the random number seed here
+
+    //Declare all variables for this function
+
+    //Initialize all known variables
+    int num;
+    Primes* p;
+    //Process Inputs to Outputs -> Mapping Process
+    //Maps known values to the unknown objectives
+
+    //Display the Inputs/Outputs
+    cout << "Enter number: ";
+    cin >> num;
+
+    p = factor(num);
+    prtPrms(p);
+    //Clean up the code, close files, deallocate memory, etc....
+    //Exit stage right
+
+}
+
+//Function Implementations
+Primes* factor(int num)
+{
+    Primes* result = new Primes;
+    result->n = num;
+    result->nPrimes = 0;
+    result->pStrAry = new Prime[20];
+
+    int n = num;
+    int count = 0;
+
+    for (int i = 2; i <= n; i++)
+    {
+        if (n % i == 0)
+        {
+            count = 0;
+            while (n % i == 0)
+            {
+                n /= i;
+                count++;
+            }
+
+            result->pStrAry[result->nPrimes].prime = i;
+            result->pStrAry[result->nPrimes].power = count;
+            result->nPrimes++;
+        }
+    }
+
+    return result;
+}
+
+void prtPrms(const Primes* p)
+{
+    cout << p->n << " = ";
+    for (int i = 0; i < p->nPrimes; i++)
+    {
+        cout << p->pStrAry[i].prime << "^" << (int)p->pStrAry[i].power;
+
+        if (i != p->nPrimes - 1)
+        {
+            cout << " * ";
+        }
+
+    }
+    cout << endl;
 }
 #pragma endregion
