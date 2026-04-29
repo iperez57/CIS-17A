@@ -7,6 +7,8 @@
 
  //System Libraries
 #include <iostream>  //I/O Library
+#include <cstdlib>
+#include <ctime>
 
 using namespace std;
 
@@ -37,10 +39,11 @@ struct Deck
 
 //Function Prototypes
 Deck initializeDeck();
+void shuffleDeck(Deck&);
 //Execution of Code Begins Here
 int main(int argc, char** argv) {
     //Set the random number seed here
-
+    srand(time(0));
     //Declare all variables for this function
     Deck deck;
     Player player;
@@ -53,17 +56,21 @@ int main(int argc, char** argv) {
 
     //Display the Inputs/Outputs
     deck = initializeDeck();
+    shuffleDeck(deck);
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
 
+    delete[] deck.cards;
     return 0;
 }
 
 //Function Implementations
+
+//Creates and returns a 52 deck of cards
 Deck initializeDeck()
 {
     Deck d;
-
+    //array for values, ranks, and suit that a card will have
     string ranks[] = { "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King" };
     string suits[] = { "Hearts", "Spades", "Clubs", "Diamonds" };
     int values[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10 };
@@ -71,13 +78,13 @@ Deck initializeDeck()
     d.cards = new Card[52];
     d.size = 52;
     d.topCard = 0;
-
+    //tracks position of card from 0 to 51
     int indx = 0;
 
     const int NUM_SUITS = 4;
     const int NUM_RANKS = 13;
 
-    //Initializes deck
+    //Assigns a rank, suit, and value to a card
     for (int i = 0; i < NUM_SUITS; i++)
     {
         for (int j = 0; j < NUM_RANKS; j++)
@@ -91,4 +98,20 @@ Deck initializeDeck()
     }
 
     return d;
+}
+
+//Shuffles the original deck using Fisher yates algorithm
+void shuffleDeck(Deck& d)
+{
+    Card temp;
+    int r;
+    //finds random index then swaps 
+    for (int i = d.size - 1; i > 0; i--)
+    {
+        r = rand() % (i + 1);
+
+        temp = d.cards[i];
+        d.cards[i] = d.cards[r];
+        d.cards[r] = temp;
+    }
 }
