@@ -11,7 +11,27 @@
 using namespace std;
 
 //User Libraries
+struct Card
+{
+    string rank;
+    string suite;
+    int value;
+};
 
+struct Player
+{
+    string name;
+    Card* hand;
+    int handSize;
+    int total;
+};
+
+struct Deck
+{
+    Card* cards;
+    int size;
+    int topCard;
+};
 //Global Constants Only
 //Well known Science, Mathematical and Laboratory Constants
 
