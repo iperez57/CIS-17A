@@ -22,7 +22,7 @@ struct Card
 
 struct Player
 {
-    string name;
+    char name[20];
     Card* hand = nullptr;
     int handSize = 0;
     int total = 0;
@@ -41,6 +41,7 @@ struct Deck
 Deck initializeDeck();
 void shuffleDeck(Deck&);
 void dealCard(Deck&, Player&);
+void startGame(Deck&, Player&, Player&);
 //Execution of Code Begins Here
 int main(int argc, char** argv) {
     //Set the random number seed here
@@ -58,13 +59,14 @@ int main(int argc, char** argv) {
     //Display the Inputs/Outputs
     deck = initializeDeck();
     shuffleDeck(deck);
-    cout << player.total << endl;
     dealCard(deck, player);
-    cout << player.total;
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
 
+    delete[] player.hand;
+    delete[] dealer.hand;
     delete[] deck.cards;
+
     return 0;
 }
 
@@ -120,6 +122,7 @@ void shuffleDeck(Deck& d)
     }
 }
 
+//deals card to player
 void dealCard(Deck& d, Player& recipient)
 {
     //dynamically increases size of recipients deck
@@ -141,4 +144,16 @@ void dealCard(Deck& d, Player& recipient)
     
     //changes the decks top card to next in line
     d.topCard++;
+}
+
+//starts game by dealing 2 cards to player and dealer
+void startGame(Deck& d, Player& player, Player& dealer)
+{
+    const int START_DEAL = 2;
+
+    for (int i = 0; i < START_DEAL; i++)
+    {
+        dealCard(d, player);
+        dealCard(d, dealer);
+    }
 }
