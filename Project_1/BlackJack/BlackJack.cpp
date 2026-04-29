@@ -23,9 +23,9 @@ struct Card
 struct Player
 {
     string name;
-    Card* hand;
-    int handSize;
-    int total;
+    Card* hand = nullptr;
+    int handSize = 0;
+    int total = 0;
 };
 
 struct Deck
@@ -40,6 +40,7 @@ struct Deck
 //Function Prototypes
 Deck initializeDeck();
 void shuffleDeck(Deck&);
+void dealCard(Deck&, Player&);
 //Execution of Code Begins Here
 int main(int argc, char** argv) {
     //Set the random number seed here
@@ -50,13 +51,16 @@ int main(int argc, char** argv) {
     Player dealer;
 
     //Initialize all known variables
-
+    
     //Process Inputs to Outputs -> Mapping Process
     //Maps known values to the unknown objectives
 
     //Display the Inputs/Outputs
     deck = initializeDeck();
     shuffleDeck(deck);
+    cout << player.total << endl;
+    dealCard(deck, player);
+    cout << player.total;
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
 
@@ -114,4 +118,27 @@ void shuffleDeck(Deck& d)
         d.cards[i] = d.cards[r];
         d.cards[r] = temp;
     }
+}
+
+void dealCard(Deck& d, Player& recipient)
+{
+    //dynamically increases size of recipients deck
+    Card* newHand = new Card[recipient.handSize + 1];
+
+    for (int i = 0; i < recipient.handSize; i++)
+    {
+        newHand[i] = recipient.hand[i];
+    }
+
+    newHand[recipient.handSize] = d.cards[d.topCard];
+
+    delete[] recipient.hand;
+
+    //Updates players hand, total, and hand size
+    recipient.hand = newHand;
+    recipient.total += d.cards[d.topCard].value;
+    recipient.handSize++;
+    
+    //changes the decks top card to next in line
+    d.topCard++;
 }
