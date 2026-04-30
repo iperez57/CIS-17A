@@ -42,6 +42,7 @@ Deck initializeDeck();
 void shuffleDeck(Deck&);
 void dealCard(Deck&, Player&);
 void startGame(Deck&, Player&, Player&);
+void displayHand(Player&);
 //Execution of Code Begins Here
 int main(int argc, char** argv) {
     //Set the random number seed here
@@ -59,7 +60,8 @@ int main(int argc, char** argv) {
     //Display the Inputs/Outputs
     deck = initializeDeck();
     shuffleDeck(deck);
-    dealCard(deck, player);
+    startGame(deck, player, dealer);
+    displayHand(player);
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
 
@@ -156,4 +158,15 @@ void startGame(Deck& d, Player& player, Player& dealer)
         dealCard(d, player);
         dealCard(d, dealer);
     }
+}
+
+//Displays the players hand
+void displayHand(Player& p)
+{
+    cout << "Your hand: " << endl;
+    for (int i = 0; i < p.handSize; i++)
+    {
+        cout << p.hand[i].rank << " of " << p.hand[i].suit << endl;
+    }
+    cout << "Total: " << p.total;
 }
