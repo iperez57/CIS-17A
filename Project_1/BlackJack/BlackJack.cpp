@@ -44,6 +44,7 @@ void dealCard(Deck&, Player&);
 void startGame(Deck&, Player&, Player&);
 void displayHand(Player&);
 void hit(Deck&, Player&);
+void checkWinner(Player&, Player&);
 //Execution of Code Begins Here
 int main(int argc, char** argv) {
     //Set the random number seed here
@@ -178,4 +179,43 @@ void hit(Deck& d, Player& p)
 {
     dealCard(d, p);
     displayHand(p);
+}
+
+//check if a player is a winner
+void checkWinner(Player& player, Player& dealer)
+{
+    const int BLACKJACK = 21;
+
+    if (player.total == BLACKJACK && dealer.total == BLACKJACK)
+    {
+        cout << "DRAW." << endl;
+    }
+    else if (player.total == BLACKJACK)
+    {
+        cout << "BLACK JACK! You win!" << endl;
+    }
+    else if (player.total > BLACKJACK)
+    {
+        cout << "BUST." << endl;
+    }
+    else if (dealer.total > BLACKJACK)
+    {
+        cout << "Dealer BUST. You win!" << endl;
+    }
+    else if (dealer.total == BLACKJACK)
+    {
+        cout << "Dealer has BLACK JACK. You lose." << endl;
+    }
+    else if (player.total > dealer.total)
+    {
+        cout << "You win!" << endl;
+    }
+    else if (dealer.total > player.total)
+    {
+        cout << "You Lose!" << endl;
+    }
+    else if (player.total == dealer.total)
+    {
+        cout << "DRAW!" << endl;
+    }
 }
