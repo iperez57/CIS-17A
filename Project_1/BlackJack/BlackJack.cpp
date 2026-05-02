@@ -272,7 +272,10 @@ void dealerTurn(Deck& d, Player& dealer)
 void gameLoop(Deck& d, Player& player, Player& dealer, const int BLACKJACK)
 {
     int user;
+    int playAgain;
+    d = initializeDeck();
     startingDraw(d, player, dealer);
+
     cout << "Your hand:" << endl;
     displayHand(player);
 
@@ -286,12 +289,21 @@ void gameLoop(Deck& d, Player& player, Player& dealer, const int BLACKJACK)
             cout << endl;
             cout << "Your hand:" << endl;
             hit(d, player);
+            if (player.total > BLACKJACK)
+            {
+                cout << endl;
+                cout << "BUST!" << endl;
+                break;
+            }
             cout << endl;
             cout << "Do you want to HIT or STAND?" << endl;
             cout << "HIT = 1    STAND = 2" << endl;
             cin >> user;
         }
 
-        dealerTurn(d, dealer);
-    
+        if (player.total <= BLACKJACK)
+        {
+            dealerTurn(d, dealer);
+            checkWinner(player, dealer, BLACKJACK);
+        }   
 }
