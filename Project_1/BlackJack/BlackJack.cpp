@@ -44,14 +44,12 @@ void dealCard(Deck&, Player&);
 void startingDraw(Deck&, Player&, Player&);
 void displayHand(Player&);
 void hit(Deck&, Player&);
-void dealerTurn(Deck&, Player&);
+void dealerTurn(Deck&, Player&, const int);
 void gameLoop(Deck&, Player&, Player&, const int);
 
 //win functions
 void checkWinner(Player&, Player&, const int);
-void blackJack_Player(Player&, const int);
-void blackJack_Dealer(Player& , const int );
-void blackJack_Draw(Player& , Player& , const int);
+
 //Execution of Code Begins Here
 int main(int argc, char** argv) {
     //Set the random number seed here
@@ -220,65 +218,60 @@ void checkWinner(Player& player, Player& dealer, const int BLACKJACK)
     }
 }
 
-//check for black jack
-void blackJack_Player(Player& player, const int BLACKJACK)
-{
-
-    if (player.total == BLACKJACK && player.handSize == 2)
-    {
-        cout << "BLACK JACK!" << endl;
-    }
-}
-
-void blackJack_Dealer(Player& dealer, const int BLACKJACK)
-{
-    if (dealer.total == BLACKJACK && dealer.handSize == 2)
-    {
-        cout << "Dealer BLACK JACK!" << endl;
-    }
-}
-
-void blackJack_Draw(Player& player, Player& dealer, const int BLACKJACK)
-{
-    if (dealer.total == BLACKJACK && dealer.handSize == 2 && player.total == BLACKJACK && player.handSize == 2)
-    {
-        cout << "Draw! You both have BLACK JACK!" << endl;
-    }
-}
-
 //dealer logic
-void dealerTurn(Deck& d, Player& dealer)
+void dealerTurn(Deck& d, Player& dealer, const int BLACKJACK)
 {
     const int DEALER_HIT = 16;
 
     cout << endl;
     cout << "Dealers cards" << endl;
     displayHand(dealer);
-    
-    while (dealer.total <= DEALER_HIT)
+    if (dealer.total == BLACKJACK && dealer.handSize == 2)
     {
-        //add dealer pause for part 2.
-        cout << endl;
-        cout << "Dealer hits" << endl << endl;
-        cout << "Dealers cards" << endl;
-        hit(d, dealer);
+        return;
     }
-
-    cout << endl;
-    cout << "Dealer stands." << endl;
+    else
+    {
+        while (dealer.total <= DEALER_HIT)
+        {
+            //add dealer pause for part 2.
+            cout << endl;
+            cout << "Dealer hits" << endl << endl;
+            cout << "Dealers cards" << endl;
+            hit(d, dealer);
+        }
+        cout << endl;
+        cout << "Dealer stands." << endl;
+    }
 }
 
 //Game Loop
 void gameLoop(Deck& d, Player& player, Player& dealer, const int BLACKJACK)
 {
     int user;
-    int playAgain;
     d = initializeDeck();
     startingDraw(d, player, dealer);
 
     cout << "Your hand:" << endl;
     displayHand(player);
-
+    if (player.total == BLACKJACK && player.handSize == 2)
+    {
+        cout << endl;
+        cout << "BLACK JACK!" << endl;
+        dealerTurn(d, dealer, BLACKJACK);
+        if (player.total == BLACKJACK && player.handSize == 2 && dealer.total == BLACKJACK && dealer.handSize == 2)
+        {
+            cout << "Dealer Black JACK!" << endl;
+            cout << endl;
+            cout << "Draw!" << endl;
+        }
+        else
+        {
+            cout << "You win!" << endl;
+        }
+    }
+    else
+    {
         cout << endl;
         cout << "Do you want to HIT or STAND?" << endl;
         cout << "HIT = 1    STAND = 2" << endl;
@@ -293,7 +286,7 @@ void gameLoop(Deck& d, Player& player, Player& dealer, const int BLACKJACK)
             {
                 cout << endl;
                 cout << "BUST!" << endl;
-                break;
+                return;
             }
             cout << endl;
             cout << "Do you want to HIT or STAND?" << endl;
@@ -303,7 +296,16 @@ void gameLoop(Deck& d, Player& player, Player& dealer, const int BLACKJACK)
 
         if (player.total <= BLACKJACK)
         {
-            dealerTurn(d, dealer);
-            checkWinner(player, dealer, BLACKJACK);
-        }   
+            if (dealer.total == BLACKJACK && dealer.handSize == 2)
+            {
+                cout << "Dealer BLACK JACK! You lose!" << endl;
+                return;
+            }
+            else
+            {
+                dealerTurn(d, dealer, BLACKJACK);
+                checkWinner(player, dealer, BLACKJACK);
+            }
+        }
+    }
 }
