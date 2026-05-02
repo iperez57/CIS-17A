@@ -41,10 +41,11 @@ struct Deck
 Deck initializeDeck();
 void shuffleDeck(Deck&);
 void dealCard(Deck&, Player&);
-void startGame(Deck&, Player&, Player&);
+void startingDraw(Deck&, Player&, Player&);
 void displayHand(Player&);
 void hit(Deck&, Player&);
 void dealerTurn(Deck&, Player&);
+void gameLoop(Deck&, Player&, Player&, const int);
 
 //win functions
 void checkWinner(Player&, Player&, const int);
@@ -67,8 +68,7 @@ int main(int argc, char** argv) {
 
     //Display the Inputs/Outputs
     deck = initializeDeck();
-    startGame(deck, player, dealer);
-
+    gameLoop(deck, player, dealer, BLACKJACK);
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
 
@@ -156,10 +156,9 @@ void dealCard(Deck& d, Player& recipient)
 }
 
 //starts game by dealing 2 cards to player and dealer
-void startGame(Deck& d, Player& player, Player& dealer)
+void startingDraw(Deck& d, Player& player, Player& dealer)
 {
     const int START_DEAL = 2;
-    int user;
 
     shuffleDeck(d);
 
@@ -168,18 +167,11 @@ void startGame(Deck& d, Player& player, Player& dealer)
         dealCard(d, player);
         dealCard(d, dealer);
     }
-
-    displayHand(player);
-
-
-
-
 }
 
 //Displays the players hand
 void displayHand(Player& p)
 {
-    cout << "Your hand: " << endl;
     for (int i = 0; i < p.handSize; i++)
     {
         cout << p.hand[i].rank << " of " << p.hand[i].suit << endl;
@@ -197,7 +189,7 @@ void hit(Deck& d, Player& p)
 //check if a player is a winner
 void checkWinner(Player& player, Player& dealer, const int BLACKJACK)
 {
-
+    cout << endl;
     if (player.total == BLACKJACK && dealer.total == BLACKJACK)
     {
         cout << "DRAW." << endl;
@@ -205,10 +197,6 @@ void checkWinner(Player& player, Player& dealer, const int BLACKJACK)
     else if (player.total == BLACKJACK)
     {
         cout << "You win!" << endl;
-    }
-    else if (player.total > BLACKJACK)
-    {
-        cout << "BUST." << endl;
     }
     else if (dealer.total > BLACKJACK)
     {
@@ -263,16 +251,47 @@ void dealerTurn(Deck& d, Player& dealer)
 {
     const int DEALER_HIT = 16;
 
+    cout << endl;
     cout << "Dealers cards" << endl;
     displayHand(dealer);
     
     while (dealer.total <= DEALER_HIT)
     {
-        cout << "Dealer hits" << endl;
-        hit(d, dealer);
+        //add dealer pause for part 2.
+        cout << endl;
+        cout << "Dealer hits" << endl << endl;
         cout << "Dealers cards" << endl;
-        displayHand(dealer);
+        hit(d, dealer);
     }
 
+    cout << endl;
     cout << "Dealer stands." << endl;
+}
+
+//Game Loop
+void gameLoop(Deck& d, Player& player, Player& dealer, const int BLACKJACK)
+{
+    int user;
+    startingDraw(d, player, dealer);
+    cout << "Your hand:" << endl;
+    displayHand(player);
+
+        cout << endl;
+        cout << "Do you want to HIT or STAND?" << endl;
+        cout << "HIT = 1    STAND = 2" << endl;
+        cin >> user;
+
+        while (user == 1)
+        {
+            cout << endl;
+            cout << "Your hand:" << endl;
+            hit(d, player);
+            cout << endl;
+            cout << "Do you want to HIT or STAND?" << endl;
+            cout << "HIT = 1    STAND = 2" << endl;
+            cin >> user;
+        }
+
+        dealerTurn(d, dealer);
+    
 }
