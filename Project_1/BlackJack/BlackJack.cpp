@@ -44,7 +44,12 @@ void dealCard(Deck&, Player&);
 void startGame(Deck&, Player&, Player&);
 void displayHand(Player&);
 void hit(Deck&, Player&);
-void checkWinner(Player&, Player&);
+
+//win functions
+void checkWinner(Player&, Player&, const int);
+void blackJack_Player(Player&, const int);
+void blackJack_Dealer(Player& , const int );
+void blackJack_Draw(Player& , Player& , const int);
 //Execution of Code Begins Here
 int main(int argc, char** argv) {
     //Set the random number seed here
@@ -53,7 +58,7 @@ int main(int argc, char** argv) {
     Deck deck;
     Player player;
     Player dealer;
-
+    const int BLACKJACK = 21;
     //Initialize all known variables
     
     //Process Inputs to Outputs -> Mapping Process
@@ -182,9 +187,8 @@ void hit(Deck& d, Player& p)
 }
 
 //check if a player is a winner
-void checkWinner(Player& player, Player& dealer)
+void checkWinner(Player& player, Player& dealer, const int BLACKJACK)
 {
-    const int BLACKJACK = 21;
 
     if (player.total == BLACKJACK && dealer.total == BLACKJACK)
     {
@@ -192,7 +196,7 @@ void checkWinner(Player& player, Player& dealer)
     }
     else if (player.total == BLACKJACK)
     {
-        cout << "BLACK JACK! You win!" << endl;
+        cout << "You win!" << endl;
     }
     else if (player.total > BLACKJACK)
     {
@@ -204,7 +208,7 @@ void checkWinner(Player& player, Player& dealer)
     }
     else if (dealer.total == BLACKJACK)
     {
-        cout << "Dealer has BLACK JACK. You lose." << endl;
+        cout << "Dealer hit 21. You lose." << endl;
     }
     else if (player.total > dealer.total)
     {
@@ -217,5 +221,31 @@ void checkWinner(Player& player, Player& dealer)
     else if (player.total == dealer.total)
     {
         cout << "DRAW!" << endl;
+    }
+}
+
+//check for black jack
+void blackJack_Player(Player& player, const int BLACKJACK)
+{
+
+    if (player.total == BLACKJACK && player.handSize == 2)
+    {
+        cout << "BLACK JACK!" << endl;
+    }
+}
+
+void blackJack_Dealer(Player& dealer, const int BLACKJACK)
+{
+    if (dealer.total == BLACKJACK && dealer.handSize == 2)
+    {
+        cout << "Dealer BLACK JACK!" << endl;
+    }
+}
+
+void blackJack_Draw(Player& player, Player& dealer, const int BLACKJACK)
+{
+    if (dealer.total == BLACKJACK && dealer.handSize == 2 && player.total == BLACKJACK && player.handSize == 2)
+    {
+        cout << "Draw! You both have BLACK JACK!" << endl;
     }
 }
