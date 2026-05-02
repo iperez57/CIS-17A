@@ -44,6 +44,7 @@ void dealCard(Deck&, Player&);
 void startGame(Deck&, Player&, Player&);
 void displayHand(Player&);
 void hit(Deck&, Player&);
+void dealerTurn(Deck&, Player&);
 
 //win functions
 void checkWinner(Player&, Player&, const int);
@@ -66,10 +67,8 @@ int main(int argc, char** argv) {
 
     //Display the Inputs/Outputs
     deck = initializeDeck();
-    shuffleDeck(deck);
     startGame(deck, player, dealer);
-    displayHand(player);
-    hit(deck, player);
+
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
 
@@ -160,12 +159,21 @@ void dealCard(Deck& d, Player& recipient)
 void startGame(Deck& d, Player& player, Player& dealer)
 {
     const int START_DEAL = 2;
+    int user;
+
+    shuffleDeck(d);
 
     for (int i = 0; i < START_DEAL; i++)
     {
         dealCard(d, player);
         dealCard(d, dealer);
     }
+
+    displayHand(player);
+
+
+
+
 }
 
 //Displays the players hand
@@ -248,4 +256,23 @@ void blackJack_Draw(Player& player, Player& dealer, const int BLACKJACK)
     {
         cout << "Draw! You both have BLACK JACK!" << endl;
     }
+}
+
+//dealer logic
+void dealerTurn(Deck& d, Player& dealer)
+{
+    const int DEALER_HIT = 16;
+
+    cout << "Dealers cards" << endl;
+    displayHand(dealer);
+    
+    while (dealer.total <= DEALER_HIT)
+    {
+        cout << "Dealer hits" << endl;
+        hit(d, dealer);
+        cout << "Dealers cards" << endl;
+        displayHand(dealer);
+    }
+
+    cout << "Dealer stands." << endl;
 }
