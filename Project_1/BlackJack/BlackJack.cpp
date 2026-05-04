@@ -49,6 +49,7 @@ void dealerTurn(Deck&, Player&, const int);
 void gameLoop(Deck&, Player&, Player&, const int);
 void getPlayer(Player&);
 void menu();
+void menuSelection(Deck&, Player&, Player&, const int);
 //win functions
 void checkWinner(Player&, Player&, const int);
 
@@ -68,7 +69,7 @@ int main(int argc, char** argv) {
 
     //Display the Inputs/Outputs
     deck = initializeDeck();
-    menu();
+    menuSelection(deck, player, dealer, BLACKJACK);
     //gameLoop(deck, player, dealer, BLACKJACK);
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
@@ -282,7 +283,7 @@ void gameLoop(Deck& d, Player& player, Player& dealer, const int BLACKJACK)
         while (user == 1)
         {
             cout << endl;
-            cout << "Your hand:" << endl;
+            cout << player.name << " hand:" << endl;
             hit(d, player);
             if (player.total > BLACKJACK)
             {
@@ -316,8 +317,9 @@ void gameLoop(Deck& d, Player& player, Player& dealer, const int BLACKJACK)
 void getPlayer(Player& player)
 {
     cout << "Create Username: ";
+    cin.ignore();
     cin.getline(player.name, 20);
-    cout << player.name;
+    cout << endl;
 }
 
 //display menu
@@ -328,7 +330,40 @@ void menu()
     cout << "2. Exit" << endl;
 }
 
+//start of program
+void menuSelection(Deck& d, Player& player, Player& dealer, const int BLACKJACK)
+{
+    int user;
+    
+    do
+    {
+        menu();
+        cin >> user;
+        switch (user)
+        {
+        case 1:
+            delete[] player.hand;
+            player.hand = nullptr;
+            player.handSize = 0;
+            player.total = 0;
+
+            delete[] dealer.hand;
+            dealer.hand = nullptr;
+            dealer.handSize = 0;
+            dealer.total = 0;
+
+            getPlayer(player);
+            gameLoop(d, player, dealer, BLACKJACK);
+            break;
+        case 2:
+            cout << "Exiting game ..." << endl;
+            return;
+        default:
+            cout << "Try again. That wasn't an option!" << endl;
+        }
+    } while (user != 2);
+}
+
 //re chekc black jack conditions
-// add player name
 // add dealer pause for part 2
 // add replay loop
