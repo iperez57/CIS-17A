@@ -47,7 +47,8 @@ void displayHand(Player&);
 void hit(Deck&, Player&);
 void dealerTurn(Deck&, Player&, const int);
 void gameLoop(Deck&, Player&, Player&, const int);
-void getPlayer(Player&, Player&);
+void getPlayer(Player&);
+void menu();
 //win functions
 void checkWinner(Player&, Player&, const int);
 
@@ -67,7 +68,7 @@ int main(int argc, char** argv) {
 
     //Display the Inputs/Outputs
     deck = initializeDeck();
-    getPlayer(player, dealer);
+    menu();
     //gameLoop(deck, player, dealer, BLACKJACK);
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
@@ -312,11 +313,19 @@ void gameLoop(Deck& d, Player& player, Player& dealer, const int BLACKJACK)
 }
 
 //ask for player info
-void getPlayer(Player& player, Player& dealer)
+void getPlayer(Player& player)
 {
     cout << "Create Username: ";
     cin.getline(player.name, 20);
     cout << player.name;
+}
+
+//display menu
+void menu()
+{
+    cout << "Black Jack" << endl;
+    cout << "1. Start Game" << endl;
+    cout << "2. Exit" << endl;
 }
 
 //re chekc black jack conditions
