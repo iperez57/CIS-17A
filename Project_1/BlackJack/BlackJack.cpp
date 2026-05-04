@@ -9,6 +9,7 @@
 #include <iostream>  //I/O Library
 #include <cstdlib>
 #include <ctime>
+#include <string>
 
 using namespace std;
 
@@ -46,7 +47,7 @@ void displayHand(Player&);
 void hit(Deck&, Player&);
 void dealerTurn(Deck&, Player&, const int);
 void gameLoop(Deck&, Player&, Player&, const int);
-
+void getPlayer(Player&, Player&);
 //win functions
 void checkWinner(Player&, Player&, const int);
 
@@ -66,7 +67,8 @@ int main(int argc, char** argv) {
 
     //Display the Inputs/Outputs
     deck = initializeDeck();
-    gameLoop(deck, player, dealer, BLACKJACK);
+    getPlayer(player, dealer);
+    //gameLoop(deck, player, dealer, BLACKJACK);
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
 
@@ -234,7 +236,6 @@ void dealerTurn(Deck& d, Player& dealer, const int BLACKJACK)
     {
         while (dealer.total <= DEALER_HIT)
         {
-            //add dealer pause for part 2.
             cout << endl;
             cout << "Dealer hits" << endl << endl;
             cout << "Dealers cards" << endl;
@@ -252,7 +253,7 @@ void gameLoop(Deck& d, Player& player, Player& dealer, const int BLACKJACK)
     d = initializeDeck();
     startingDraw(d, player, dealer);
 
-    cout << "Your hand:" << endl;
+    cout << player.name <<" hand:" << endl;
     displayHand(player);
     if (player.total == BLACKJACK && player.handSize == 2)
     {
@@ -309,3 +310,16 @@ void gameLoop(Deck& d, Player& player, Player& dealer, const int BLACKJACK)
         }
     }
 }
+
+//ask for player info
+void getPlayer(Player& player, Player& dealer)
+{
+    cout << "Create Username: ";
+    cin.getline(player.name, 20);
+    cout << player.name;
+}
+
+//re chekc black jack conditions
+// add player name
+// add dealer pause for part 2
+// add replay loop
