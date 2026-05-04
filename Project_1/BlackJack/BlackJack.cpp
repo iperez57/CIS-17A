@@ -358,7 +358,7 @@ void menuSelection(Deck& d, Player& player, Player& dealer, const int BLACKJACK)
 }
 
 //replay
-bool replay()
+bool replay(Player& player, Player& dealer)
 {
     char choice;
 
@@ -366,9 +366,22 @@ bool replay()
     cout << "Play again? (y/n): ";
     cin >> choice;
 
+    if (choice == 'y' || choice == 'Y')
+    {
+        resetPlayer(player);
+        resetPlayer(dealer);
+    }
     return (choice == 'y' || choice == 'Y');
 }
 
+//reset player
+void resetPlayer(Player& p)
+{
+    delete[] p.hand;
+    p.hand = nullptr;
+    p.handSize = 0;
+    p.total = 0;
+}
 //re chekc black jack conditions
 // add dealer pause for part 2
 // add replay loop
