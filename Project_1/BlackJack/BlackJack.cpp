@@ -342,16 +342,6 @@ void menuSelection(Deck& d, Player& player, Player& dealer, const int BLACKJACK)
         switch (user)
         {
         case 1:
-            delete[] player.hand;
-            player.hand = nullptr;
-            player.handSize = 0;
-            player.total = 0;
-
-            delete[] dealer.hand;
-            dealer.hand = nullptr;
-            dealer.handSize = 0;
-            dealer.total = 0;
-
             getPlayer(player);
             gameLoop(d, player, dealer, BLACKJACK);
             break;
@@ -362,6 +352,21 @@ void menuSelection(Deck& d, Player& player, Player& dealer, const int BLACKJACK)
             cout << "Try again. That wasn't an option!" << endl;
         }
     } while (user != 2);
+
+    cout << "Thank you for playing!" << endl;
+    cout << "Exiting game ..." << endl;
+}
+
+//replay
+bool replay()
+{
+    char choice;
+
+    cout << endl;
+    cout << "Play again? (y/n): ";
+    cin >> choice;
+
+    return (choice == 'y' || choice == 'Y');
 }
 
 //re chekc black jack conditions
