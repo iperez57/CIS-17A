@@ -46,12 +46,12 @@ void startingDraw(Deck&, Player&, Player&);
 void displayHand(Player&);
 void hit(Deck&, Player&);
 void dealerTurn(Deck&, Player&, const int);
-void gameLoop(Deck&, Player&, Player&, const int);
+void gameLoop(Deck&, Player&, Player&, const int, bool&);
 void getPlayer(Player&);
 void menu();
-void menuSelection(Deck&, Player&, Player&, const int);
+void menuSelection(Deck&, Player&, Player&, const int, bool&);
 void resetPlayer(Player&);
-bool replay(Player&, Player&);
+bool replay(Player&, Player&, bool&);
 //win functions
 void checkWinner(Player&, Player&, const int);
 
@@ -65,13 +65,13 @@ int main(int argc, char** argv) {
     Player dealer;
     const int BLACKJACK = 21;
     //Initialize all known variables
-    
+    bool quit = false;
     //Process Inputs to Outputs -> Mapping Process
     //Maps known values to the unknown objectives
 
     //Display the Inputs/Outputs
     deck = initializeDeck();
-    menuSelection(deck, player, dealer, BLACKJACK);
+    menuSelection(deck, player, dealer, BLACKJACK, quit);
     //gameLoop(deck, player, dealer, BLACKJACK);
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
@@ -251,7 +251,7 @@ void dealerTurn(Deck& d, Player& dealer, const int BLACKJACK)
 }
 
 //Game Loop
-void gameLoop(Deck& d, Player& player, Player& dealer, const int BLACKJACK)
+void gameLoop(Deck& d, Player& player, Player& dealer, const int BLACKJACK, bool& quit)
 {
     int user;
     bool playAgain;
@@ -318,7 +318,7 @@ void gameLoop(Deck& d, Player& player, Player& dealer, const int BLACKJACK)
                 }
             }
         }
-        playAgain = replay(player, dealer);
+        playAgain = replay(player, dealer, quit);
     } while (playAgain);
 }
 
@@ -340,12 +340,12 @@ void menu()
 }
 
 //start of program
-void menuSelection(Deck& d, Player& player, Player& dealer, const int BLACKJACK)
+void menuSelection(Deck& d, Player& player, Player& dealer, const int BLACKJACK, bool& quit)
 {
     int user;
     bool running = true;
     
-    while (running)
+    while (running && !quit)
     {
         menu();
         cin >> user;
@@ -354,24 +354,23 @@ void menuSelection(Deck& d, Player& player, Player& dealer, const int BLACKJACK)
         {
         case 1:
             getPlayer(player);
-            gameLoop(d, player, dealer, BLACKJACK);
+            gameLoop(d, player, dealer, BLACKJACK, quit);
             break;
         case 2:
             cout << "Exiting game ..." << endl;
             running = false;
+            quit = true;
             break;
         default:
             cout << "Try again. That wasn't an option!" << endl;
-            menuSelection(d, player, dealer, BLACKJACK);
             break;
         }
     }
-
     cout << "Thank you for playing!" << endl;
 }
 
 //replay
-bool replay(Player& player, Player& dealer)
+bool replay(Player& player, Player& dealer, bool& quit)
 {
     char choice;
 
@@ -385,6 +384,12 @@ bool replay(Player& player, Player& dealer)
         resetPlayer(player);
         resetPlayer(dealer);
         return true;
+    }
+
+    if (choice == 'n' || choice == 'N')
+    {
+        quit = true;
+        return false;
     }
     return false;
 }
