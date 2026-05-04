@@ -254,9 +254,11 @@ void dealerTurn(Deck& d, Player& dealer, const int BLACKJACK)
 void gameLoop(Deck& d, Player& player, Player& dealer, const int BLACKJACK)
 {
     int user;
+    bool playAgain;
 
     do
     {
+        delete[] d.cards;
     d = initializeDeck();
     startingDraw(d, player, dealer);
 
@@ -294,7 +296,7 @@ void gameLoop(Deck& d, Player& player, Player& dealer, const int BLACKJACK)
                 {
                     cout << endl;
                     cout << "BUST!" << endl;
-                    return;
+                    break;
                 }
                 cout << endl;
                 cout << "Do you want to HIT or STAND?" << endl;
@@ -307,7 +309,7 @@ void gameLoop(Deck& d, Player& player, Player& dealer, const int BLACKJACK)
                 if (dealer.total == BLACKJACK && dealer.handSize == 2)
                 {
                     cout << "Dealer BLACK JACK! You lose!" << endl;
-                    return;
+                    break;
                 }
                 else
                 {
@@ -316,7 +318,8 @@ void gameLoop(Deck& d, Player& player, Player& dealer, const int BLACKJACK)
                 }
             }
         }
-    } while (replay(player, dealer));
+        playAgain = replay(player, dealer);
+    } while (playAgain);
 }
 
 //ask for player info
@@ -340,11 +343,13 @@ void menu()
 void menuSelection(Deck& d, Player& player, Player& dealer, const int BLACKJACK)
 {
     int user;
+    bool running = true;
     
-    do
+    while (running)
     {
         menu();
         cin >> user;
+
         switch (user)
         {
         case 1:
@@ -353,14 +358,16 @@ void menuSelection(Deck& d, Player& player, Player& dealer, const int BLACKJACK)
             break;
         case 2:
             cout << "Exiting game ..." << endl;
-            return;
+            running = false;
+            break;
         default:
             cout << "Try again. That wasn't an option!" << endl;
+            menuSelection(d, player, dealer, BLACKJACK);
+            break;
         }
-    } while (user != 2);
+    }
 
     cout << "Thank you for playing!" << endl;
-    cout << "Exiting game ..." << endl;
 }
 
 //replay
@@ -371,13 +378,15 @@ bool replay(Player& player, Player& dealer)
     cout << endl;
     cout << "Play again? (y/n): ";
     cin >> choice;
+    cout << endl;
 
     if (choice == 'y' || choice == 'Y')
     {
         resetPlayer(player);
         resetPlayer(dealer);
+        return true;
     }
-    return (choice == 'y' || choice == 'Y');
+    return false;
 }
 
 //reset player
