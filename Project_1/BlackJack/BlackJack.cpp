@@ -50,6 +50,8 @@ void gameLoop(Deck&, Player&, Player&, const int);
 void getPlayer(Player&);
 void menu();
 void menuSelection(Deck&, Player&, Player&, const int);
+void resetPlayer(Player&);
+bool replay(Player&, Player&);
 //win functions
 void checkWinner(Player&, Player&, const int);
 
@@ -252,65 +254,69 @@ void dealerTurn(Deck& d, Player& dealer, const int BLACKJACK)
 void gameLoop(Deck& d, Player& player, Player& dealer, const int BLACKJACK)
 {
     int user;
+
+    do
+    {
     d = initializeDeck();
     startingDraw(d, player, dealer);
 
     cout << player.name <<" hand:" << endl;
     displayHand(player);
-    if (player.total == BLACKJACK && player.handSize == 2)
-    {
-        cout << endl;
-        cout << "BLACK JACK!" << endl;
-        dealerTurn(d, dealer, BLACKJACK);
-        if (player.total == BLACKJACK && player.handSize == 2 && dealer.total == BLACKJACK && dealer.handSize == 2)
+        if (player.total == BLACKJACK && player.handSize == 2)
         {
-            cout << "Dealer Black JACK!" << endl;
             cout << endl;
-            cout << "Draw!" << endl;
+            cout << "BLACK JACK!" << endl;
+            dealerTurn(d, dealer, BLACKJACK);
+            if (player.total == BLACKJACK && player.handSize == 2 && dealer.total == BLACKJACK && dealer.handSize == 2)
+            {
+                cout << "Dealer Black JACK!" << endl;
+                cout << endl;
+                cout << "Draw!" << endl;
+            }
+            else
+            {
+                cout << "You win!" << endl;
+            }
         }
         else
         {
-            cout << "You win!" << endl;
-        }
-    }
-    else
-    {
-        cout << endl;
-        cout << "Do you want to HIT or STAND?" << endl;
-        cout << "HIT = 1    STAND = 2" << endl;
-        cin >> user;
-
-        while (user == 1)
-        {
-            cout << endl;
-            cout << player.name << " hand:" << endl;
-            hit(d, player);
-            if (player.total > BLACKJACK)
-            {
-                cout << endl;
-                cout << "BUST!" << endl;
-                return;
-            }
             cout << endl;
             cout << "Do you want to HIT or STAND?" << endl;
             cout << "HIT = 1    STAND = 2" << endl;
             cin >> user;
-        }
 
-        if (player.total <= BLACKJACK)
-        {
-            if (dealer.total == BLACKJACK && dealer.handSize == 2)
+            while (user == 1)
             {
-                cout << "Dealer BLACK JACK! You lose!" << endl;
-                return;
+                cout << endl;
+                cout << player.name << " hand:" << endl;
+                hit(d, player);
+                if (player.total > BLACKJACK)
+                {
+                    cout << endl;
+                    cout << "BUST!" << endl;
+                    return;
+                }
+                cout << endl;
+                cout << "Do you want to HIT or STAND?" << endl;
+                cout << "HIT = 1    STAND = 2" << endl;
+                cin >> user;
             }
-            else
+
+            if (player.total <= BLACKJACK)
             {
-                dealerTurn(d, dealer, BLACKJACK);
-                checkWinner(player, dealer, BLACKJACK);
+                if (dealer.total == BLACKJACK && dealer.handSize == 2)
+                {
+                    cout << "Dealer BLACK JACK! You lose!" << endl;
+                    return;
+                }
+                else
+                {
+                    dealerTurn(d, dealer, BLACKJACK);
+                    checkWinner(player, dealer, BLACKJACK);
+                }
             }
         }
-    }
+    } while (replay(player, dealer));
 }
 
 //ask for player info
