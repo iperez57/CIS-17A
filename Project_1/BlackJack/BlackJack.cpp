@@ -10,6 +10,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <string>
+#include <fstream>;
 
 using namespace std;
 
@@ -35,6 +36,22 @@ struct Deck
     int size;
     int topCard;
 };
+
+struct SaveData
+{
+    char name[20];
+
+    Card playerHand[52];
+    int playerHandSize;
+    int playerTotal;
+
+    Card dealerHand[52];
+    int dealerHandSize;
+    int dealerTotal;
+
+    Card deckCards[52];
+    int topCard;
+};
 //Global Constants Only
 //Well known Science, Mathematical and Laboratory Constants
 
@@ -51,9 +68,9 @@ void getPlayer(Player&);
 void menu();
 void menuSelection(Deck&, Player&, Player&, const int, bool&);
 void resetPlayer(Player&);
-bool replay(Player&, Player&, bool&);
-//win functions
+bool replay(Deck&, Player&, Player&, bool&);
 void checkWinner(Player&, Player&, const int);
+void saveGame(Deck&, Player&, Player&);
 
 //Execution of Code Begins Here
 int main(int argc, char** argv) {
@@ -318,7 +335,7 @@ void gameLoop(Deck& d, Player& player, Player& dealer, const int BLACKJACK, bool
                 }
             }
         }
-        playAgain = replay(player, dealer, quit);
+        playAgain = replay(d, player, dealer, quit);
     } while (playAgain);
 }
 
@@ -370,7 +387,7 @@ void menuSelection(Deck& d, Player& player, Player& dealer, const int BLACKJACK,
 }
 
 //replay
-bool replay(Player& player, Player& dealer, bool& quit)
+bool replay(Deck& d, Player& player, Player& dealer, bool& quit)
 {
     char choice;
 
@@ -402,6 +419,47 @@ void resetPlayer(Player& p)
     p.handSize = 0;
     p.total = 0;
 }
-//re chekc black jack conditions
-// add dealer pause for part 2
-// add replay loop
+
+void saveGame(Deck& d, Player& player, Player& dealer)
+{
+    ofstream out("save.dat", ios::binary);
+
+    SaveData data;
+
+    //copy player data
+    strcpy_s(data.name, player.name);
+
+    data.playerHandSize = player.handSize;
+    data.playerTotal = player.total;
+
+    for (int i = 0; i < player.handSize; i++)
+    {
+        data.playerHand[i] = player.hand[i];
+    }
+
+    //copy dealer data
+    data.dealerHandSize = dealer.handSize;
+    data.dealerTotal = dealer.total;
+
+    for (int i = 0; i < dealer.handSize; i++)
+    {
+        data.dealerHand[i] = dealer.hand[i];
+    }
+
+    //copy deck data
+    data.topCard = d.topCard;
+
+    for (int i = 0; i < d.size; i++)
+    {
+        data.deckCards[i] = d.cards[i];
+    }
+
+    out.write((char*)&data, sizeof(data));
+    out.close();
+
+    cout << "Game saved!" << endl;
+
+
+}
+// display dealers 1 card
+// check dealer bust / stand output
