@@ -272,6 +272,7 @@ void gameLoop(Deck& d, Player& player, Player& dealer, const int BLACKJACK, bool
 {
     int user;
     bool playAgain;
+    bool turn;
 
     do
     {
@@ -299,26 +300,38 @@ void gameLoop(Deck& d, Player& player, Player& dealer, const int BLACKJACK, bool
         }
         else
         {
-            cout << endl;
-            cout << "Do you want to HIT or STAND?" << endl;
-            cout << "HIT = 1    STAND = 2" << endl;
-            cin >> user;
-
-            while (user == 1)
+            turn = true;
+            while (turn)
             {
                 cout << endl;
-                cout << player.name << " hand:" << endl;
-                hit(d, player);
-                if (player.total > BLACKJACK)
+                cout << "Do you want to HIT or STAND?" << endl;
+                cout << "HIT = 1    STAND = 2   SAVE GAME = 3" << endl;
+
+                cin >> user;
+
+                switch (user)
                 {
+                case 1:
                     cout << endl;
-                    cout << "BUST!" << endl;
+                    cout << player.name << " hand:" << endl;
+                    hit(d, player);
+                    if (player.total > BLACKJACK)
+                    {
+                        cout << endl;
+                        cout << "BUST!" << endl;
+                        turn = false;
+                    }
+                    break;
+                case 2:
+                    turn = false;
+                    break;
+                case 3:
+                    saveGame(d, player, dealer);
+                    break;
+                default:
+                    cout << "Invalid option. Try again" << endl;
                     break;
                 }
-                cout << endl;
-                cout << "Do you want to HIT or STAND?" << endl;
-                cout << "HIT = 1    STAND = 2" << endl;
-                cin >> user;
             }
 
             if (player.total <= BLACKJACK)
