@@ -51,6 +51,7 @@ struct SaveData
 
     Card deckCards[52];
     int topCard;
+    int size;
 };
 //Global Constants Only
 //Well known Science, Mathematical and Laboratory Constants
@@ -71,6 +72,7 @@ void resetPlayer(Player&);
 bool replay(Deck&, Player&, Player&, bool&);
 void checkWinner(Player&, Player&, const int);
 void saveGame(Deck&, Player&, Player&);
+void loadGame(Deck&, Player&, Player&);
 
 //Execution of Code Begins Here
 int main(int argc, char** argv) {
@@ -461,6 +463,7 @@ void saveGame(Deck& d, Player& player, Player& dealer)
 
     //copy deck data
     data.topCard = d.topCard;
+    data.size = d.size;
 
     for (int i = 0; i < d.size; i++)
     {
@@ -472,7 +475,60 @@ void saveGame(Deck& d, Player& player, Player& dealer)
 
     cout << "Game saved!" << endl;
 
+}
 
+void loadGame(Deck& d, Player& player, Player& dealer)
+{
+    ifstream saveData("save.dat", ios::binary);
+
+    if (!saveData)
+    {
+        cout << "No save file found." << endl;
+        return;
+    }
+
+    SaveData data;
+    saveData.read((char*)&data, sizeof(data));
+
+    //load save data for player
+    strcpy_s(player.name, data.name);
+
+    player.handSize = data.playerHandSize;
+    player.total = data.playerTotal;
+
+    delete[]player.hand;
+    player.hand = new Card[player.handSize];
+
+    for (int i = 0; i < player.handSize; i++)
+    {
+        player.hand[i] = data.playerHand[i];
+    }
+
+    //load save data for dealer
+    dealer.handSize = data.dealerHandSize;
+    dealer.total = data.dealerTotal;
+
+    delete[] dealer.hand;
+    dealer.hand = new Card[dealer.handSize];
+
+    for (int i = 0; i < dealer.handSize; i++)
+    {
+        dealer.hand[i] = data.dealerHand[i];
+    }
+
+    //load deck
+    d.cards = new Card[52];
+    d.size = data.size;
+    d.topCard = data.topCard;
+
+    for (int i = 0; i < d.size; i++)
+    {
+        d.cards[i] = data.deckCards[i];
+    }
+
+    saveData.close();
+
+    cout << "Game loaded!" << endl;
 }
 // display dealers 1 card
 // check dealer bust / stand output
