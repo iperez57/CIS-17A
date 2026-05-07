@@ -17,8 +17,8 @@ using namespace std;
 //User Libraries
 struct Card
 {
-    string rank;
-    string suit;
+    char rank[10];
+    char suit[10];
     int value;
 };
 
@@ -127,8 +127,8 @@ Deck initializeDeck()
     {
         for (int j = 0; j < NUM_RANKS; j++)
         {
-            d.cards[indx].suit = suits[i];
-            d.cards[indx].rank = ranks[j];
+            strcpy_s(d.cards[indx].suit, suits[i].c_str());
+            strcpy_s(d.cards[indx].rank, ranks[j].c_str());
             d.cards[indx].value = values[j];
             
             indx++;
@@ -270,7 +270,7 @@ void dealerTurn(Deck& d, Player& dealer, const int BLACKJACK)
 }
 
 //Game Loop
-void gameLoop(Deck& d, Player& player, Player& dealer, const int BLACKJACK, bool& quit)
+void gameLoop(Deck& d, Player& player, Player& dealer, const int BLACKJACK, bool& quit, bool& loaded)
 {
     int user;
     bool playAgain;
@@ -278,10 +278,16 @@ void gameLoop(Deck& d, Player& player, Player& dealer, const int BLACKJACK, bool
 
     do
     {
-        delete[] d.cards;
-    d = initializeDeck();
-    startingDraw(d, player, dealer);
-
+        if (!loaded)
+        {
+            delete[] d.cards;
+            d = initializeDeck();
+            startingDraw(d, player, dealer);
+        }
+        else
+        {
+            loaded = false;
+        }
     cout << player.name <<" hand:" << endl;
     displayHand(player);
         if (player.total == BLACKJACK && player.handSize == 2)
@@ -368,7 +374,8 @@ void menu()
 {
     cout << "Black Jack" << endl;
     cout << "1. Start Game" << endl;
-    cout << "2. Exit" << endl;
+    cout << "2. Load Game" << endl;
+    cout << "3. Exit" << endl;
 }
 
 //start of program
@@ -376,6 +383,7 @@ void menuSelection(Deck& d, Player& player, Player& dealer, const int BLACKJACK,
 {
     int user;
     bool running = true;
+    bool loaded = false;
     
     while (running && !quit)
     {
@@ -386,9 +394,15 @@ void menuSelection(Deck& d, Player& player, Player& dealer, const int BLACKJACK,
         {
         case 1:
             getPlayer(player);
-            gameLoop(d, player, dealer, BLACKJACK, quit);
+            gameLoop(d, player, dealer, BLACKJACK, quit, loaded);
             break;
         case 2:
+
+            loadGame(d, player, dealer);
+            loaded = true;
+            gameLoop(d, player, dealer, BLACKJACK, quit, loaded);
+            break;
+        case 3:
             cout << "Exiting game ..." << endl;
             running = false;
             quit = true;
@@ -435,6 +449,7 @@ void resetPlayer(Player& p)
     p.total = 0;
 }
 
+//save game data
 void saveGame(Deck& d, Player& player, Player& dealer)
 {
     ofstream out("save.dat", ios::binary);
@@ -470,13 +485,14 @@ void saveGame(Deck& d, Player& player, Player& dealer)
         data.deckCards[i] = d.cards[i];
     }
 
-    out.write((char*)&data, sizeof(data));
+    out.write(reinterpret_cast<char*>(&data), sizeof(SaveData));
     out.close();
 
     cout << "Game saved!" << endl;
 
 }
 
+//load game data
 void loadGame(Deck& d, Player& player, Player& dealer)
 {
     ifstream saveData("save.dat", ios::binary);
@@ -488,15 +504,17 @@ void loadGame(Deck& d, Player& player, Player& dealer)
     }
 
     SaveData data;
-    saveData.read((char*)&data, sizeof(data));
+
+    saveData.read(reinterpret_cast<char*>(&data), sizeof(SaveData));
 
     //load save data for player
+    delete[] player.hand;
+
     strcpy_s(player.name, data.name);
 
     player.handSize = data.playerHandSize;
     player.total = data.playerTotal;
 
-    delete[]player.hand;
     player.hand = new Card[player.handSize];
 
     for (int i = 0; i < player.handSize; i++)
@@ -505,10 +523,11 @@ void loadGame(Deck& d, Player& player, Player& dealer)
     }
 
     //load save data for dealer
+    delete[] dealer.hand;
+
     dealer.handSize = data.dealerHandSize;
     dealer.total = data.dealerTotal;
 
-    delete[] dealer.hand;
     dealer.hand = new Card[dealer.handSize];
 
     for (int i = 0; i < dealer.handSize; i++)
@@ -517,8 +536,10 @@ void loadGame(Deck& d, Player& player, Player& dealer)
     }
 
     //load deck
+    delete[] d.cards;
+
     d.cards = new Card[52];
-    d.size = data.size;
+    d.size = 52;
     d.topCard = data.topCard;
 
     for (int i = 0; i < d.size; i++)
@@ -530,5 +551,5 @@ void loadGame(Deck& d, Player& player, Player& dealer)
 
     cout << "Game loaded!" << endl;
 }
-// display dealers 1 card
-// check dealer bust / stand output
+
+//review load funciton
