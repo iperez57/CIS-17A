@@ -335,6 +335,7 @@ void gameLoop(Deck& d, Player& player, Player& dealer, const int BLACKJACK, bool
                     break;
                 case 3:
                     saveGame(d, player, dealer);
+                    displayHand(player);
                     break;
                 default:
                     cout << "Invalid option. Try again" << endl;
@@ -488,7 +489,7 @@ void saveGame(Deck& d, Player& player, Player& dealer)
     out.write(reinterpret_cast<char*>(&data), sizeof(SaveData));
     out.close();
 
-    cout << "Game saved!" << endl;
+    cout << "Game saved!" << endl << endl;
 
 }
 
@@ -549,7 +550,7 @@ void loadGame(Deck& d, Player& player, Player& dealer)
 
     saveData.close();
 
-    cout << "Game loaded!" << endl;
+    cout << "Game loaded!" << endl << endl;
 }
 
 //review load funciton
