@@ -10,11 +10,13 @@
 #include <cstdlib>
 #include <ctime>
 #include <string>
-#include <fstream>;
+#include <fstream>
+#include <cstring>
 
 using namespace std;
 
-//User Libraries
+#pragma region User Libraries
+//User Libraries//struct for a single card
 struct Card
 {
     char rank[10];
@@ -22,6 +24,7 @@ struct Card
     int value;
 };
 
+//represents the player or dealer
 struct Player
 {
     char name[20];
@@ -30,6 +33,7 @@ struct Player
     int total = 0;
 };
 
+//struct for a deck of cards
 struct Deck
 {
     Card* cards;
@@ -37,6 +41,7 @@ struct Deck
     int topCard;
 };
 
+//struct used for saving and loading game data
 struct SaveData
 {
     char name[20];
@@ -53,26 +58,39 @@ struct SaveData
     int topCard;
     int size;
 };
+
+#pragma endregion
+
 //Global Constants Only
 //Well known Science, Mathematical and Laboratory Constants
 
-//Function Prototypes
+#pragma region Function Prototypes
+                // card/deck functions
 Deck initializeDeck();
 void shuffleDeck(Deck&);
 void dealCard(Deck&, Player&);
-void startingDraw(Deck&, Player&, Player&);
+
+//player/ hand functions
+void getPlayer(Player&);
 void displayHand(Player&);
 void hit(Deck&, Player&);
+void resetPlayer(Player&);
+
+//gameplay functions
+void startingDraw(Deck&, Player&, Player&);
 void dealerTurn(Deck&, Player&, const int);
 void gameLoop(Deck&, Player&, Player&, const int, bool&);
-void getPlayer(Player&);
-void menu();
-void menuSelection(Deck&, Player&, Player&, const int, bool&);
-void resetPlayer(Player&);
 bool replay(Deck&, Player&, Player&, bool&);
 void checkWinner(Player&, Player&, const int);
+
+//menu system
+void menu();
+void menuSelection(Deck&, Player&, Player&, const int, bool&);
+
+//save / load system
 void saveGame(Deck&, Player&, Player&);
 void loadGame(Deck&, Player&, Player&);
+#pragma endregion
 
 //Execution of Code Begins Here
 int main(int argc, char** argv) {
@@ -83,14 +101,17 @@ int main(int argc, char** argv) {
     Player player;
     Player dealer;
     const int BLACKJACK = 21;
+
     //Initialize all known variables
     bool quit = false;
+
     //Process Inputs to Outputs -> Mapping Process
     //Maps known values to the unknown objectives
 
     //Display the Inputs/Outputs
     deck = initializeDeck();
     menuSelection(deck, player, dealer, BLACKJACK, quit);
+
     //gameLoop(deck, player, dealer, BLACKJACK);
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
@@ -108,14 +129,17 @@ int main(int argc, char** argv) {
 Deck initializeDeck()
 {
     Deck d;
+
     //array for values, ranks, and suit that a card will have
     string ranks[] = { "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King" };
     string suits[] = { "Hearts", "Spades", "Clubs", "Diamonds" };
     int values[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10 };
 
+    //allocates memory for deck
     d.cards = new Card[52];
     d.size = 52;
     d.topCard = 0;
+
     //tracks position of card from 0 to 51
     int indx = 0;
 
@@ -160,13 +184,16 @@ void dealCard(Deck& d, Player& recipient)
     //dynamically increases size of recipients deck
     Card* newHand = new Card[recipient.handSize + 1];
 
+    //copies old hand into new
     for (int i = 0; i < recipient.handSize; i++)
     {
         newHand[i] = recipient.hand[i];
     }
 
+    //add new card
     newHand[recipient.handSize] = d.cards[d.topCard];
 
+   
     delete[] recipient.hand;
 
     //Updates players hand, total, and hand size
@@ -209,7 +236,7 @@ void hit(Deck& d, Player& p)
     displayHand(p);
 }
 
-//check if a player is a winner
+//determines winner of round
 void checkWinner(Player& player, Player& dealer, const int BLACKJACK)
 {
     cout << endl;
@@ -251,12 +278,15 @@ void dealerTurn(Deck& d, Player& dealer, const int BLACKJACK)
     cout << endl;
     cout << "Dealers cards" << endl;
     displayHand(dealer);
+
+    //dealer already has blackjack
     if (dealer.total == BLACKJACK && dealer.handSize == 2)
     {
         return;
     }
     else
     {
+        //dealer keeps hitting until above 16
         while (dealer.total <= DEALER_HIT)
         {
             cout << endl;
@@ -269,7 +299,7 @@ void dealerTurn(Deck& d, Player& dealer, const int BLACKJACK)
     }
 }
 
-//Game Loop
+//Controls hit/stand, dealer logic, and win conditions
 void gameLoop(Deck& d, Player& player, Player& dealer, const int BLACKJACK, bool& quit, bool& loaded)
 {
     int user;
@@ -278,6 +308,7 @@ void gameLoop(Deck& d, Player& player, Player& dealer, const int BLACKJACK, bool
 
     do
     {
+        //start new game or continue loaded game
         if (!loaded)
         {
             delete[] d.cards;
@@ -288,8 +319,11 @@ void gameLoop(Deck& d, Player& player, Player& dealer, const int BLACKJACK, bool
         {
             loaded = false;
         }
+
     cout << player.name <<" hand:" << endl;
     displayHand(player);
+
+        //instant blackjack check
         if (player.total == BLACKJACK && player.handSize == 2)
         {
             cout << endl;
@@ -309,6 +343,8 @@ void gameLoop(Deck& d, Player& player, Player& dealer, const int BLACKJACK, bool
         else
         {
             turn = true;
+
+            //player decision loop hit, stand, or save
             while (turn)
             {
                 cout << endl;
@@ -343,6 +379,7 @@ void gameLoop(Deck& d, Player& player, Player& dealer, const int BLACKJACK, bool
                 }
             }
 
+            //dealer plays after player stands
             if (player.total <= BLACKJACK)
             {
                 if (dealer.total == BLACKJACK && dealer.handSize == 2)
@@ -357,7 +394,9 @@ void gameLoop(Deck& d, Player& player, Player& dealer, const int BLACKJACK, bool
                 }
             }
         }
+
         playAgain = replay(d, player, dealer, quit);
+
     } while (playAgain);
 }
 
@@ -379,7 +418,7 @@ void menu()
     cout << "3. Exit" << endl;
 }
 
-//start of program
+//handles menu selection logic
 void menuSelection(Deck& d, Player& player, Player& dealer, const int BLACKJACK, bool& quit)
 {
     int user;
@@ -426,6 +465,7 @@ bool replay(Deck& d, Player& player, Player& dealer, bool& quit)
     cin >> choice;
     cout << endl;
 
+    //restart game
     if (choice == 'y' || choice == 'Y')
     {
         resetPlayer(player);
@@ -433,6 +473,7 @@ bool replay(Deck& d, Player& player, Player& dealer, bool& quit)
         return true;
     }
 
+    //fully exit game
     if (choice == 'n' || choice == 'N')
     {
         quit = true;
@@ -441,7 +482,7 @@ bool replay(Deck& d, Player& player, Player& dealer, bool& quit)
     return false;
 }
 
-//reset player
+//reset player between games
 void resetPlayer(Player& p)
 {
     delete[] p.hand;
@@ -453,6 +494,7 @@ void resetPlayer(Player& p)
 //save game data
 void saveGame(Deck& d, Player& player, Player& dealer)
 {
+    //open binary output file
     ofstream out("save.dat", ios::binary);
 
     SaveData data;
@@ -496,6 +538,7 @@ void saveGame(Deck& d, Player& player, Player& dealer)
 //load game data
 void loadGame(Deck& d, Player& player, Player& dealer)
 {
+    //open binary file
     ifstream saveData("save.dat", ios::binary);
 
     if (!saveData)
@@ -506,6 +549,7 @@ void loadGame(Deck& d, Player& player, Player& dealer)
 
     SaveData data;
 
+    //read structure from file
     saveData.read(reinterpret_cast<char*>(&data), sizeof(SaveData));
 
     //load save data for player
@@ -518,6 +562,7 @@ void loadGame(Deck& d, Player& player, Player& dealer)
 
     player.hand = new Card[player.handSize];
 
+    //copy saved cards
     for (int i = 0; i < player.handSize; i++)
     {
         player.hand[i] = data.playerHand[i];
@@ -531,6 +576,7 @@ void loadGame(Deck& d, Player& player, Player& dealer)
 
     dealer.hand = new Card[dealer.handSize];
 
+    //copy dealer card
     for (int i = 0; i < dealer.handSize; i++)
     {
         dealer.hand[i] = data.dealerHand[i];
@@ -539,10 +585,11 @@ void loadGame(Deck& d, Player& player, Player& dealer)
     //load deck
     delete[] d.cards;
 
-    d.cards = new Card[52];
-    d.size = 52;
+    d.cards = new Card[data.size];
+    d.size = data.size;
     d.topCard = data.topCard;
 
+    //copy deck cards
     for (int i = 0; i < d.size; i++)
     {
         d.cards[i] = data.deckCards[i];
