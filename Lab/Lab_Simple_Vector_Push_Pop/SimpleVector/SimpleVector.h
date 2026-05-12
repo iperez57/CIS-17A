@@ -48,6 +48,9 @@ public:
 
     // Overloaded [] operator declaration
     T& operator[](const int&);
+
+    //push function
+    void push(T val);
 };
 
 //***********************************************************
@@ -155,5 +158,26 @@ T& SimpleVector<T>::operator[](const int& sub)
     if (sub < 0 || sub >= arraySize)
         subError();
     return aptr[sub];
+}
+
+template <class T>
+void SimpleVector<T>::push(T val)
+{
+    
+    T* nptr = new T[arraySize + 1];
+
+    //copy values from aptr into nptr
+    for (int i = 0; i < arraySize; i++)
+    {
+        nptr[i] = aptr[i];
+    }
+
+    //val is added to end of nptr array
+    nptr[arraySize] = val;
+
+    //delete aptr assign aptr to nptr and increase arraysize
+    delete[] aptr;
+    aptr = nptr;
+    arraySize++;
 }
 #endif

@@ -38,6 +38,13 @@ int main(int argc, char** argv) {
     cout << "Copied Random Dynamic Array derived Simple Vector" << endl;
     prntVec(copysv, 10);
 
+    //push number to vector
+    cout << "Push values into array" << endl;
+    sv.push('a');
+    sv.push('b');
+    sv.push('c');
+    prntVec(sv, 10);
+
     return 0;
 }
 
