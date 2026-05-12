@@ -51,6 +51,8 @@ public:
 
     //push function
     void push(T val);
+    //pop function
+    void pop();
 };
 
 //***********************************************************
@@ -160,6 +162,7 @@ T& SimpleVector<T>::operator[](const int& sub)
     return aptr[sub];
 }
 
+//push value into array
 template <class T>
 void SimpleVector<T>::push(T val)
 {
@@ -179,5 +182,21 @@ void SimpleVector<T>::push(T val)
     delete[] aptr;
     aptr = nptr;
     arraySize++;
+}
+
+//pop values from array
+template <class T>
+void SimpleVector<T>::pop()
+{
+    T* nptr = new T[arraySize - 1];
+    
+        for (int i = 0; i < arraySize - 1; i++)
+        {
+            nptr[i] = aptr[i];
+        }
+
+    delete[] aptr;
+    aptr = nptr;
+    arraySize--;
 }
 #endif

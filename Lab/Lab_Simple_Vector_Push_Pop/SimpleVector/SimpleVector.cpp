@@ -44,7 +44,17 @@ int main(int argc, char** argv) {
     sv.push('b');
     sv.push('c');
     prntVec(sv, 10);
+    cout << endl;
 
+    //pop number from vector
+    cout << "Popping value from array" << endl;
+    sv.pop();
+    sv.pop();
+    sv.pop();
+    sv.pop();
+    sv.pop();
+
+    prntVec(sv, 10);
     return 0;
 }
 
