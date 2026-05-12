@@ -59,6 +59,13 @@ struct SaveData
     int size;
 };
 
+enum MenuOptions
+{
+    START = 1,
+    LOAD = 2,
+    EXIT = 3
+};
+
 #pragma endregion
 
 //Global Constants Only
@@ -192,7 +199,6 @@ void dealCard(Deck& d, Player& recipient)
 
     //add new card
     newHand[recipient.handSize] = d.cards[d.topCard];
-
    
     delete[] recipient.hand;
 
@@ -432,17 +438,17 @@ void menuSelection(Deck& d, Player& player, Player& dealer, const int BLACKJACK,
 
         switch (user)
         {
-        case 1:
+        case START:
             getPlayer(player);
             gameLoop(d, player, dealer, BLACKJACK, quit, loaded);
             break;
-        case 2:
+        case LOAD:
 
             loadGame(d, player, dealer);
             loaded = true;
             gameLoop(d, player, dealer, BLACKJACK, quit, loaded);
             break;
-        case 3:
+        case EXIT:
             cout << "Exiting game ..." << endl;
             running = false;
             quit = true;
@@ -532,7 +538,6 @@ void saveGame(Deck& d, Player& player, Player& dealer)
     out.close();
 
     cout << "Game saved!" << endl << endl;
-
 }
 
 //load game data
