@@ -5,6 +5,8 @@ VisualStudioVersion = 17.14.36623.8 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Gaddis_8thEd_Chap13_Prob1_Date.cpp", "Gaddis_8thEd_Chap13_Prob1_Date.cpp\Gaddis_8thEd_Chap13_Prob1_Date.cpp.vcxproj", "{05F7008B-60C5-4FED-9C88-C9F2CC1D8495}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Gaddis_8thEd_Chap13_Prob4_Personal_Information", "Gaddis_8thEd_Chap13_Prob4_Personal_Information\Gaddis_8thEd_Chap13_Prob4_Personal_Information.vcxproj", "{8D64AF6F-558B-4F21-9861-2E92591C5823}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{05F7008B-60C5-4FED-9C88-C9F2CC1D8495}.Release|x64.Build.0 = Release|x64
 		{05F7008B-60C5-4FED-9C88-C9F2CC1D8495}.Release|x86.ActiveCfg = Release|Win32
 		{05F7008B-60C5-4FED-9C88-C9F2CC1D8495}.Release|x86.Build.0 = Release|Win32
+		{8D64AF6F-558B-4F21-9861-2E92591C5823}.Debug|x64.ActiveCfg = Debug|x64
+		{8D64AF6F-558B-4F21-9861-2E92591C5823}.Debug|x64.Build.0 = Debug|x64
+		{8D64AF6F-558B-4F21-9861-2E92591C5823}.Debug|x86.ActiveCfg = Debug|Win32
+		{8D64AF6F-558B-4F21-9861-2E92591C5823}.Debug|x86.Build.0 = Debug|Win32
+		{8D64AF6F-558B-4F21-9861-2E92591C5823}.Release|x64.ActiveCfg = Release|x64
+		{8D64AF6F-558B-4F21-9861-2E92591C5823}.Release|x64.Build.0 = Release|x64
+		{8D64AF6F-558B-4F21-9861-2E92591C5823}.Release|x86.ActiveCfg = Release|Win32
+		{8D64AF6F-558B-4F21-9861-2E92591C5823}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
