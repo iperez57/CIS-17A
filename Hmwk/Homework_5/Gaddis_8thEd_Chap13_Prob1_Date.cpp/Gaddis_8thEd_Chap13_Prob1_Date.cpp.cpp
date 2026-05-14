@@ -52,10 +52,18 @@ int main(int argc, char** argv) {
     //Maps known values to the unknown objectives
 
     //Display the Inputs/Outputs
-    cout << "enter month" << endl;
-    cin >> m;
-    cout << "enter day" << endl;
-    cin >> d;
+    do
+    {
+        cout << "enter month" << endl;
+        cin >> m;
+    } while (m < 1 || m > 12);
+
+    do
+    {
+        cout << "enter day" << endl;
+        cin >> d;
+    } while (d < 1 || d > 31);
+
     cout << "enter year" << endl;
     cin >> y;
 
