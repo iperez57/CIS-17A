@@ -21,8 +21,12 @@ private:
 public:
     string getName();
     void setName(string);
+
     string getAddress();
     void setAddress(string);
+
+    int getAge();
+    void setAge(int);
 
 };
 //Global Constants Only
@@ -68,4 +72,14 @@ string PersonalData::getAddress()
 void PersonalData::setAddress(string a)
 {
     address = a;
+}
+
+int PersonalData::getAge()
+{
+    return age;
+}
+
+void PersonalData::setAge(int i)
+{
+    age = i;
 }
