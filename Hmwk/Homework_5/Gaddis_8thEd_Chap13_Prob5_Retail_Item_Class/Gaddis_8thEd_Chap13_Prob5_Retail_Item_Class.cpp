@@ -11,7 +11,17 @@
 using namespace std;
 
 //User Libraries
+class RetailItem
+{
+private:
+    string description;
+    int unitsOnHand;
+    double price;
+public:
+    //constructor
+    RetailItem(string, int, double);
 
+};
 //Global Constants Only
 //Well known Science, Mathematical and Laboratory Constants
 
@@ -36,3 +46,9 @@ int main(int argc, char** argv) {
 }
 
 //Function Implementations
+RetailItem::RetailItem(string d, int u, double p)
+{
+    description = d;
+    unitsOnHand = u;
+    price = p;
+}
