@@ -28,6 +28,8 @@ public:
     int getAge();
     void setAge(int);
 
+    int getPhoneNumber();
+    void setPhoneNumber(int);
 };
 //Global Constants Only
 //Well known Science, Mathematical and Laboratory Constants
@@ -82,4 +84,14 @@ int PersonalData::getAge()
 void PersonalData::setAge(int i)
 {
     age = i;
+}
+
+int PersonalData::getPhoneNumber()
+{
+    return phoneNumber;
+}
+
+void PersonalData::setPhoneNumber(int i)
+{
+    phoneNumber = i;
 }
