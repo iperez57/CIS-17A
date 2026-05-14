@@ -55,7 +55,23 @@ int main(int argc, char** argv) {
     self.setPhoneNumber(2340982342);
     cout << self.getPhoneNumber();
 
+    buddy.setName("Joe");
+    cout << buddy.getName() << endl;
+    buddy.setAddress("12332 cool way");
+    cout << buddy.getAddress() << endl;
+    buddy.setAge(28);
+    cout << buddy.getAge() << endl;
+    buddy.setPhoneNumber(299982342);
+    cout << buddy.getPhoneNumber();
 
+    brother.setName("Jeff");
+    cout << brother.getName() << endl;
+    brother.setAddress("123 cool way");
+    cout << brother.getAddress() << endl;
+    brother.setAge(17);
+    cout << brother.getAge() << endl;
+    brother.setPhoneNumber(1111111111);
+    cout << brother.getPhoneNumber();
     //Process Inputs to Outputs -> Mapping Process
     //Maps known values to the unknown objectives
 
