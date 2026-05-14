@@ -22,9 +22,9 @@ public:
     RetailItem(string, int, double);
 
     //mutators
-    string setDescription(string);
-    int setUnitsOnHand(int);
-    double setPrice(double);
+    void setDescription(string);
+    void setUnitsOnHand(int);
+    void setPrice(double);
 
     //accessors
     string getDescription();
@@ -64,6 +64,7 @@ RetailItem::RetailItem(string d, int u, double p)
     price = p;
 }
 
+//accessors
 string RetailItem::getDescription()
 {
     return description;
@@ -77,4 +78,20 @@ int RetailItem::getUnitsOnHand()
 double  RetailItem::getPrice()
 {
     return price;
+}
+
+//mutators
+void RetailItem::setDescription(string d)
+{
+    description = d;
+}
+
+void RetailItem::setUnitsOnHand(int u)
+{
+    unitsOnHand = u;
+}
+
+void RetailItem::setPrice(double p)
+{
+    price = p;
 }
