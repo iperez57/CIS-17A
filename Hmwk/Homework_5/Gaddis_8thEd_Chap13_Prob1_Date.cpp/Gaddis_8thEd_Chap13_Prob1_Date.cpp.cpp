@@ -27,7 +27,7 @@ public:
     void numericFormat(int, int, int);
     // month dd, yyyy
     void writtenFormat(int, int, int);
-    // dd, month, yyyy
+    // dd month yyyy
     void customFormat(int, int, int);
 
 };
@@ -61,6 +61,7 @@ int main(int argc, char** argv) {
 
     date.numericFormat(m, d, y);
     date.writtenFormat(m, d, y);
+    date.customFormat(m, d, y);
 
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
@@ -82,3 +83,9 @@ void Date::writtenFormat(int m, int d, int y)
     cout << months[m - 1] << " " << setfill('0') << setw(2) << d << ", " << y << endl;
 }
 
+void Date::customFormat(int m, int d, int y)
+{
+    cout << endl;
+    cout << "dd, month, yyyy" << endl;
+    cout << setfill('0') << setw(2) << d << " " << months[m - 1] << " " << y << endl;
+}
