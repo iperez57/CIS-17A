@@ -11,7 +11,18 @@
 using namespace std;
 
 //User Libraries
+class PersonalData
+{
+private:
+    string name;
+    string address;
+    int age;
+    int phoneNumber;
+public:
+    string getName();
+    void setName(string);
 
+};
 //Global Constants Only
 //Well known Science, Mathematical and Laboratory Constants
 
@@ -22,10 +33,12 @@ int main(int argc, char** argv) {
     //Set the random number seed here
 
     //Declare all variables for this function
-
+    PersonalData self;
 
     //Initialize all known variables
-
+    self.setName("Frank");
+    cout << self.getName() << endl;
+   
     //Process Inputs to Outputs -> Mapping Process
     //Maps known values to the unknown objectives
 
@@ -37,3 +50,11 @@ int main(int argc, char** argv) {
 }
 
 //Function Implementations
+string PersonalData::getName()
+{
+    return name;
+}
+void PersonalData::setName(string n)
+{
+    name = n;
+}
