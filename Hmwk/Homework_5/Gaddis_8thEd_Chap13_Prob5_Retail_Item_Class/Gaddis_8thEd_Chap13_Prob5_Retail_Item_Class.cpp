@@ -21,6 +21,17 @@ public:
     //constructor
     RetailItem(string, int, double);
 
+    //mutators
+    string setDescription(string);
+    int setUnitsOnHand(int);
+    double setPrice(double);
+
+    //accessors
+    string getDescription();
+    int getUnitsOnHand();
+    double getPrice();
+
+
 };
 //Global Constants Only
 //Well known Science, Mathematical and Laboratory Constants
@@ -51,4 +62,19 @@ RetailItem::RetailItem(string d, int u, double p)
     description = d;
     unitsOnHand = u;
     price = p;
+}
+
+string RetailItem::getDescription()
+{
+    return description;
+}
+
+int RetailItem::getUnitsOnHand()
+{
+    return unitsOnHand;
+}
+
+double  RetailItem::getPrice()
+{
+    return price;
 }
