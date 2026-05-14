@@ -8,6 +8,7 @@
  //System Libraries
 #include <iostream>  //I/O Library
 #include <iomanip>
+#include <string>
 
 
 using namespace std;
@@ -19,8 +20,9 @@ private:
     int month;
     int day;
     int year;
-public:
 
+public:
+    string months[12] = { "January", "February", "March", "April", "May", "June", "July", "August", "September",  "October", "November", "December"};
     // mm/dd/yyyy
     void numericFormat(int, int, int);
     // month dd, yyyy
@@ -58,6 +60,7 @@ int main(int argc, char** argv) {
     cin >> y;
 
     date.numericFormat(m, d, y);
+    date.writtenFormat(m, d, y);
 
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
@@ -71,3 +74,11 @@ void Date::numericFormat(int m, int d, int y)
     cout << "mm/dd/yyyy" << endl;
     cout << setfill('0') << setw(2) << m << "/" << setfill('0') << setw(2) << d << "/" << y << endl;
 }
+
+void Date::writtenFormat(int m, int d, int y)
+{
+    cout << endl;
+    cout << "month dd, yyyy" << endl;
+    cout << months[m - 1] << " " << setfill('0') << setw(2) << d << ", " << y << endl;
+}
+
