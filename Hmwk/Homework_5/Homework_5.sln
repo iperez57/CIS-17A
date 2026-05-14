@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Gaddis_8thEd_Chap13_Prob4_P
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Gaddis_8thEd_Chap13_Prob5_Retail_Item_Class", "Gaddis_8thEd_Chap13_Prob5_Retail_Item_Class\Gaddis_8thEd_Chap13_Prob5_Retail_Item_Class.vcxproj", "{B8DB9A4F-EFD6-4E7A-8727-D997EA619CD1}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Gaddis_8thEd_Chap13_Prob6_Inventory_Class", "Gaddis_8thEd_Chap13_Prob6_Inventory_Class\Gaddis_8thEd_Chap13_Prob6_Inventory_Class.vcxproj", "{B8011A67-3403-4331-A124-A23F3BCC1EF9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -41,6 +43,14 @@ Global
 		{B8DB9A4F-EFD6-4E7A-8727-D997EA619CD1}.Release|x64.Build.0 = Release|x64
 		{B8DB9A4F-EFD6-4E7A-8727-D997EA619CD1}.Release|x86.ActiveCfg = Release|Win32
 		{B8DB9A4F-EFD6-4E7A-8727-D997EA619CD1}.Release|x86.Build.0 = Release|Win32
+		{B8011A67-3403-4331-A124-A23F3BCC1EF9}.Debug|x64.ActiveCfg = Debug|x64
+		{B8011A67-3403-4331-A124-A23F3BCC1EF9}.Debug|x64.Build.0 = Debug|x64
+		{B8011A67-3403-4331-A124-A23F3BCC1EF9}.Debug|x86.ActiveCfg = Debug|Win32
+		{B8011A67-3403-4331-A124-A23F3BCC1EF9}.Debug|x86.Build.0 = Debug|Win32
+		{B8011A67-3403-4331-A124-A23F3BCC1EF9}.Release|x64.ActiveCfg = Release|x64
+		{B8011A67-3403-4331-A124-A23F3BCC1EF9}.Release|x64.Build.0 = Release|x64
+		{B8011A67-3403-4331-A124-A23F3BCC1EF9}.Release|x86.ActiveCfg = Release|Win32
+		{B8011A67-3403-4331-A124-A23F3BCC1EF9}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
