@@ -1,5 +1,5 @@
 /*
- * File:   Gaddis_8thEd_Chap13_Prob5_Retail_Item_Class
+ * File:   Gaddis_8thEd_Chap13_Prob5_Retail_Item_Class.cpp
  * Author: Isaac Perez
  * Created: 05/14/2026
  * Purpose:  use class
@@ -7,32 +7,13 @@
 
  //System Libraries
 #include <iostream>  //I/O Library
+#include <string>
 
 using namespace std;
 
 //User Libraries
-class RetailItem
-{
-private:
-    string description;
-    int unitsOnHand;
-    double price;
-public:
-    //constructor
-    RetailItem(string, int, double);
+#include "Gaddis_8thEd_Chap13_Prob5_Retail_Item_Class.h"
 
-    //mutators
-    void setDescription(string);
-    void setUnitsOnHand(int);
-    void setPrice(double);
-
-    //accessors
-    string getDescription();
-    int getUnitsOnHand();
-    double getPrice();
-
-
-};
 //Global Constants Only
 //Well known Science, Mathematical and Laboratory Constants
 
@@ -57,41 +38,3 @@ int main(int argc, char** argv) {
 }
 
 //Function Implementations
-RetailItem::RetailItem(string d, int u, double p)
-{
-    description = d;
-    unitsOnHand = u;
-    price = p;
-}
-
-//accessors
-string RetailItem::getDescription()
-{
-    return description;
-}
-
-int RetailItem::getUnitsOnHand()
-{
-    return unitsOnHand;
-}
-
-double  RetailItem::getPrice()
-{
-    return price;
-}
-
-//mutators
-void RetailItem::setDescription(string d)
-{
-    description = d;
-}
-
-void RetailItem::setUnitsOnHand(int u)
-{
-    unitsOnHand = u;
-}
-
-void RetailItem::setPrice(double p)
-{
-    price = p;
-}
