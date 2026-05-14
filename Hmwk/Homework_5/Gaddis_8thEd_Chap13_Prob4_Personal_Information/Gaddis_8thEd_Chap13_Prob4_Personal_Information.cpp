@@ -42,11 +42,20 @@ int main(int argc, char** argv) {
 
     //Declare all variables for this function
     PersonalData self;
+    PersonalData buddy;
+    PersonalData brother;
 
     //Initialize all known variables
     self.setName("Frank");
     cout << self.getName() << endl;
-   
+    self.setAddress("123 cool way");
+    cout << self.getAddress() << endl;
+    self.setAge(21);
+    cout << self.getAge() << endl;
+    self.setPhoneNumber(2340982342);
+    cout << self.getPhoneNumber();
+
+
     //Process Inputs to Outputs -> Mapping Process
     //Maps known values to the unknown objectives
 
