@@ -69,3 +69,23 @@ Inventory::Inventory(int i, int q)
     quantity = q;
     //setTotalCost()
 }
+
+void Inventory::setItemNumber(int i)
+{
+    itemNumber = i;
+}
+
+void Inventory::setCost(double c)
+{
+    cost = c;
+}
+
+void Inventory::setQuantity(int q)
+{
+    quantity = q;
+}
+
+void Inventory::setTotalCost(double tc)
+{
+    tc = quantity * cost;
+}
