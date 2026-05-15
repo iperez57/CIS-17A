@@ -72,6 +72,8 @@ DayOfYear::DayOfYear(int user)
 void DayOfYear::print()
 {
     int month;
+    int dayM;
+
     if (day <= 31)
     {
         month = 0;
@@ -79,48 +81,59 @@ void DayOfYear::print()
     else if (day <= 59)
     {
         month = 1;
+        dayM = day - 31;
     }
     else if (day <= 90)
     {
         month = 2;
+        dayM = day - 59;
     }
     else if (day <= 120)
     {
         month = 3;
+        dayM = day - 90;
     }
     else if (day <= 151)
     {
         month = 4;
+        dayM = day - 120;
     }
     else if (day <= 181)
     {
         month = 5;
+        dayM = day - 151;
     }
     else if (day <= 212)
     {
         month = 6;
+        dayM = day - 181;
     }
     else if (day <= 243)
     {
         month = 7;
+        dayM = day - 212;
     }
     else if (day <= 273)
     {
         month = 8;
+        dayM = day - 243;
     }
     else if (day <= 304)
     {
         month = 9;
+        dayM = day - 273;
     }
     else if (day <= 334)
     {
         month = 10;
+        dayM = day - 304;
     }
     else
     {
         month = 11;
+        dayM = day - 334;
     }
 
 
-    cout << "Day " << day << " would be " << months[month] << " " << day;
+    cout << "Day " << day << " would be " << months[month] << " " << dayM;
 }
