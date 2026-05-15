@@ -36,14 +36,23 @@ int main(int argc, char** argv) {
     //Set the random number seed here
 
     //Declare all variables for this function
-   
+    int user;
     //Initialize all known variables
 
     //Process Inputs to Outputs -> Mapping Process
     //Maps known values to the unknown objectives
 
     //Display the Inputs/Outputs
-   
+    cout << "enter a number between 0-9999" << endl;
+
+    do
+    {
+        cin >> user;
+        if (user > 9999 || user < 0)
+        {
+            cout << "try again" << endl;
+        }
+    } while (user > 9999 || user < 0);
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
     return 0;
