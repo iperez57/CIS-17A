@@ -18,7 +18,7 @@ private:
     int number;
 
     static string lessThan20[20];
-    static string tens[8]; 
+    static string tens[10]; 
     static string hundred;
     static string thousand;
 
@@ -37,7 +37,6 @@ int main(int argc, char** argv) {
 
     //Declare all variables for this function
     int user;
-    Numbers num(user);
     //Initialize all known variables
 
     //Process Inputs to Outputs -> Mapping Process
@@ -55,6 +54,8 @@ int main(int argc, char** argv) {
         }
     } while (user > 9999 || user < 0);
 
+    Numbers num(user);
+    num.print();
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
     return 0;
@@ -69,9 +70,9 @@ string Numbers::lessThan20[20] =
     "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"
 };
 
-string Numbers::tens[8] =
+string Numbers::tens[10] =
 {
-    "twenty", "thirty", "forty", "fifty",
+    "", "", "twenty", "thirty", "forty", "fifty",
     "sixty" , "seventy", "eighty", "ninety"
 };
 
@@ -81,4 +82,40 @@ string Numbers::thousand = "thousand";
 Numbers::Numbers(int user)
 {
     number = user;
+}
+
+void Numbers::print()
+{
+    int n = number;
+    int n1000s, n100s, n10s, n1s;
+    n1000s = n / 1000;
+    n100s = n % 1000 / 100;
+    n10s = n % 100 / 10;
+    n1s = n % 10;
+    int lastTwo = n % 100;
+
+    if (n1000s > 0)
+    {
+        cout << lessThan20[n1000s] << " " << thousand << " ";
+    }
+    if (n100s > 0)
+    {
+        cout << lessThan20[n100s] << " " << hundred << " ";
+    }
+    if (lastTwo < 20 && lastTwo > 0)
+    {
+        cout << lessThan20[lastTwo];
+    }
+    else
+    {
+        if (n10s > 0)
+        {
+            cout << tens[n10s] << " ";
+        }
+        if (n1s > 0)
+        {
+            cout << lessThan20[n1s];
+        }
+    }
+
 }
