@@ -12,7 +12,20 @@
 using namespace std;
 
 //User Libraries
+class Numbers
+{
+private:
+    int number;
 
+    static string lessThan20[1];
+    static string tens[10]; 
+    static string hundred;
+    static string thousand;
+
+public:
+    Numbers(int);
+    void print();
+};
 //Global Constants Only
 //Well known Science, Mathematical and Laboratory Constants
 
