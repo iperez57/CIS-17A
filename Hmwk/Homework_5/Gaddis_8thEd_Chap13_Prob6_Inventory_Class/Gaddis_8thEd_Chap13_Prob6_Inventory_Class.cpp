@@ -55,6 +55,7 @@ int main(int argc, char** argv) {
 }
 
 //Function Implementations
+//Constructor
 Inventory::Inventory()
 {
     itemNumber = 0;
@@ -70,6 +71,7 @@ Inventory::Inventory(int i, int q)
     //setTotalCost()
 }
 
+//setters
 void Inventory::setItemNumber(int i)
 {
     itemNumber = i;
@@ -88,4 +90,25 @@ void Inventory::setQuantity(int q)
 void Inventory::setTotalCost(double tc)
 {
     tc = quantity * cost;
+}
+
+//getters
+int Inventory::getItemNumber()
+{
+    return itemNumber;
+}
+
+int Inventory::getQuantity()
+{
+    return quantity;
+}
+
+double Inventory::getCost()
+{
+    return cost;
+}
+
+double Inventory::getTotalCost()
+{
+    return totalCost;
 }
