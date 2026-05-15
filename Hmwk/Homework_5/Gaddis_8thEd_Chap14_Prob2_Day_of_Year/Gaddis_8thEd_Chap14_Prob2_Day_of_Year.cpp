@@ -52,3 +52,8 @@ string DayOfYear::months[12] =
     "May", "June", "July", "August",
     "September", "October", "November", "December"
 };
+
+DayOfYear::DayOfYear(int user)
+{
+    day = user;
+}
