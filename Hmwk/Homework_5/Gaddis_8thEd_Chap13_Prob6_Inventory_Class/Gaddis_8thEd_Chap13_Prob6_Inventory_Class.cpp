@@ -63,3 +63,9 @@ Inventory::Inventory()
     totalCost = 0;
 }
 
+Inventory::Inventory(int i, int q)
+{
+    itemNumber = i;
+    quantity = q;
+    //setTotalCost()
+}
