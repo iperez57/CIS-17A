@@ -32,14 +32,19 @@ int main(int argc, char** argv) {
     //Set the random number seed here
 
     //Declare all variables for this function
-
+    int user;
     //Initialize all known variables
 
     //Process Inputs to Outputs -> Mapping Process
     //Maps known values to the unknown objectives
 
     //Display the Inputs/Outputs
-
+    cout << "enter a day of the year (1-365)" << endl;
+    do
+    {
+        cin >> user;
+        cout << "Try again" << endl; 
+    } while (user < 1 || user > 365);
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
     return 0;
