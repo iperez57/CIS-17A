@@ -13,6 +13,15 @@ using namespace std;
 
 //User Libraries
 
+class DayOfYear
+{
+private:
+    int day;
+    static string months[12];
+public:
+    DayOfYear(int);
+    void print();
+};
 //Global Constants Only
 //Well known Science, Mathematical and Laboratory Constants
 
@@ -37,3 +46,9 @@ int main(int argc, char** argv) {
 }
 
 //Function Implementations
+string DayOfYear::months[12] =
+{
+    "January", "February", "March", "April",
+    "May", "June", "July", "August",
+    "September", "October", "November", "December"
+};
