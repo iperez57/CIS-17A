@@ -17,8 +17,8 @@ class Numbers
 private:
     int number;
 
-    static string lessThan20[1];
-    static string tens[10]; 
+    static string lessThan20[20];
+    static string tens[8]; 
     static string hundred;
     static string thousand;
 
@@ -50,3 +50,19 @@ int main(int argc, char** argv) {
 }
 
 //Function Implementations
+string Numbers::lessThan20[20] =
+{
+    "zero", "one", "two", "three", "four",
+    "five", "six", "seven", "eight", "nine",
+    "ten", "eleven", "twelve", "thirteen", "fourteen",
+    "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"
+};
+
+string Numbers::tens[8] =
+{
+    "twenty", "thirty", "forty", "fifty",
+    "sixty" , "seventy", "eighty", "ninety"
+};
+
+string Numbers::hundred = "hundred";
+string Numbers::thousand = "thousand";
