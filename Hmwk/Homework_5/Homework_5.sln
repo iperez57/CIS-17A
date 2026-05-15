@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36623.8 d17.14
+VisualStudioVersion = 17.14.36623.8
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Gaddis_8thEd_Chap13_Prob1_Date.cpp", "Gaddis_8thEd_Chap13_Prob1_Date.cpp\Gaddis_8thEd_Chap13_Prob1_Date.cpp.vcxproj", "{05F7008B-60C5-4FED-9C88-C9F2CC1D8495}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Gaddis_8thEd_Chap13_Prob5_Retail_Item_Class", "Gaddis_8thEd_Chap13_Prob5_Retail_Item_Class\Gaddis_8thEd_Chap13_Prob5_Retail_Item_Class.vcxproj", "{B8DB9A4F-EFD6-4E7A-8727-D997EA619CD1}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Gaddis_8thEd_Chap13_Prob6_Inventory_Class", "Gaddis_8thEd_Chap13_Prob6_Inventory_Class\Gaddis_8thEd_Chap13_Prob6_Inventory_Class.vcxproj", "{B8011A67-3403-4331-A124-A23F3BCC1EF9}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Gaddis_8thEd_Chap14_Prob1_Numbers_Class", "Gaddis_8thEd_Chap14_Prob1_Numbers_Class\Gaddis_8thEd_Chap14_Prob1_Numbers_Class.vcxproj", "{D95C1902-28C6-464A-827B-03008D7E1EE3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,14 @@ Global
 		{B8011A67-3403-4331-A124-A23F3BCC1EF9}.Release|x64.Build.0 = Release|x64
 		{B8011A67-3403-4331-A124-A23F3BCC1EF9}.Release|x86.ActiveCfg = Release|Win32
 		{B8011A67-3403-4331-A124-A23F3BCC1EF9}.Release|x86.Build.0 = Release|Win32
+		{D95C1902-28C6-464A-827B-03008D7E1EE3}.Debug|x64.ActiveCfg = Debug|x64
+		{D95C1902-28C6-464A-827B-03008D7E1EE3}.Debug|x64.Build.0 = Debug|x64
+		{D95C1902-28C6-464A-827B-03008D7E1EE3}.Debug|x86.ActiveCfg = Debug|Win32
+		{D95C1902-28C6-464A-827B-03008D7E1EE3}.Debug|x86.Build.0 = Debug|Win32
+		{D95C1902-28C6-464A-827B-03008D7E1EE3}.Release|x64.ActiveCfg = Release|x64
+		{D95C1902-28C6-464A-827B-03008D7E1EE3}.Release|x64.Build.0 = Release|x64
+		{D95C1902-28C6-464A-827B-03008D7E1EE3}.Release|x86.ActiveCfg = Release|Win32
+		{D95C1902-28C6-464A-827B-03008D7E1EE3}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
