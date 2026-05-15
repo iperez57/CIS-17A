@@ -21,11 +21,11 @@ private:
     double totalCost;
 public:
     Inventory();
-    Inventory(int, int);
+    Inventory(int, int, double);
     void setItemNumber(int);
     void setQuantity(int);
     void setCost(double);
-    void setTotalCost(double);
+    void setTotalCost();
     int getItemNumber();
     int getQuantity();
     double getCost();
@@ -41,14 +41,39 @@ int main(int argc, char** argv) {
     //Set the random number seed here
 
     //Declare all variables for this function
-
+    Inventory inven;
+    int itmNum;
+    int quant;
+    double cst;
     //Initialize all known variables
 
     //Process Inputs to Outputs -> Mapping Process
     //Maps known values to the unknown objectives
 
     //Display the Inputs/Outputs
+    do
+    {
+        cout << "Enter item number" << endl;
+        cin >> itmNum;
+    } while (itmNum < 1);
 
+    do
+    {
+        cout << "Enter quantity" << endl;
+        cin >> quant;
+    } while (quant < 1);
+
+    do
+    {
+        cout << "Enter cost" << endl;
+        cin >> cst;
+    } while (cst < 1);
+
+    inven.setCost(cst);
+    inven.setItemNumber(itmNum);
+    inven.setQuantity(quant);
+    inven.setTotalCost();
+    cout << "Total cost: $" << inven.getTotalCost();
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
     return 0;
@@ -64,13 +89,14 @@ Inventory::Inventory()
     totalCost = 0;
 }
 
-Inventory::Inventory(int i, int q)
+Inventory::Inventory(int i, int q, double c)
 {
     itemNumber = i;
     quantity = q;
-    //setTotalCost()
+    cost = c;
+    setTotalCost();
 }
-
+  
 //setters
 void Inventory::setItemNumber(int i)
 {
@@ -87,9 +113,9 @@ void Inventory::setQuantity(int q)
     quantity = q;
 }
 
-void Inventory::setTotalCost(double tc)
+void Inventory::setTotalCost()
 {
-    tc = quantity * cost;
+    totalCost = quantity * cost;
 }
 
 //getters
