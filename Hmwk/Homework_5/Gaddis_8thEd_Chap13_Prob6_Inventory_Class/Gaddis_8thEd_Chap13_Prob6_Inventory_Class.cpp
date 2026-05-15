@@ -12,7 +12,25 @@
 using namespace std;
 
 //User Libraries
-
+class Inventory
+{
+private:
+    int itemNumber;
+    int quantity;
+    double cost;
+    double totalCost;
+public:
+    Inventory();
+    Inventory(int, int);
+    void setItemNumber(int);
+    void setQuantity(int);
+    void setCost(double);
+    void setTotalCost(double);
+    int getItemNumber();
+    int getQuantity();
+    double getCost();
+    double getTotalCost();
+};
 //Global Constants Only
 //Well known Science, Mathematical and Laboratory Constants
 
@@ -37,3 +55,11 @@ int main(int argc, char** argv) {
 }
 
 //Function Implementations
+Inventory::Inventory()
+{
+    itemNumber = 0;
+    quantity = 0;
+    cost = 0;
+    totalCost = 0;
+}
+
