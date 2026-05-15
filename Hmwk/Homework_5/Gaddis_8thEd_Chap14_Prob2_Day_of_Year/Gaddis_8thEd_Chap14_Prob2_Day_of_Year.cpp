@@ -43,8 +43,14 @@ int main(int argc, char** argv) {
     do
     {
         cin >> user;
-        cout << "Try again" << endl; 
+        if (user < 1 || user > 365)
+        {
+            cout << "Try again" << endl;
+        }
     } while (user < 1 || user > 365);
+    
+    DayOfYear doy(user);
+    doy.print();
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
     return 0;
@@ -61,4 +67,60 @@ string DayOfYear::months[12] =
 DayOfYear::DayOfYear(int user)
 {
     day = user;
+}
+
+void DayOfYear::print()
+{
+    int month;
+    if (day <= 31)
+    {
+        month = 0;
+    }
+    else if (day <= 59)
+    {
+        month = 1;
+    }
+    else if (day <= 90)
+    {
+        month = 2;
+    }
+    else if (day <= 120)
+    {
+        month = 3;
+    }
+    else if (day <= 151)
+    {
+        month = 4;
+    }
+    else if (day <= 181)
+    {
+        month = 5;
+    }
+    else if (day <= 212)
+    {
+        month = 6;
+    }
+    else if (day <= 243)
+    {
+        month = 7;
+    }
+    else if (day <= 273)
+    {
+        month = 8;
+    }
+    else if (day <= 304)
+    {
+        month = 9;
+    }
+    else if (day <= 334)
+    {
+        month = 10;
+    }
+    else
+    {
+        month = 11;
+    }
+
+
+    cout << "Day " << day << " would be " << months[month] << " " << day;
 }
