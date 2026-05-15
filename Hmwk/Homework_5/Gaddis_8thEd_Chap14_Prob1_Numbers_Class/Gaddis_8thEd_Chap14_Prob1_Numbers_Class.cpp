@@ -37,6 +37,7 @@ int main(int argc, char** argv) {
 
     //Declare all variables for this function
     int user;
+    Numbers num(user);
     //Initialize all known variables
 
     //Process Inputs to Outputs -> Mapping Process
@@ -53,6 +54,7 @@ int main(int argc, char** argv) {
             cout << "try again" << endl;
         }
     } while (user > 9999 || user < 0);
+
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
     return 0;
@@ -75,3 +77,8 @@ string Numbers::tens[8] =
 
 string Numbers::hundred = "hundred";
 string Numbers::thousand = "thousand";
+
+Numbers::Numbers(int user)
+{
+    number = user;
+}
