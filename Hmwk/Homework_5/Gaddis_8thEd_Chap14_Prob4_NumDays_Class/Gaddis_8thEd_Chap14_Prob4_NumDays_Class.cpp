@@ -110,3 +110,20 @@ NumDays NumDays::operator-(const NumDays &right)
 
     return temp;
 }
+
+NumDays NumDays::operator++()
+{
+    hours++;
+    NumDays temp(hours);
+
+    return temp;
+}
+
+NumDays NumDays::operator++(int)
+{
+    NumDays temp(hours);
+    hours++;
+
+    return temp;
+    
+}
