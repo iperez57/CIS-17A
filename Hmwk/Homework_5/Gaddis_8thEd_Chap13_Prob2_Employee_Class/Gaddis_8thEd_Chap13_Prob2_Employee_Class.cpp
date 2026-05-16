@@ -38,6 +38,9 @@ public:
     int getIdNumber();
     string getDepartment();
     string getPosition();
+
+    //print
+    void print();
 };
 
 //Global Constants Only
@@ -126,4 +129,16 @@ string Employee::getDepartment()
 string Employee::getPosition()
 {
     return position;
+}
+
+void Employee::print()
+{
+    cout << "Name" << endl;
+    cout << getName() << endl;
+    cout << "ID Number" << endl;
+    cout << getIdNumber() << endl;
+    cout << "Department" << endl;
+    cout << getDepartment() << endl;
+    cout << "Position" << endl;
+    cout << getPosition() << endl;
 }
