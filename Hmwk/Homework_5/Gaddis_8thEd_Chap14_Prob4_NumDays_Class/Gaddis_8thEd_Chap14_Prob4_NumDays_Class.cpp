@@ -12,6 +12,20 @@
 using namespace std;
 
 //User Libraries
+class NumDays
+{
+private:
+    int hours;
+    float day;
+public:
+    NumDays(int);
+    NumDays operator+();
+    NumDays operator-();
+    NumDays operator++();
+    NumDays operator++(int);
+    NumDays operator--();
+    NumDays operator--(int);
+};
 
 //Global Constants Only
 //Well known Science, Mathematical and Laboratory Constants

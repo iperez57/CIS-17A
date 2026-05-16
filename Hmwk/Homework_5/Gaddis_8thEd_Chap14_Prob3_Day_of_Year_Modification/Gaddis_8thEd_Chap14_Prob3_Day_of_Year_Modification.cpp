@@ -202,7 +202,7 @@ DayOfYear::DayOfYear(string m, int d)
 
 void DayOfYear::print()
 {
-    cout << month << " " << dayM << " is day " << day;
+    cout << month << " " << dayM << " is day " << day << endl;
 }
 
 DayOfYear DayOfYear::operator++()
