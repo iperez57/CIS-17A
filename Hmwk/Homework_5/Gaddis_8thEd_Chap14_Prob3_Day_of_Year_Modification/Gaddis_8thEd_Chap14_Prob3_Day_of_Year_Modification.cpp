@@ -74,6 +74,78 @@ DayOfYear::DayOfYear(string m, int d)
     month = m;
     dayM = d;
 
+    if (month == "January" && (d < 1 || d > 31))
+    {
+        cout << "Invalid day for January" << endl;
+        exit(0);
+    }
+
+    if (month == "February" && (d < 1 || d > 28))
+    {
+        cout << "Invalid day for February" << endl;
+        exit(0);
+    }
+
+    if (month == "March" && (d < 1 || d > 31))
+    {
+        cout << "Invalid day for March" << endl;
+        exit(0);
+    }
+
+    if (month == "April" && (d < 1 || d > 30))
+    {
+        cout << "Invalid day for April" << endl;
+        exit(0);
+    }
+
+    if (month == "May" && (d < 1 || d > 31))
+    {
+        cout << "Invalid day for May" << endl;
+        exit(0);
+    }
+
+    if (month == "June" && (d < 1 || d > 30))
+    {
+        cout << "Invalid day for June" << endl;
+        exit(0);
+    }
+
+    if (month == "July" && (d < 1 || d > 31))
+    {
+        cout << "Invalid day for July" << endl;
+        exit(0);
+    }
+
+    if (month == "August" && (d < 1 || d > 31))
+    {
+        cout << "Invalid day for August" << endl;
+        exit(0);
+    }
+
+    if (month == "September" && (d < 1 || d > 30))
+    {
+        cout << "Invalid day for September" << endl;
+        exit(0);
+    }
+
+    if (month == "October" && (d < 1 || d > 31))
+    {
+        cout << "Invalid day for October" << endl;
+        exit(0);
+    }
+
+    if (month == "November" && (d < 1 || d > 30))
+    {
+        cout << "Invalid day for November" << endl;
+        exit(0);
+    }
+     
+    if (month == "December" && (d < 1 || d > 31))
+    {
+        cout << "Invalid day for December" << endl;
+        exit(0);
+    }
+
     if (month == "January")
     {
         day = d;
