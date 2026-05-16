@@ -16,9 +16,15 @@ class NumDays
 {
 private:
     int hours;
-    float day;
+    float days;
 public:
     NumDays(int);
+
+    void setHours(int);
+    void setDays(float);
+    int getHours();
+    float getDays();
+    
     NumDays operator+();
     NumDays operator-();
     NumDays operator++();
@@ -57,5 +63,25 @@ int main(int argc, char** argv) {
 NumDays::NumDays(int h)
 {
     hours = h;
+    days = h / 8;
 }
 
+void NumDays::setHours(int h)
+{
+    hours = h;
+}
+
+void NumDays::setDays(float d)
+{
+    days = d;
+}
+
+int NumDays::getHours()
+{
+    return hours;
+}
+
+float NumDays::getDays()
+{
+    return days;
+}
