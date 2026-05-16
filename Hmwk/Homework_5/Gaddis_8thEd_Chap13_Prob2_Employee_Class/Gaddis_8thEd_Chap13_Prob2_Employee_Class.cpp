@@ -35,9 +35,9 @@ public:
 
     //getters
     string getName();
-    int setIdNumber();
-    string setDepartment();
-    string setPosition();
+    int getIdNumber();
+    string getDepartment();
+    string getPosition();
 };
 
 //Global Constants Only
@@ -108,3 +108,22 @@ void Employee::setPosition(string pos)
     position = pos;
 }
 
+string Employee::getName()
+{
+    return name;
+}
+
+int Employee::getIdNumber()
+{
+    return idNumber;
+}
+
+string Employee::getDepartment()
+{
+    return department;
+}
+
+string Employee::getPosition()
+{
+    return position;
+}
