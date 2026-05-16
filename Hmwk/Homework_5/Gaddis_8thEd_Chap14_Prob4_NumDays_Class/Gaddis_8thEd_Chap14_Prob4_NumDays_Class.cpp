@@ -28,7 +28,7 @@ public:
 
     void print();
     
-    NumDays operator+();
+    NumDays operator+(const NumDays &right);
     NumDays operator-();
     NumDays operator++();
     NumDays operator++(int);
@@ -94,4 +94,12 @@ void NumDays::print()
 {
     cout << "Hours worked: " << getHours() << endl;
     cout << "Days worked: " << getDays() << endl;
+}
+
+//right is passed in NumDays object
+NumDays NumDays::operator+(const NumDays &right)
+{
+    NumDays temp(hours + right.hours);
+
+    return temp;
 }
