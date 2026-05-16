@@ -8,6 +8,7 @@
  //System Libraries
 #include <iostream>  //I/O Library
 #include <string>
+#include <iomanip>
 
 using namespace std;
 
@@ -24,6 +25,8 @@ public:
     void setDays(float);
     int getHours();
     float getDays();
+
+    void print();
     
     NumDays operator+();
     NumDays operator-();
@@ -54,6 +57,7 @@ int main(int argc, char** argv) {
     cin >> userH;
 
     NumDays dayW(userH);
+    dayW.print();
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
     return 0;
@@ -63,7 +67,7 @@ int main(int argc, char** argv) {
 NumDays::NumDays(int h)
 {
     hours = h;
-    days = h / 8;
+    days = h / 8.f;
 }
 
 void NumDays::setHours(int h)
@@ -84,4 +88,10 @@ int NumDays::getHours()
 float NumDays::getDays()
 {
     return days;
+}
+
+void NumDays::print()
+{
+    cout << "Hours worked: " << getHours() << endl;
+    cout << "Days worked: " << getDays() << endl;
 }
