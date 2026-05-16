@@ -54,3 +54,8 @@ int main(int argc, char** argv) {
 }
 
 //Function Implementations
+NumDays::NumDays(int h)
+{
+    hours = h;
+}
+
