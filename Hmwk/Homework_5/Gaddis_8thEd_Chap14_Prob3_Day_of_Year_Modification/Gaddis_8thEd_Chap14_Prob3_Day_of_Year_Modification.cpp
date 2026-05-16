@@ -24,6 +24,8 @@ public:
     DayOfYear(int);
     DayOfYear(string, int);
     void print();
+    DayOfYear operator++();
+    DayOfYear operator++(int);
 };
 //Global Constants Only
 //Well known Science, Mathematical and Laboratory Constants
@@ -199,4 +201,30 @@ DayOfYear::DayOfYear(string m, int d)
 void DayOfYear::print()
 {
     cout << month << " " << dayM << " is day " << day;
+}
+
+DayOfYear DayOfYear::operator++()
+{
+    day++;
+
+    if (day > 365)
+    {
+        day = 1;
+    }
+    DayOfYear temp(day);
+    return temp;
+}
+
+DayOfYear DayOfYear::operator++(int)
+{
+    DayOfYear temp(day);
+
+    day++;
+
+    if (day > 365)
+    {
+        day = 1;
+    }
+
+    return temp
 }
