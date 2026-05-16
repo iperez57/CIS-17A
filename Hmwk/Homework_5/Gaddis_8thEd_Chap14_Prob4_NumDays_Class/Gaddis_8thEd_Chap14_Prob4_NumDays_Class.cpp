@@ -29,7 +29,7 @@ public:
     void print();
     
     NumDays operator+(const NumDays &right);
-    NumDays operator-();
+    NumDays operator-(const NumDays &right);
     NumDays operator++();
     NumDays operator++(int);
     NumDays operator--();
@@ -100,6 +100,13 @@ void NumDays::print()
 NumDays NumDays::operator+(const NumDays &right)
 {
     NumDays temp(hours + right.hours);
+
+    return temp;
+}
+
+NumDays NumDays::operator-(const NumDays &right)
+{
+    NumDays temp(hours - right.hours);
 
     return temp;
 }
