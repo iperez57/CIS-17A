@@ -37,14 +37,17 @@ int main(int argc, char** argv) {
     //Set the random number seed here
 
     //Declare all variables for this function
-
+    int userH;
     //Initialize all known variables
 
     //Process Inputs to Outputs -> Mapping Process
     //Maps known values to the unknown objectives
 
     //Display the Inputs/Outputs
+    cout << "Enter hours worked" << endl;
+    cin >> userH;
 
+    NumDays dayW(userH);
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
     return 0;
