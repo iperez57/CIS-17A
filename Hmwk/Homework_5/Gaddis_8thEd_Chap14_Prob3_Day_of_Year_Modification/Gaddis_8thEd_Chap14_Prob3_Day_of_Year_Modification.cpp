@@ -26,6 +26,8 @@ public:
     void print();
     DayOfYear operator++();
     DayOfYear operator++(int);
+    DayOfYear operator--();
+    DayOfYear operator--(int);
 };
 //Global Constants Only
 //Well known Science, Mathematical and Laboratory Constants
@@ -226,5 +228,30 @@ DayOfYear DayOfYear::operator++(int)
         day = 1;
     }
 
-    return temp
+    return temp;
+}
+
+DayOfYear DayOfYear::operator--()
+{
+    day--;
+
+    if (day  < 1)
+    {
+        day = 365;
+    }
+    DayOfYear temp(day);
+    return temp;
+}
+
+DayOfYear DayOfYear::operator--(int)
+{
+    DayOfYear temp(day);
+    day--;
+
+    if (day < 1)
+    {
+        day = 365;
+    }
+    
+    return temp;
 }
