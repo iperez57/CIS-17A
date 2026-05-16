@@ -14,6 +14,31 @@
 using namespace std;
 
 //User Libraries
+class Employee
+{
+private:
+    string name;
+    int idNumber;
+    string department;
+    string position;
+public:
+    //constructors
+    Employee();
+    Employee(string, int, string, string);
+    Employee(string, int);
+
+    //setters
+    void setName(string);
+    void setIdNumber(int);
+    void setDepartment(string);
+    void setPosition(string);
+
+    //getters
+    string getName();
+    int setIdNumber();
+    string setDepartment();
+    string setPosition();
+};
 
 //Global Constants Only
 //Well known Science, Mathematical and Laboratory Constants
