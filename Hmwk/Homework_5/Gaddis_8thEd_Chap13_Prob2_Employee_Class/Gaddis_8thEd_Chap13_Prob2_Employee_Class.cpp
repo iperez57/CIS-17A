@@ -87,3 +87,24 @@ Employee::Employee(string na, int id)
     department = "";
     position = "";
 }
+
+void Employee::setName(string na)
+{
+    name = na;
+}
+
+void Employee::setIdNumber(int id)
+{
+    idNumber = id;
+}
+
+void Employee::setDepartment(string dep)
+{
+    department = dep;
+}
+
+void Employee::setPosition(string pos)
+{
+    position = pos;
+}
+
