@@ -64,3 +64,26 @@ int main(int argc, char** argv) {
 }
 
 //Function Implementations
+Employee::Employee()
+{
+    name = "";
+    idNumber = 0;
+    department = "";
+    position = "";
+}
+
+Employee::Employee(string na, int id, string dep, string pos)
+{
+    name = na;
+    idNumber = id;
+    department = dep;
+    position = pos;
+}
+
+Employee::Employee(string na, int id)
+{
+    name = na;
+    idNumber = id;
+    department = "";
+    position = "";
+}
