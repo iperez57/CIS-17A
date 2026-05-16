@@ -58,6 +58,10 @@ int main(int argc, char** argv) {
 
     NumDays dayW(userH);
     dayW.print();
+
+    dayW++;
+    ++dayW;
+    dayW.print();
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
     return 0;
@@ -114,6 +118,7 @@ NumDays NumDays::operator-(const NumDays &right)
 NumDays NumDays::operator++()
 {
     hours++;
+    days = hours / 8.f;
     NumDays temp(hours);
 
     return temp;
@@ -123,6 +128,7 @@ NumDays NumDays::operator++(int)
 {
     NumDays temp(hours);
     hours++;
+    days = hours / 8.f;
 
     return temp;
 }
@@ -130,6 +136,7 @@ NumDays NumDays::operator++(int)
 NumDays NumDays::operator--()
 {
     hours--;
+    days = hours / 8.f;
     NumDays temp(hours);
 
     return temp;
@@ -138,7 +145,8 @@ NumDays NumDays::operator--()
 NumDays NumDays::operator--(int)
 {
     NumDays temp(hours);
-    hours++;
+    hours--;
+    days = hours / 8.f;
 
     return temp;
 }
