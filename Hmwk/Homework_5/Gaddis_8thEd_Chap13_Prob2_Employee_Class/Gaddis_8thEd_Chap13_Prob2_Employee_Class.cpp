@@ -53,6 +53,9 @@ int main(int argc, char** argv) {
     //Set the random number seed here
 
     //Declare all variables for this function
+    Employee emp1;
+    Employee emp2("Mark", 12345);
+    Employee emp3("John", 45432, "IT", "Programmer");
 
     //Initialize all known variables
 
@@ -60,7 +63,9 @@ int main(int argc, char** argv) {
     //Maps known values to the unknown objectives
 
     //Display the Inputs/Outputs
-
+    emp1.print();
+    emp2.print();
+    emp3.print();
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
     return 0;
