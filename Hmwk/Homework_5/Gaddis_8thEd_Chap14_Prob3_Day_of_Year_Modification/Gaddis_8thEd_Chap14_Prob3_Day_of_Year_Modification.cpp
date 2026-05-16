@@ -17,6 +17,7 @@ class DayOfYear
 {
 private:
     int day;
+    int dayM;
     string month;
     static string months[12];
 public:
@@ -70,11 +71,60 @@ DayOfYear::DayOfYear(int user)
 
 DayOfYear::DayOfYear(string m, int d)
 {
-    day = d;
     month = m;
+    dayM = d;
+
+    if (month == "January")
+    {
+        day = d;
+    }
+    else if (month == "February")
+    {
+        day = 31 + d;
+    }
+    else if (month == "March")
+    {
+        day = 59 + d;
+    }
+    else if (month == "April")
+    {
+        day = 90 + d;
+    }
+    else if (month == "May")
+    {
+        day = 120 + d;
+    }
+    else if (month == "June")
+    {
+        day = 151 + d;
+    }
+    else if (month == "July")
+    {
+        day = 181 + d;
+    }
+    else if (month == "August")
+    {
+        day = 212 + d;
+    }
+    else if (month == "September")
+    {
+        day = 243 + d;
+    }
+    else if (month == "October")
+    {
+        day = 273 + d;
+    }
+    else if (month == "November")
+    {
+        day = 304 + d;
+    }
+    else if (month == "December")
+    {
+        day = 334 + d;
+    }
 }
 
 void DayOfYear::print()
 {
-    cout << month << " " << day << " is day ";
+    cout << month << " " << dayM << " is day " << day;
 }
