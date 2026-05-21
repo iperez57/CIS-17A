@@ -1,12 +1,12 @@
 /*
- * File:   Gaddis_8thEd_Chap15_Prob1_Employee_ProductionWorker_Classes.h
+ * File:   Employee.h
  * Author: Isaac Perez
  * Created on 05/21/2026
  * Purpose:  use class inheritance
  */
 
-#ifndef Gaddis_8thEd_Chap15_Prob1_Employee_ProductionWorker_Classes_H
-#define Gaddis_8thEd_Chap15_Prob1_Employee_ProductionWorker_Classes_H
+#ifndef EMPLOYEE_H
+#define EMPLOYEE_H
 #include <iostream>
 
 using namespace std;
