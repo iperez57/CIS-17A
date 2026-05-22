@@ -126,6 +126,7 @@
     <ClCompile Include="Gaddis_8thEd_Chap15_Prob4_Time_Format.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="MilTime.h" />
     <ClInclude Include="Time.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
