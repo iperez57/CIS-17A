@@ -30,11 +30,13 @@ MilTime::MilTime(int mH, int mS)
 
 void MilTime::setTime(int mH, int mS)
 {
+	milHours = mH;
+	milSeconds = mS;
+	hour = mH / 100;
 	if (hour > 12)
 	{
 		hour -= 12;
 	}
-	hour = mH / 100;
 	min = mH % 100;
 	sec = mS;
 
