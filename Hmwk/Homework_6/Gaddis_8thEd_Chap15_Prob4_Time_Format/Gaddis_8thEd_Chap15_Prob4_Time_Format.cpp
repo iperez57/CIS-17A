@@ -22,7 +22,6 @@ int main(int argc, char** argv) {
 
     //Declare all variables for this function
     int h;
-    int m;
     int s;
     //Initialize all known variables
     
@@ -31,12 +30,17 @@ int main(int argc, char** argv) {
 
     //Display the Inputs/Outputs
     cout << "Enter a time in military format" << endl;
-    cout << "Enter hour: ";
-    cin >> h;
-    cout << "Enter minutes: ";
-    cin >> m;
-    cout << "Enter seconds: ";
-    cin >> s;
+    do
+    {
+        cout << "Enter hour: ";
+        cin >> h;
+    } while (h < 0 || h > 2359);
+    {
+        cout << "Enter seconds: ";
+        cin >> s;
+    } while (s < 0 || s > 59);
+
+    MilTime mil(h, s);
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
     return 0;

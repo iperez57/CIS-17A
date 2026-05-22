@@ -14,28 +14,28 @@ class MilTime : public Time
 private:
 	int milHours;
 	int milSeconds;
-	int milMinutes;
-public:
-	MilTime(int, int, int);
 
-	void setTime(int, int, int);
+public:
+	MilTime(int, int);
+
+	void setTime(int, int);
 
 	int getMilHour();
 	int getStandHr();
 };
-MilTime::MilTime(int mH, int mM, int mS)
+MilTime::MilTime(int mH, int mS)
 {
-	setTime(mH, mM, mS);
+	setTime(mH, mS);
 }
 
-void MilTime::setTime(int mH, int mM, int mS)
+void MilTime::setTime(int mH, int mS)
 {
 	if (hour > 12)
 	{
 		hour -= 12;
 	}
-	hour = mH;
-	min = mM;;
+	hour = mH / 100;
+	min = mH % 100;
 	sec = mS;
 
 }
