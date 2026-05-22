@@ -5,6 +5,8 @@ VisualStudioVersion = 17.14.36623.8 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Gaddis_8thEd_Chap15_Prob1_Employee_ProductionWorker_Classes", "Gaddis_8thEd_Chap15_Prob1_Employee_ProductionWorker_Classes\Gaddis_8thEd_Chap15_Prob1_Employee_ProductionWorker_Classes.vcxproj", "{711D20CC-4010-4F86-8099-FA8FF6FF5D2F}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Gaddis_8thEd_Chap15_Prob4_Time_Format", "Gaddis_8thEd_Chap15_Prob4_Time_Format\Gaddis_8thEd_Chap15_Prob4_Time_Format.vcxproj", "{BD396C4E-980D-4253-A5F6-F638BD2F1006}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{711D20CC-4010-4F86-8099-FA8FF6FF5D2F}.Release|x64.Build.0 = Release|x64
 		{711D20CC-4010-4F86-8099-FA8FF6FF5D2F}.Release|x86.ActiveCfg = Release|Win32
 		{711D20CC-4010-4F86-8099-FA8FF6FF5D2F}.Release|x86.Build.0 = Release|Win32
+		{BD396C4E-980D-4253-A5F6-F638BD2F1006}.Debug|x64.ActiveCfg = Debug|x64
+		{BD396C4E-980D-4253-A5F6-F638BD2F1006}.Debug|x64.Build.0 = Debug|x64
+		{BD396C4E-980D-4253-A5F6-F638BD2F1006}.Debug|x86.ActiveCfg = Debug|Win32
+		{BD396C4E-980D-4253-A5F6-F638BD2F1006}.Debug|x86.Build.0 = Debug|Win32
+		{BD396C4E-980D-4253-A5F6-F638BD2F1006}.Release|x64.ActiveCfg = Release|x64
+		{BD396C4E-980D-4253-A5F6-F638BD2F1006}.Release|x64.Build.0 = Release|x64
+		{BD396C4E-980D-4253-A5F6-F638BD2F1006}.Release|x86.ActiveCfg = Release|Win32
+		{BD396C4E-980D-4253-A5F6-F638BD2F1006}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
