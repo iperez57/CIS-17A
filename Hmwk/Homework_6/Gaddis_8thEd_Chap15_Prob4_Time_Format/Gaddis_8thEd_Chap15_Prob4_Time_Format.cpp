@@ -21,14 +21,22 @@ int main(int argc, char** argv) {
     //Set the random number seed here
 
     //Declare all variables for this function
-    
+    int h;
+    int m;
+    int s;
     //Initialize all known variables
-
+    
     //Process Inputs to Outputs -> Mapping Process
     //Maps known values to the unknown objectives
 
     //Display the Inputs/Outputs
-    
+    cout << "Enter a time in military format" << endl;
+    cout << "Enter hour: ";
+    cin >> h;
+    cout << "Enter minutes: ";
+    cin >> m;
+    cout << "Enter seconds: ";
+    cin >> s;
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
     return 0;
