@@ -16,6 +16,9 @@ private:
 	int milSeconds;
 
 public:
+	class BadHour {};
+	class BadSeconds {};
+
 	MilTime(int, int);
 
 	void setTime(int, int);
@@ -30,9 +33,18 @@ MilTime::MilTime(int mH, int mS)
 
 void MilTime::setTime(int mH, int mS)
 {
+	if (mH < 0 || mH > 2359 || mH % 100 > 59)
+	{
+		throw BadHour();
+	}
+	if (mS < 0 || mS > 59)
+	{
+		throw BadSeconds();
+	}
 	milHours = mH;
 	milSeconds = mS;
 	hour = mH / 100;
+
 	if (hour > 12)
 	{
 		hour -= 12;

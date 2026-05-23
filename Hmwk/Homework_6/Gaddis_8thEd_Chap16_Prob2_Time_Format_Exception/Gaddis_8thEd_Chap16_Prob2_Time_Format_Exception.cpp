@@ -31,21 +31,28 @@ int main(int argc, char** argv) {
 
     //Display the Inputs/Outputs
     cout << "Enter a time in military format" << endl;
-    do
-    {
+
         cout << "Enter hour: ";
         cin >> h;
-    } while (h < 0 || h > 2359);
-    do
-    {
+
         cout << "Enter seconds: ";
         cin >> s;
-    } while (s < 0 || s > 59);
 
-    MilTime mil(h, s);
+    try
+    {
+        MilTime mil(h, s);
 
-    cout << "Military time: " << mil.getMilHour() << " " << mil.getSec() << endl;
-    cout << "Standard time: " << mil.getStandHr() << " " << mil.getMin() << " " << mil.getSec() << endl;
+        cout << "Military time: " << mil.getMilHour() << " " << mil.getSec() << endl;
+        cout << "Standard time: " << mil.getStandHr() << " " << mil.getMin() << " " << mil.getSec() << endl;
+    }
+    catch(MilTime::BadHour)
+    {
+        cout << "Entered invalid hour." << endl;
+    }
+    catch (MilTime::BadSeconds)
+    {
+        cout << "Entered invalid seconds." << endl;
+    }
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
     return 0;
