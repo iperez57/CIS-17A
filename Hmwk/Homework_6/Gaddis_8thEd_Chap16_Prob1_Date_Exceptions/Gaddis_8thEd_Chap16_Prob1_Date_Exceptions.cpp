@@ -22,6 +22,9 @@ private:
     int year;
 
 public:
+    class invalidDay {};
+    class invalidMonth {};
+
     string months[12] = { "January", "February", "March", "April", "May", "June", "July", "August", "September",  "October", "November", "December" };
     // mm/dd/yyyy
     void numericFormat(int, int, int);
@@ -52,25 +55,30 @@ int main(int argc, char** argv) {
     //Maps known values to the unknown objectives
 
     //Display the Inputs/Outputs
-    do
-    {
+
         cout << "enter month" << endl;
         cin >> m;
-    } while (m < 1 || m > 12);
 
-    do
-    {
         cout << "enter day" << endl;
         cin >> d;
-    } while (d < 1 || d > 31);
 
     cout << "enter year" << endl;
     cin >> y;
 
-    date.numericFormat(m, d, y);
-    date.writtenFormat(m, d, y);
-    date.customFormat(m, d, y);
-
+    try
+    {
+        date.numericFormat(m, d, y);
+        date.writtenFormat(m, d, y);
+        date.customFormat(m, d, y);
+    }
+    catch (Date::invalidMonth)
+    {
+        cout << "Invalid month entered." << endl;
+    }
+    catch (Date::invalidDay)
+    {
+        cout << "Invalid day entered." << endl;
+    }
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
     return 0;
@@ -79,6 +87,16 @@ int main(int argc, char** argv) {
 //Function Implementations
 void Date::numericFormat(int m, int d, int y)
 {
+    if (m < 1 || m > 12)
+    {
+        throw invalidMonth();
+    }
+
+    if (d < 1 || d > 31)
+    {
+        throw invalidDay();
+    }
+
     cout << endl;
     cout << "mm/dd/yyyy" << endl;
     cout << setfill('0') << setw(2) << m << "/" << setfill('0') << setw(2) << d << "/" << y << endl;
@@ -86,6 +104,16 @@ void Date::numericFormat(int m, int d, int y)
 
 void Date::writtenFormat(int m, int d, int y)
 {
+    if (m < 1 || m > 12)
+    {
+        throw invalidMonth();
+    }
+
+    if (d < 1 || d > 31)
+    {
+        throw invalidDay();
+    }
+
     cout << endl;
     cout << "month dd, yyyy" << endl;
     cout << months[m - 1] << " " << setfill('0') << setw(2) << d << ", " << y << endl;
@@ -93,6 +121,16 @@ void Date::writtenFormat(int m, int d, int y)
 
 void Date::customFormat(int m, int d, int y)
 {
+    if (m < 1 || m > 12)
+    {
+        throw invalidMonth();
+    }
+
+    if (d < 1 || d > 31)
+    {
+        throw invalidDay();
+    }
+
     cout << endl;
     cout << "dd, month, yyyy" << endl;
     cout << setfill('0') << setw(2) << d << " " << months[m - 1] << " " << y << endl;
