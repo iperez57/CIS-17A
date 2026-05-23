@@ -23,5 +23,8 @@
     <ClInclude Include="GradeActivity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Essay.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

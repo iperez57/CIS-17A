@@ -126,6 +126,7 @@
     <ClCompile Include="Gaddis_8thEd_Chap15_Prob6_Essay_Class.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Essay.h" />
     <ClInclude Include="GradeActivity.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
