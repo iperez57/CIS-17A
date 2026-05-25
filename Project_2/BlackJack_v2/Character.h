@@ -7,7 +7,7 @@
 
 class Character
 {
-private:
+protected:
     Card* hand;
     int handSize;
     int total;
