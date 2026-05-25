@@ -17,20 +17,15 @@ using namespace std;
 
 #pragma region User Libraries
 //User Libraries//struct for a single card
-struct Card
-{
-    char rank[10];
-    char suit[10];
-    int value;
-};
+#include "Card.h"
 
 //represents the player or dealer
 struct Player
 {
     char name[20];
-    Card* hand = nullptr;
-    int handSize = 0;
-    int total = 0;
+    Card* hand;
+    int handSize;
+    int total;
 };
 
 //struct for a deck of cards
