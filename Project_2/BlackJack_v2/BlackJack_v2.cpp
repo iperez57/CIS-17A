@@ -188,11 +188,11 @@ void startingDraw(Deck& d, Player& player, Character& dealer)
 //Displays the players hand
 void displayHand(Player& p)
 {
-    for (int i = 0; i < p.handSize; i++)
+    for (int i = 0; i < p.getHandSize(); i++)
     {
-        cout << p.hand[i].rank << " of " << p.hand[i].suit << endl;
+        cout << p.getHand()[i].rank << " of " << p.getHand()[i].suit << endl;
     }
-    cout << "Total: " << p.total << endl;
+    cout << "Total: " << p.getTotal() << endl;
 }
 
 //draws card for player and displays hand after getting new card
