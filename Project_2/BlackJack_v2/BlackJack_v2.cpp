@@ -18,15 +18,7 @@ using namespace std;
 #pragma region User Libraries
 //User Libraries//struct for a single card
 #include "Card.h"
-
-//represents the player or dealer
-struct Player
-{
-    char name[20];
-    Card* hand;
-    int handSize;
-    int total;
-};
+#include "Player.h"
 
 //struct for a deck of cards
 struct Deck
@@ -70,13 +62,11 @@ enum MenuOptions
                 // card/deck functions
 Deck initializeDeck();
 void shuffleDeck(Deck&);
-void dealCard(Deck&, Player&);
 
 //player/ hand functions
 void getPlayer(Player&);
 void displayHand(Player&);
 void hit(Deck&, Player&);
-void resetPlayer(Player&);
 
 //gameplay functions
 void startingDraw(Deck&, Player&, Player&);
@@ -178,32 +168,6 @@ void shuffleDeck(Deck& d)
         d.cards[i] = d.cards[r];
         d.cards[r] = temp;
     }
-}
-
-//deals card to player
-void dealCard(Deck& d, Player& recipient)
-{
-    //dynamically increases size of recipients deck
-    Card* newHand = new Card[recipient.handSize + 1];
-
-    //copies old hand into new
-    for (int i = 0; i < recipient.handSize; i++)
-    {
-        newHand[i] = recipient.hand[i];
-    }
-
-    //add new card
-    newHand[recipient.handSize] = d.cards[d.topCard];
-
-    delete[] recipient.hand;
-
-    //Updates players hand, total, and hand size
-    recipient.hand = newHand;
-    recipient.total += d.cards[d.topCard].value;
-    recipient.handSize++;
-
-    //changes the decks top card to next in line
-    d.topCard++;
 }
 
 //starts game by dealing 2 cards to player and dealer
@@ -481,15 +445,6 @@ bool replay(Deck& d, Player& player, Player& dealer, bool& quit)
         return false;
     }
     return false;
-}
-
-//reset player between games
-void resetPlayer(Player& p)
-{
-    delete[] p.hand;
-    p.hand = nullptr;
-    p.handSize = 0;
-    p.total = 0;
 }
 
 //save game data
