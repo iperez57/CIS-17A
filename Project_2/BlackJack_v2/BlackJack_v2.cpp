@@ -388,10 +388,14 @@ void gameLoop(Deck& d, Player& player, Character& dealer, const int BLACKJACK, b
 //ask for player info
 void getPlayer(Player& player)
 {
+    char temp[20];
+
     cout << "Create Username: ";
     cin.ignore();
-    cin.getline(player.name, 20);
+    cin.getline(temp, 20);
     cout << endl;
+
+    player.setName(temp);
 }
 
 //display menu
