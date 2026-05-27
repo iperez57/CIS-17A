@@ -38,7 +38,13 @@ void Character::setHand(Card* c)
 {
     delete[] hand;
 
-    hand = c;
+    hand = new Card[handSize];
+
+    for (int i = 0; i < handSize; i++)
+    {
+        hand[i] = c[i];
+    }
+
 }
 
 void Character::setHandSize(int t)

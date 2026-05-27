@@ -532,34 +532,24 @@ void loadGame(Deck& d, Player& player, Character& dealer)
     saveData.read(reinterpret_cast<char*>(&data), sizeof(SaveData));
 
     //load save data for player
-    delete[] player.hand;
+    player.reset();
 
-    strcpy_s(player.name, data.name);
+    player.setName(data.name);
 
-    player.handSize = data.playerHandSize;
-    player.total = data.playerTotal;
+    player.setHandSize(data.playerHandSize);
+    player.setTotal(data.playerTotal);
 
-    player.hand = new Card[player.handSize];
-
-    //copy saved cards
-    for (int i = 0; i < player.handSize; i++)
-    {
-        player.hand[i] = data.playerHand[i];
-    }
+    //copies cards
+    player.setHand(data.playerHand);
 
     //load save data for dealer
-    delete[] dealer.hand;
+    dealer.reset();
 
-    dealer.handSize = data.dealerHandSize;
-    dealer.total = data.dealerTotal;
-
-    dealer.hand = new Card[dealer.handSize];
+    dealer.setHandSize(data.dealerHandSize);
+    dealer.setTotal(data.dealerTotal);
 
     //copy dealer card
-    for (int i = 0; i < dealer.handSize; i++)
-    {
-        dealer.hand[i] = data.dealerHand[i];
-    }
+    dealer.setHand(data.dealerHand);
 
     //load deck
     delete[] d.cards;
@@ -578,6 +568,7 @@ void loadGame(Deck& d, Player& player, Character& dealer)
 
     cout << "Game loaded!" << endl << endl;
 }
+
 void dealCard(Deck& d, Character& recipient)
 {
     recipient.addCard(d.cards[d.topCard]);
