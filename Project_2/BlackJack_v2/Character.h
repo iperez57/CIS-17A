@@ -21,6 +21,11 @@ public:
     int getHandSize();
     int getTotal();
 
+    //setters
+    void setHand(Card*);
+    void setHandSize(int);
+    void setTotal(int);
+
     //member functions
     void addCard(Card);
     void reset();

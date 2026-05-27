@@ -33,6 +33,24 @@ int Character::getTotal()
 	return total;
 }
 
+//setters
+void Character::setHand(Card* c)
+{
+    delete[] hand;
+
+    hand = c;
+}
+
+void Character::setHandSize(int t)
+{
+    handSize = t;
+}
+
+void Character::setTotal(int t)
+{
+    total = t;
+}
+
 void Character::addCard(Card c)
 {
     //dynamically increases size of recipients deck
