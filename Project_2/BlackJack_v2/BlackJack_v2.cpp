@@ -480,23 +480,23 @@ void saveGame(Deck& d, Player& player, Character& dealer)
     SaveData data;
 
     //copy player data
-    strcpy_s(data.name, player.name);
+    strcpy_s(data.name, player.getName());
 
-    data.playerHandSize = player.handSize;
-    data.playerTotal = player.total;
+    data.playerHandSize = player.getHandSize();
+    data.playerTotal = player.getTotal();
 
-    for (int i = 0; i < player.handSize; i++)
+    for (int i = 0; i < player.getHandSize(); i++)
     {
-        data.playerHand[i] = player.hand[i];
+        data.playerHand[i] = player.getHand()[i];
     }
 
     //copy dealer data
-    data.dealerHandSize = dealer.handSize;
-    data.dealerTotal = dealer.total;
+    data.dealerHandSize = dealer.getHandSize();
+    data.dealerTotal = dealer.getTotal();
 
-    for (int i = 0; i < dealer.handSize; i++)
+    for (int i = 0; i < dealer.getHandSize(); i++)
     {
-        data.dealerHand[i] = dealer.hand[i];
+        data.dealerHand[i] = dealer.getHand()[i];
     }
 
     //copy deck data
