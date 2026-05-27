@@ -457,8 +457,8 @@ bool replay(Deck& d, Player& player, Character& dealer, bool& quit)
     //restart game
     if (choice == 'y' || choice == 'Y')
     {
-        resetPlayer(player);
-        resetPlayer(dealer);
+        player.reset();
+        dealer.reset();
         return true;
     }
 
