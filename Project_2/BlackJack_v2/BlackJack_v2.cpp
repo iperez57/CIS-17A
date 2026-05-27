@@ -206,31 +206,31 @@ void hit(Deck& d, Player& p)
 void checkWinner(Player& player, Character& dealer, const int BLACKJACK)
 {
     cout << endl;
-    if (player.total == BLACKJACK && dealer.total == BLACKJACK)
+    if (player.getTotal() == BLACKJACK && dealer.getTotal() == BLACKJACK)
     {
         cout << "DRAW." << endl;
     }
-    else if (player.total == BLACKJACK)
+    else if (player.getTotal() == BLACKJACK)
     {
         cout << "You win!" << endl;
     }
-    else if (dealer.total > BLACKJACK)
+    else if (dealer.getTotal() > BLACKJACK)
     {
         cout << "Dealer BUST. You win!" << endl;
     }
-    else if (dealer.total == BLACKJACK)
+    else if (dealer.getTotal() == BLACKJACK)
     {
         cout << "Dealer hit 21. You lose." << endl;
     }
-    else if (player.total > dealer.total)
+    else if (player.getTotal() > dealer.getTotal())
     {
         cout << "You win!" << endl;
     }
-    else if (dealer.total > player.total)
+    else if (dealer.getTotal() > player.getTotal())
     {
         cout << "You Lose!" << endl;
     }
-    else if (player.total == dealer.total)
+    else if (player.getTotal() == dealer.getTotal())
     {
         cout << "DRAW!" << endl;
     }
