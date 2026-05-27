@@ -575,4 +575,3 @@ void dealCard(Deck& d, Character& recipient)
 
     d.topCard++;
 }
-//review load funciton

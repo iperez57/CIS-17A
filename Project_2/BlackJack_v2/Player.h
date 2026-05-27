@@ -9,6 +9,8 @@ class Player : public Character
 {
 private:
 	char name[20];
+	int chips;
+	int currentBet;
 
 public:
 	//constructor
@@ -17,9 +19,16 @@ public:
 
 	//setters
 	void setName(char[]);
+	void setBet(int);
 
 	//getters
 	char* getName();
+	int getChips();
+	int getBet();
+
+	//betting functions
+	void winBet();
+	void loseBet();
 };
 
 #endif
