@@ -305,16 +305,16 @@ void gameLoop(Deck& d, Player& player, Character& dealer, const int BLACKJACK, b
             loaded = false;
         }
 
-        cout << player.name << " hand:" << endl;
+        cout << player.getTotal() << " hand:" << endl;
         displayHand(player);
 
         //instant blackjack check
-        if (player.total == BLACKJACK && player.handSize == 2)
+        if (player.getTotal() == BLACKJACK && player.getHandSize() == 2)
         {
             cout << endl;
             cout << "BLACK JACK!" << endl;
             dealerTurn(d, dealer, BLACKJACK);
-            if (player.total == BLACKJACK && player.handSize == 2 && dealer.total == BLACKJACK && dealer.handSize == 2)
+            if (player.getTotal() == BLACKJACK && player.getHandSize() == 2 && dealer.getTotal() == BLACKJACK && dealer.getHandSize() == 2)
             {
                 cout << "Dealer Black JACK!" << endl;
                 cout << endl;
@@ -342,9 +342,9 @@ void gameLoop(Deck& d, Player& player, Character& dealer, const int BLACKJACK, b
                 {
                 case 1:
                     cout << endl;
-                    cout << player.name << " hand:" << endl;
+                    cout << player.getName() << " hand:" << endl;
                     hit(d, player);
-                    if (player.total > BLACKJACK)
+                    if (player.getTotal() > BLACKJACK)
                     {
                         cout << endl;
                         cout << "BUST!" << endl;
@@ -365,9 +365,9 @@ void gameLoop(Deck& d, Player& player, Character& dealer, const int BLACKJACK, b
             }
 
             //dealer plays after player stands
-            if (player.total <= BLACKJACK)
+            if (player.getTotal() <= BLACKJACK)
             {
-                if (dealer.total == BLACKJACK && dealer.handSize == 2)
+                if (dealer.getTotal() == BLACKJACK && dealer.getHandSize() == 2)
                 {
                     cout << "Dealer BLACK JACK! You lose!" << endl;
                     break;
