@@ -305,7 +305,7 @@ void gameLoop(Deck& d, Player& player, Character& dealer, const int BLACKJACK, b
             loaded = false;
         }
 
-        cout << player.getTotal() << " hand:" << endl;
+        cout << player.getName() << " hand:" << endl;
         displayHand(player);
 
         //instant blackjack check
