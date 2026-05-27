@@ -66,7 +66,9 @@ void shuffleDeck(Deck&);
 //player/ hand functions
 void getPlayer(Player&);
 void displayHand(Player&);
+void displayHand(Character&);
 void hit(Deck&, Player&);
+void hit(Deck&, Character&);
 
 //gameplay functions
 void startingDraw(Deck&, Player&, Character&);
@@ -195,8 +197,25 @@ void displayHand(Player& p)
     cout << "Total: " << p.getTotal() << endl;
 }
 
+//Displays the dealers hand
+void displayHand(Character& p)
+{
+    for (int i = 0; i < p.getHandSize(); i++)
+    {
+        cout << p.getHand()[i].rank << " of " << p.getHand()[i].suit << endl;
+    }
+    cout << "Total: " << p.getTotal() << endl;
+}
+
 //draws card for player and displays hand after getting new card
 void hit(Deck& d, Player& p)
+{
+    dealCard(d, p);
+    displayHand(p);
+}
+
+//draws card for dealer and displays hand after getting new card
+void hit(Deck& d, Character& p)
 {
     dealCard(d, p);
     displayHand(p);
@@ -246,14 +265,14 @@ void dealerTurn(Deck& d, Character& dealer, const int BLACKJACK)
     displayHand(dealer);
 
     //dealer already has blackjack
-    if (dealer.total == BLACKJACK && dealer.handSize == 2)
+    if (dealer.getTotal() == BLACKJACK && dealer.getHandSize() == 2)
     {
         return;
     }
     else
     {
         //dealer keeps hitting until above 16
-        while (dealer.total <= DEALER_HIT)
+        while (dealer.getTotal() <= DEALER_HIT)
         {
             cout << endl;
             cout << "Dealer hits" << endl << endl;
