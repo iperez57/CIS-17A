@@ -33,6 +33,11 @@ void Player::setBet(int b)
 	currentBet = b;
 }
 
+void Player::setChips(int b)
+{
+	chips -=  b;
+}
+
 //getters
 char* Player::getName()
 {

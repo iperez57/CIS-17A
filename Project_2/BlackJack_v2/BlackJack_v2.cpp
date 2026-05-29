@@ -195,6 +195,7 @@ void displayHand(Player& p)
         cout << p.getHand()[i].rank << " of " << p.getHand()[i].suit << endl;
     }
     cout << "Total: " << p.getTotal() << endl;
+    cout << "Money: $" << p.getChips() << endl;
 }
 
 //Displays the dealers hand
@@ -232,22 +233,27 @@ void checkWinner(Player& player, Character& dealer, const int BLACKJACK)
     else if (player.getTotal() == BLACKJACK)
     {
         cout << "You win!" << endl;
+        player.winBet();
     }
     else if (dealer.getTotal() > BLACKJACK)
     {
         cout << "Dealer BUST. You win!" << endl;
+        player.winBet();
     }
     else if (dealer.getTotal() == BLACKJACK)
     {
         cout << "Dealer hit 21. You lose." << endl;
+        player.loseBet();
     }
     else if (player.getTotal() > dealer.getTotal())
     {
         cout << "You win!" << endl;
+        player.winBet();
     }
     else if (dealer.getTotal() > player.getTotal())
     {
         cout << "You Lose!" << endl;
+        player.loseBet();
     }
     else if (player.getTotal() == dealer.getTotal())
     {
@@ -288,6 +294,7 @@ void dealerTurn(Deck& d, Character& dealer, const int BLACKJACK)
 void gameLoop(Deck& d, Player& player, Character& dealer, const int BLACKJACK, bool& quit, bool& loaded)
 {
     int user;
+    int betAmt;
     bool playAgain;
     bool turn;
 
@@ -323,6 +330,7 @@ void gameLoop(Deck& d, Player& player, Character& dealer, const int BLACKJACK, b
             else
             {
                 cout << "You win!" << endl;
+                player.winBet();
             }
         }
         else
@@ -334,7 +342,7 @@ void gameLoop(Deck& d, Player& player, Character& dealer, const int BLACKJACK, b
             {
                 cout << endl;
                 cout << "Do you want to HIT or STAND?" << endl;
-                cout << "HIT = 1    STAND = 2   SAVE GAME = 3" << endl;
+                cout << "HIT = 1    STAND = 2   BET = 3    SAVE GAME = 4" << endl;
 
                 cin >> user;
 
@@ -348,6 +356,7 @@ void gameLoop(Deck& d, Player& player, Character& dealer, const int BLACKJACK, b
                     {
                         cout << endl;
                         cout << "BUST!" << endl;
+                        player.loseBet();
                         turn = false;
                     }
                     break;
@@ -355,6 +364,12 @@ void gameLoop(Deck& d, Player& player, Character& dealer, const int BLACKJACK, b
                     turn = false;
                     break;
                 case 3:
+                    cout << "How much do you want to bet?" << endl;
+                    cin >> betAmt;
+                    player.setBet(betAmt);
+                    player.setChips(betAmt);
+                    break;
+                case 4:
                     saveGame(d, player, dealer);
                     displayHand(player);
                     break;

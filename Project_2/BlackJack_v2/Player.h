@@ -20,6 +20,7 @@ public:
 	//setters
 	void setName(char[]);
 	void setBet(int);
+	void setChips(int);
 
 	//getters
 	char* getName();
