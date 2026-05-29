@@ -366,8 +366,10 @@ void gameLoop(Deck& d, Player& player, Character& dealer, const int BLACKJACK, b
                 case 3:
                     cout << "How much do you want to bet?" << endl;
                     cin >> betAmt;
+                    cout << endl;
                     player.setBet(betAmt);
                     player.setChips(betAmt);
+                    displayHand(player);
                     break;
                 case 4:
                     saveGame(d, player, dealer);
@@ -385,6 +387,7 @@ void gameLoop(Deck& d, Player& player, Character& dealer, const int BLACKJACK, b
                 if (dealer.getTotal() == BLACKJACK && dealer.getHandSize() == 2)
                 {
                     cout << "Dealer BLACK JACK! You lose!" << endl;
+                    player.loseBet();
                     break;
                 }
                 else

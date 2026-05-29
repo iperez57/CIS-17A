@@ -57,7 +57,7 @@ int Player::getChips()
 //betting functions
 void Player::winBet()
 {
-	chips += currentBet;
+	chips += 2 * currentBet;
 }
 
 void Player::loseBet()
