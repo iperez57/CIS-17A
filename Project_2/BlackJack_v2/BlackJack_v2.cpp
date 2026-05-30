@@ -195,7 +195,7 @@ void displayHand(Player& p)
         cout << p.getHand()[i].rank << " of " << p.getHand()[i].suit << endl;
     }
     cout << "Total: " << p.getTotal() << endl;
-    cout << "Money: $" << p.getChips() << endl;
+    cout << "Money: $" << p.getAvailableChips() << endl;
 }
 
 //Displays the dealers hand
@@ -311,6 +311,15 @@ void gameLoop(Deck& d, Player& player, Character& dealer, const int BLACKJACK, b
         {
             loaded = false;
         }
+        //ask player to enter a bet
+        do
+        {
+            cout << "Money: $" << player.getAvailableChips() << endl;
+            cout << "How much do you want to place a bet?" << endl;
+            cin >> betAmt;
+            cout << endl;
+            player.setBet(betAmt);
+        } while (betAmt < 10);
 
         cout << player.getName() << " hand:" << endl;
         displayHand(player);
@@ -342,7 +351,7 @@ void gameLoop(Deck& d, Player& player, Character& dealer, const int BLACKJACK, b
             {
                 cout << endl;
                 cout << "Do you want to HIT or STAND?" << endl;
-                cout << "HIT = 1    STAND = 2   BET = 3    SAVE GAME = 4" << endl;
+                cout << "HIT = 1    STAND = 2   SAVE GAME = 3" << endl;
 
                 cin >> user;
 
@@ -364,14 +373,6 @@ void gameLoop(Deck& d, Player& player, Character& dealer, const int BLACKJACK, b
                     turn = false;
                     break;
                 case 3:
-                    cout << "How much do you want to bet?" << endl;
-                    cin >> betAmt;
-                    cout << endl;
-                    player.setBet(betAmt);
-                    player.setChips(betAmt);
-                    displayHand(player);
-                    break;
-                case 4:
                     saveGame(d, player, dealer);
                     displayHand(player);
                     break;
