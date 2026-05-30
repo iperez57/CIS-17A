@@ -12,6 +12,11 @@ private:
 	int chips;
 	int currentBet;
 
+	//static variables
+	static int gamesPlayed;
+	static int gamesWon;
+	static int gamesLoss;
+
 public:
 	//constructor
 	Player();
@@ -25,11 +30,20 @@ public:
 	char* getName();
 	int getChips();
 	int getBet();
+	static int getGamesPlayed();
+	static int getGamesWon();
+	static int getGamesLost();
 
 	//betting functions
 	void winBet();
 	void loseBet();
 	int getAvailableChips();
+
+	//stat functions
+	static void addGamePlayed();
+	static void addWin();
+	static void addLoss();
+
 };
 
 #endif
