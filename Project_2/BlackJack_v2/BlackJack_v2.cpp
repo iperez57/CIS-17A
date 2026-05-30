@@ -73,7 +73,7 @@ void hit(Deck&, Character&);
 //gameplay functions
 void startingDraw(Deck&, Player&, Character&);
 void dealerTurn(Deck&, Character&, const int);
-void gameLoop(Deck&, Player&, Character&, const int, bool&);
+void gameLoop(Deck&, Player&, Character&, const int, bool&, bool&);
 bool replay(Deck&, Player&, Character&, bool&);
 void checkWinner(Player&, Character&, const int);
 void dealCard(Deck&, Character&);
@@ -111,8 +111,6 @@ int main(int argc, char** argv) {
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
 
-    player.Character::~Character();
-    dealer.Character::~Character();
     delete[] deck.cards;
 
     return 0;
@@ -318,8 +316,8 @@ void gameLoop(Deck& d, Player& player, Character& dealer, const int BLACKJACK, b
             cout << "How much do you want to place a bet?" << endl;
             cin >> betAmt;
             cout << endl;
-            player.setBet(betAmt);
-        } while (betAmt < 10);
+        } while (betAmt < 10 || betAmt > player.getChips());
+        player.setBet(betAmt);
 
         cout << player.getName() << " hand:" << endl;
         displayHand(player);
@@ -399,7 +397,17 @@ void gameLoop(Deck& d, Player& player, Character& dealer, const int BLACKJACK, b
             }
         }
 
-        playAgain = replay(d, player, dealer, quit);
+        //check if player is out of money
+        if (player.getChips() <= 0)
+        {
+            cout << "You are out of money! Game Over!" << endl;
+            quit = true;
+            playAgain = false;
+        }
+        else
+        {
+            playAgain = replay(d, player, dealer, quit);
+        }
 
     } while (playAgain);
 }
@@ -594,3 +602,6 @@ void dealCard(Deck& d, Character& recipient)
 
     d.topCard++;
 }
+
+//fix ace 
+//fix draw not displaying money after getting draw displays 0
