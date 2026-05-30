@@ -16,6 +16,7 @@ private:
 	static int gamesPlayed;
 	static int gamesWon;
 	static int gamesLoss;
+	static int gamesTied;
 
 public:
 	//constructor
@@ -33,6 +34,7 @@ public:
 	static int getGamesPlayed();
 	static int getGamesWon();
 	static int getGamesLost();
+	static int getGamesTied();
 
 	//betting functions
 	void winBet();
@@ -43,6 +45,7 @@ public:
 	static void addGamePlayed();
 	static void addWin();
 	static void addLoss();
+	static void addTie();
 
 };
 

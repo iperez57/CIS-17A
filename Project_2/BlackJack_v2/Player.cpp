@@ -5,6 +5,11 @@
 
 using namespace std;
 
+int Player::gamesPlayed = 0;
+int Player::gamesWon = 0;
+int Player::gamesLoss = 0;
+int Player::gamesTied = 0;
+
 //Constructor
 Player::Player()
 {
@@ -12,10 +17,6 @@ Player::Player()
 	//betting variables
 	chips = 100;
 	currentBet = 0;
-	//stat variables
-	gamesPlayed = 0;
-	gamesWon = 0;
-	gamesLoss = 0;
 }
 
 Player::Player(char c[])
@@ -24,10 +25,6 @@ Player::Player(char c[])
 	//betting variables
 	chips = 100;
 	currentBet = 0;
-	//stat variables
-	gamesPlayed = 0;
-	gamesWon = 0;
-	gamesLoss = 0;
 }
 
 //setters
@@ -72,6 +69,11 @@ int Player::getGamesLost()
 	return gamesLoss;
 }
 
+int Player::getGamesTied()
+{
+	return gamesTied;
+}
+
 
 //betting functions
 void Player::winBet()
@@ -105,4 +107,9 @@ void Player::addWin()
 void Player::addLoss()
 {
 	gamesLoss++;
+}
+
+void Player::addTie()
+{
+	gamesTied++;
 }
