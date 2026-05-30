@@ -93,6 +93,11 @@ int Player::getAvailableChips()
 	return chips - currentBet;
 }
 
+void Player::tieBet()
+{
+	currentBet = 0;
+}
+
 //stat functions
 void Player::addGamePlayed()
 {

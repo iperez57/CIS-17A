@@ -227,6 +227,7 @@ void checkWinner(Player& player, Character& dealer, const int BLACKJACK)
     if (player.getTotal() == BLACKJACK && dealer.getTotal() == BLACKJACK)
     {
         cout << "DRAW." << endl;
+        player.tieBet();
     }
     else if (player.getTotal() == BLACKJACK)
     {
@@ -256,6 +257,7 @@ void checkWinner(Player& player, Character& dealer, const int BLACKJACK)
     else if (player.getTotal() == dealer.getTotal())
     {
         cout << "DRAW!" << endl;
+        player.tieBet();
     }
 }
 
@@ -333,6 +335,7 @@ void gameLoop(Deck& d, Player& player, Character& dealer, const int BLACKJACK, b
                 cout << "Dealer Black JACK!" << endl;
                 cout << endl;
                 cout << "Draw!" << endl;
+                player.tieBet();
             }
             else
             {

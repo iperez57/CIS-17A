@@ -40,6 +40,7 @@ public:
 	void winBet();
 	void loseBet();
 	int getAvailableChips();
+	void tieBet();
 
 	//stat functions
 	static void addGamePlayed();
