@@ -54,25 +54,6 @@ int Player::getChips()
 	return chips;
 }
 
-int Player::getGamesPlayed()
-{
-	return gamesPlayed;
-}
-
-int Player::getGamesWon()
-{
-	return gamesWon;
-}
-
-int Player::getGamesLost()
-{
-	return gamesLoss;
-}
-
-int Player::getGamesTied()
-{
-	return gamesTied;
-}
 
 
 //betting functions
