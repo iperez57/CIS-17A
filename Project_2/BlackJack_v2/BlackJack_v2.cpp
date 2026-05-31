@@ -228,36 +228,43 @@ void checkWinner(Player& player, Character& dealer, const int BLACKJACK)
     {
         cout << "DRAW." << endl;
         player.tieBet();
+        player.addTie();
     }
     else if (player.getTotal() == BLACKJACK)
     {
         cout << "You win!" << endl;
         player.winBet();
+        player.addWin();
     }
     else if (dealer.getTotal() > BLACKJACK)
     {
         cout << "Dealer BUST. You win!" << endl;
         player.winBet();
+        player.addWin()
     }
     else if (dealer.getTotal() == BLACKJACK)
     {
         cout << "Dealer hit 21. You lose." << endl;
         player.loseBet();
+        player.addLoss();
     }
     else if (player.getTotal() > dealer.getTotal())
     {
         cout << "You win!" << endl;
         player.winBet();
+        player.addWin();
     }
     else if (dealer.getTotal() > player.getTotal())
     {
         cout << "You Lose!" << endl;
         player.loseBet();
+        player.addLoss();
     }
     else if (player.getTotal() == dealer.getTotal())
     {
         cout << "DRAW!" << endl;
         player.tieBet();
+        player.addTie();
     }
 }
 
@@ -311,9 +318,12 @@ void gameLoop(Deck& d, Player& player, Character& dealer, const int BLACKJACK, b
         {
             loaded = false;
         }
+
+        player.addGamePlayed();
         //ask player to enter a bet
         do
         {
+
             cout << "Money: $" << player.getAvailableChips() << endl;
             cout << "How much do you want to place a bet?" << endl;
             cin >> betAmt;
@@ -336,11 +346,13 @@ void gameLoop(Deck& d, Player& player, Character& dealer, const int BLACKJACK, b
                 cout << endl;
                 cout << "Draw!" << endl;
                 player.tieBet();
+                player.addTie();
             }
             else
             {
                 cout << "You win!" << endl;
                 player.winBet();
+                player.addWin();
             }
         }
         else
@@ -367,6 +379,7 @@ void gameLoop(Deck& d, Player& player, Character& dealer, const int BLACKJACK, b
                         cout << endl;
                         cout << "BUST!" << endl;
                         player.loseBet();
+                        player.addLoss();
                         turn = false;
                     }
                     break;
@@ -390,6 +403,7 @@ void gameLoop(Deck& d, Player& player, Character& dealer, const int BLACKJACK, b
                 {
                     cout << "Dealer BLACK JACK! You lose!" << endl;
                     player.loseBet();
+                    player.addLoss();
                     break;
                 }
                 else
@@ -434,7 +448,8 @@ void menu()
     cout << "Black Jack" << endl;
     cout << "1. Start Game" << endl;
     cout << "2. Load Game" << endl;
-    cout << "3. Exit" << endl;
+    cout << "3. View Game Stats" << endl;
+    cout << "4. Exit" << endl;
 }
 
 //handles menu selection logic
@@ -607,4 +622,3 @@ void dealCard(Deck& d, Character& recipient)
 }
 
 //fix ace 
-//fix draw not displaying money after getting draw displays 0
