@@ -5,6 +5,8 @@
 
 #include "Character.h"
 
+class Stats;
+
 class Player : public Character
 {
 private:
@@ -17,6 +19,8 @@ private:
 	static int gamesWon;
 	static int gamesLoss;
 	static int gamesTied;
+
+	friend class Stats;
 
 public:
 	//constructor

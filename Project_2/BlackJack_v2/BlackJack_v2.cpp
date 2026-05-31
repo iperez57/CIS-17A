@@ -50,7 +50,8 @@ enum MenuOptions
 {
     START = 1,
     LOAD = 2,
-    EXIT = 3
+    STATS = 3,
+    EXIT = 4
 };
 
 #pragma endregion
@@ -471,11 +472,13 @@ void menuSelection(Deck& d, Player& player, Character& dealer, const int BLACKJA
             gameLoop(d, player, dealer, BLACKJACK, quit, loaded);
             break;
         case LOAD:
-
             loadGame(d, player, dealer);
             loaded = true;
             gameLoop(d, player, dealer, BLACKJACK, quit, loaded);
             break;
+        case STATS:
+
+
         case EXIT:
             cout << "Exiting game ..." << endl;
             running = false;
