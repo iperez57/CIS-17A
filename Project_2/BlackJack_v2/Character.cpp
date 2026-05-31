@@ -77,6 +77,7 @@ void Character::setTotal(int t)
     total = t;
 }
 
+//character game functions
 void Character::addCard(Card c)
 {
     //dynamically increases size of recipients deck
@@ -107,4 +108,15 @@ void Character::reset()
     hand = nullptr;
     handSize = 0;
     total = 0;
+}
+
+//overloaded operators
+bool Character::operator==(const Character& other)
+{
+    return total == other.total;
+}
+
+bool Character::operator>(const Character& other)
+{
+    return total > other.total;
 }

@@ -31,5 +31,9 @@ public:
     //member functions
     void addCard(Card);
     void reset();
+
+    //overloaded operators
+    bool operator==(const Character&);
+    bool operator>(const Character&);
 };
 #endif
