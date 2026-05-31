@@ -14,6 +14,7 @@ protected:
 public:
     //constructor destructor
     Character();
+    Character(const Character&);
     virtual ~Character();
     
     //getters

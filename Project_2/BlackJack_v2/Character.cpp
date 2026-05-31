@@ -12,6 +12,27 @@ Character::Character()
 	total = 0;
 }
 
+Character::Character(const Character& other)
+{
+    handSize = other.handSize;
+    total = other.total;
+
+    if (other.hand != nullptr)
+    {
+        hand = new Card[handSize];
+
+        for (int i = 0; i < handSize; i++)
+        {
+            hand[i] = other.hand[i];
+        }
+    }
+
+    else
+    {
+        hand = nullptr;
+    }
+}
+
 Character::~Character()
 {
 	delete[] hand;
