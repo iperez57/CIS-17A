@@ -97,3 +97,9 @@ void Player::addTie()
 {
 	gamesTied++;
 }
+
+//overloaded operator
+bool Player::operator<=(int amount)
+{
+	return chips <= amount;
+}

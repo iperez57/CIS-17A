@@ -51,5 +51,8 @@ public:
 	static void addWin();
 	static void addLoss();
 	static void addTie();
+
+	//overloaded operators
+	bool operator<=(int);
 };
 #endif
