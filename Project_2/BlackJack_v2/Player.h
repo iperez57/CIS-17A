@@ -51,7 +51,5 @@ public:
 	static void addWin();
 	static void addLoss();
 	static void addTie();
-
 };
-
 #endif

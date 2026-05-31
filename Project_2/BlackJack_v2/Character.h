@@ -11,6 +11,7 @@ protected:
     Card* hand;
     int handSize;
     int total;
+
 public:
     //constructor destructor
     Character();
@@ -30,6 +31,5 @@ public:
     //member functions
     void addCard(Card);
     void reset();
-
 };
 #endif

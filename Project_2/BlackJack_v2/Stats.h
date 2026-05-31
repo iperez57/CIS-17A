@@ -11,5 +11,4 @@ class Stats
 public:
 	void displayStats(Player&);
 };
-
 #endif

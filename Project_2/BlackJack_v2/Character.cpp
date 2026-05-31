@@ -65,7 +65,6 @@ void Character::setHand(Card* c)
     {
         hand[i] = c[i];
     }
-
 }
 
 void Character::setHandSize(int t)

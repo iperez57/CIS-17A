@@ -54,8 +54,6 @@ int Player::getChips()
 	return chips;
 }
 
-
-
 //betting functions
 void Player::winBet()
 {

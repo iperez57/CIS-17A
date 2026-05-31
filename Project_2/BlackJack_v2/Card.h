@@ -9,5 +9,4 @@ struct Card
     char suit[10];
     int value;
 };
-
 #endif
