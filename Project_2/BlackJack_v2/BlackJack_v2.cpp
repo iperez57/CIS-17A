@@ -316,6 +316,7 @@ void gameLoop(Deck& d, Player& player, Character& dealer, const int BLACKJACK, b
             delete[] d.cards;
             d = initializeDeck();
             startingDraw(d, player, dealer);
+            Player backup(player);
         }
         else
         {
