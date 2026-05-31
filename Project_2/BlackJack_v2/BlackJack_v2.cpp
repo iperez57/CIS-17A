@@ -19,6 +19,7 @@ using namespace std;
 //User Libraries//struct for a single card
 #include "Card.h"
 #include "Player.h"
+#include "Stats.h"
 
 //struct for a deck of cards
 struct Deck
@@ -81,7 +82,7 @@ void dealCard(Deck&, Character&);
 
 //menu system
 void menu();
-void menuSelection(Deck&, Player&, Character&, const int, bool&);
+void menuSelection(Deck&, Player&, Character&, Stats&, const int, bool&);
 
 //save / load system
 void saveGame(Deck&, Player&, Character&);
@@ -96,6 +97,7 @@ int main(int argc, char** argv) {
     Deck deck;
     Player player;
     Character dealer;
+    Stats stats;
     const int BLACKJACK = 21;
 
     //Initialize all known variables
@@ -106,7 +108,7 @@ int main(int argc, char** argv) {
 
     //Display the Inputs/Outputs
     deck = initializeDeck();
-    menuSelection(deck, player, dealer, BLACKJACK, quit);
+    menuSelection(deck, player, dealer, stats, BLACKJACK, quit);
 
     //gameLoop(deck, player, dealer, BLACKJACK);
     //Clean up the code, close files, deallocate memory, etc....
@@ -241,7 +243,7 @@ void checkWinner(Player& player, Character& dealer, const int BLACKJACK)
     {
         cout << "Dealer BUST. You win!" << endl;
         player.winBet();
-        player.addWin()
+        player.addWin();
     }
     else if (dealer.getTotal() == BLACKJACK)
     {
@@ -454,7 +456,7 @@ void menu()
 }
 
 //handles menu selection logic
-void menuSelection(Deck& d, Player& player, Character& dealer, const int BLACKJACK, bool& quit)
+void menuSelection(Deck& d, Player& player, Character& dealer, Stats& stats, const int BLACKJACK, bool& quit)
 {
     int user;
     bool running = true;
@@ -464,6 +466,7 @@ void menuSelection(Deck& d, Player& player, Character& dealer, const int BLACKJA
     {
         menu();
         cin >> user;
+        cout << endl;
 
         switch (user)
         {
@@ -477,8 +480,8 @@ void menuSelection(Deck& d, Player& player, Character& dealer, const int BLACKJA
             gameLoop(d, player, dealer, BLACKJACK, quit, loaded);
             break;
         case STATS:
-
-
+            stats.displayStats(player);
+            break;
         case EXIT:
             cout << "Exiting game ..." << endl;
             running = false;

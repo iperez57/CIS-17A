@@ -10,4 +10,5 @@ void Stats::displayStats(Player& p)
 	cout << "Wins: " << p.gamesWon << endl;
 	cout << "Losses: " << p.gamesLoss << endl;
 	cout << "Ties: " << p.gamesTied << endl;
+	cout << endl;
 }
