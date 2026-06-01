@@ -334,15 +334,14 @@ void gameLoop(Deck& d, Player& player, Dealer& dealer, const int BLACKJACK, bool
 
         player.addGamePlayed();
         //ask player to enter a bet
-        do
+        try
         {
-
-            cout << "Money: $" << player.getAvailableChips() << endl;
-            cout << "How much do you want to place a bet?" << endl;
-            cin >> betAmt;
-            cout << endl;
-        } while (betAmt < 10 || betAmt > player.getChips());
-        player.setBet(betAmt);
+            player.setBet(betAmt);
+        }
+        catch (Player::InvalidBet)
+        {
+            cout << "Minimum bet is $10" << endl;
+        }
 
         cout << player.getName() << " hand:" << endl;
         displayHand(player);

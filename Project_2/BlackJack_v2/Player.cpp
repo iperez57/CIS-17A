@@ -40,12 +40,6 @@ void Player::setBet(int b)
 	{
 		throw InvalidBet();
 	}
-
-	if (b > getAvailableChips())
-	{
-		throw NotEnoughChips();
-	}
-
 	currentBet = b;
 }
 
