@@ -31,6 +31,7 @@ public:
     //member functions
     void addCard(Card);
     void reset();
+    virtual void showInfo();
 
     //overloaded operators
     bool operator==(const Character&);

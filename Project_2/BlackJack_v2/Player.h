@@ -54,5 +54,7 @@ public:
 
 	//overloaded operators
 	bool operator<=(int);
+
+	void showInfo() override;
 };
 #endif

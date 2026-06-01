@@ -195,8 +195,7 @@ void displayHand(Player& p)
     {
         cout << p.getHand()[i].rank << " of " << p.getHand()[i].suit << endl;
     }
-    cout << "Total: " << p.getTotal() << endl;
-    cout << "Money: $" << p.getAvailableChips() << endl;
+    p.showInfo();
 }
 
 //Displays the dealers hand

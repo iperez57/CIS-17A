@@ -2,6 +2,7 @@
 
 #include "Player.h"
 #include <cstring>
+#include <iostream>
 
 using namespace std;
 
@@ -102,4 +103,10 @@ void Player::addTie()
 bool Player::operator<=(int amount)
 {
 	return chips <= amount;
+}
+
+void Player::showInfo()
+{
+	cout << "Total: " << total << endl;
+	cout << "Money: $" << chips << endl;
 }

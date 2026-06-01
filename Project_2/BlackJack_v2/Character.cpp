@@ -1,6 +1,7 @@
 //Character.cpp
 
 #include "Character.h"
+#include <iostream>
 
 using namespace std;
 
@@ -108,6 +109,11 @@ void Character::reset()
     hand = nullptr;
     handSize = 0;
     total = 0;
+}
+
+void Character::showInfo()
+{
+    cout << "Dealer Total: " << total << endl;
 }
 
 //overloaded operators
