@@ -251,19 +251,19 @@ void checkWinner(Player& player, Character& dealer, const int BLACKJACK)
         player.loseBet();
         player.addLoss();
     }
-    else if (player.getTotal() > dealer.getTotal())
+    else if (player > dealer)
     {
         cout << "You win!" << endl;
         player.winBet();
         player.addWin();
     }
-    else if (dealer.getTotal() > player.getTotal())
+    else if (dealer > player)
     {
         cout << "You Lose!" << endl;
         player.loseBet();
         player.addLoss();
     }
-    else if (player.getTotal() == dealer.getTotal())
+    else if (player == dealer)
     {
         cout << "DRAW!" << endl;
         player.tieBet();
@@ -316,6 +316,8 @@ void gameLoop(Deck& d, Player& player, Character& dealer, const int BLACKJACK, b
             delete[] d.cards;
             d = initializeDeck();
             startingDraw(d, player, dealer);
+
+            //demonstrate copy constructor
             Player backup(player);
         }
         else
@@ -419,7 +421,7 @@ void gameLoop(Deck& d, Player& player, Character& dealer, const int BLACKJACK, b
         }
 
         //check if player is out of money
-        if (player.getChips() <= 0)
+        if (player <= 0)
         {
             cout << "You are out of money! Game Over!" << endl;
             quit = true;
