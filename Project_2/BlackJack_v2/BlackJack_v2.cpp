@@ -81,7 +81,7 @@ void dealerTurn(Deck&, Dealer&, const int);
 void gameLoop(Deck&, Player&, Dealer&, const int, bool&, bool&);
 bool replay(Deck&, Player&, Dealer&, bool&);
 void checkWinner(Player&, Dealer&, const int);
-void dealCard(Deck&, Dealer&);
+void dealCard(Deck&, Character&);
 
 //menu system
 void menu();
@@ -202,13 +202,13 @@ void displayHand(Player& p)
 }
 
 //Displays the dealers hand
-void displayHand(Dealer& p)
+void displayHand(Dealer& d)
 {
-    for (int i = 0; i < p.getHandSize(); i++)
+    for (int i = 0; i < d.getHandSize(); i++)
     {
-        cout << p.getHand()[i].rank << " of " << p.getHand()[i].suit << endl;
+        cout << d.getHand()[i].rank << " of " << d.getHand()[i].suit << endl;
     }
-    cout << "Total: " << p.getTotal() << endl;
+    d.showInfo();
 }
 
 //draws card for player and displays hand after getting new card
@@ -630,7 +630,7 @@ void loadGame(Deck& d, Player& player, Dealer& dealer)
     cout << "Game loaded!" << endl << endl;
 }
 
-void dealCard(Deck& d, Dealer& recipient)
+void dealCard(Deck& d, Character& recipient)
 {
     recipient.addCard(d.cards[d.topCard]);
 
