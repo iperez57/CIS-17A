@@ -8,7 +8,10 @@
 class Dealer : public Character
 {
 public:
-	void showInfo() override;
+	void dealerCardMsg();
+	void dealerThinkingMsg();
+	void dealerHitMsg();
+	void dealerStandMsg();
 };
 
 #endif

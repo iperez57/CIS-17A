@@ -5,7 +5,22 @@
 
 using namespace std;
 
-void Dealer::showInfo()
+void Dealer::dealerCardMsg()
 {
-	cout << "Dealer Total: " << total << endl;
+	cout << "Dealers Cards: " << endl;
+}
+
+void Dealer::dealerHitMsg()
+{
+	cout << "Dealer hits" << endl;
+}
+
+void Dealer::dealerStandMsg()
+{
+	cout << "Dealer stands" << endl;
+}
+
+void Dealer::dealerThinkingMsg()
+{
+	cout << "Dealer is thinking ..." << endl;
 }
