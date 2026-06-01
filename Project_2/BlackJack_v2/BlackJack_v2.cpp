@@ -12,6 +12,8 @@
 #include <string>
 #include <fstream>
 #include <cstring>
+#include <thread>
+#include <chrono>
 
 using namespace std;
 
@@ -289,6 +291,11 @@ void dealerTurn(Deck& d, Character& dealer, const int BLACKJACK)
         //dealer keeps hitting until above 16
         while (dealer.getTotal() <= DEALER_HIT)
         {
+            //make the dealer look like it is thinking by waiting 2 seconds
+            cout << endl;
+            cout << "Dealer is thinking..." << endl;
+            this_thread::sleep_for(chrono::seconds(2));
+
             cout << endl;
             cout << "Dealer hits" << endl << endl;
             cout << "Dealers cards" << endl;
