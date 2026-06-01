@@ -24,3 +24,8 @@ void Dealer::dealerThinkingMsg()
 {
 	cout << "Dealer is thinking ..." << endl;
 }
+
+void Dealer::showInfo()
+{
+	cout << "Total: " << total << endl;
+}

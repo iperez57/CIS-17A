@@ -12,6 +12,7 @@ public:
 	void dealerThinkingMsg();
 	void dealerHitMsg();
 	void dealerStandMsg();
-};
 
+	void showInfo() override;
+};
 #endif

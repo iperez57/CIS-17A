@@ -279,7 +279,7 @@ void dealerTurn(Deck& d, Dealer& dealer, const int BLACKJACK)
     const int DEALER_HIT = 16;
 
     cout << endl;
-    cout << "Dealers cards" << endl;
+    dealer.dealerCardMsg();
     displayHand(dealer);
 
     //dealer already has blackjack
@@ -294,16 +294,16 @@ void dealerTurn(Deck& d, Dealer& dealer, const int BLACKJACK)
         {
             //make the dealer look like it is thinking by waiting 2 seconds
             cout << endl;
-            cout << "Dealer is thinking..." << endl;
+            dealer.dealerThinkingMsg();
             this_thread::sleep_for(chrono::seconds(2));
 
             cout << endl;
-            cout << "Dealer hits" << endl << endl;
-            cout << "Dealers cards" << endl;
+            dealer.dealerHitMsg();
+            dealer.dealerCardMsg();
             hit(d, dealer);
         }
         cout << endl;
-        cout << "Dealer stands." << endl;
+        dealer.dealerStandMsg();
     }
 }
 
