@@ -40,6 +40,10 @@ void Player::setBet(int b)
 	{
 		throw InvalidBet();
 	}
+	if (b > chips)
+	{
+		throw NotEnoughChips();
+	}
 	currentBet = b;
 }
 
@@ -82,6 +86,14 @@ void Player::tieBet()
 	currentBet = 0;
 }
 
+void Player::validBet()
+{
+	if (chips <= 0 )
+	{
+		throw NotEnoughChips();
+	}
+}
+
 //stat functions
 void Player::addGamePlayed()
 {
@@ -112,5 +124,5 @@ bool Player::operator<=(int amount)
 void Player::showInfo()
 {
 	cout << "Total: " << total << endl;
-	cout << "Money: $" << chips << endl;
+	cout << "Money: $" << getAvailableChips() << endl;
 }

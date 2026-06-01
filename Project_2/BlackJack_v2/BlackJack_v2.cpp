@@ -314,6 +314,7 @@ void gameLoop(Deck& d, Player& player, Dealer& dealer, const int BLACKJACK, bool
     int betAmt;
     bool playAgain;
     bool turn;
+    bool validB;
 
     do
     {
@@ -334,15 +335,30 @@ void gameLoop(Deck& d, Player& player, Dealer& dealer, const int BLACKJACK, bool
 
         player.addGamePlayed();
         //ask player to enter a bet
-        try
+        do
         {
-            player.setBet(betAmt);
-        }
-        catch (Player::InvalidBet)
-        {
-            cout << "Minimum bet is $10" << endl;
-        }
+            validB = false;
+            try
+            {
+                cout << endl;
+                cout << "Money: $" << player.getChips() << endl;
+                cout << "How much do you want to place a bet? (min 10)" << endl;
+                cin >> betAmt;
+                cout << endl;
 
+                player.setBet(betAmt);
+                validB = true;
+            }
+            catch (Player::InvalidBet)
+            {
+                cout << "Minimum bet is $10" << endl;
+            }
+            catch (Player::NotEnoughChips)
+            {
+                cout << "You entered too much money." << endl;
+            }
+
+        } while (!validB);
         cout << player.getName() << " hand:" << endl;
         displayHand(player);
 
@@ -427,15 +443,18 @@ void gameLoop(Deck& d, Player& player, Dealer& dealer, const int BLACKJACK, bool
         }
 
         //check if player is out of money
-        if (player <= 0)
+        try
         {
+            player.validBet();
+
+            playAgain = replay(d, player, dealer, quit);
+        }
+        catch (Player::NotEnoughChips)
+        {
+            cout << endl;
             cout << "You are out of money! Game Over!" << endl;
             quit = true;
             playAgain = false;
-        }
-        else
-        {
-            playAgain = replay(d, player, dealer, quit);
         }
 
     } while (playAgain);
