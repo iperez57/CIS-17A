@@ -22,6 +22,7 @@ using namespace std;
 #include "Card.h"
 #include "Player.h"
 #include "Stats.h"
+#include "Dealer.h"
 
 //struct for a deck of cards
 struct Deck
@@ -70,25 +71,25 @@ void shuffleDeck(Deck&);
 //player/ hand functions
 void getPlayer(Player&);
 void displayHand(Player&);
-void displayHand(Character&);
+void displayHand(Dealer&);
 void hit(Deck&, Player&);
-void hit(Deck&, Character&);
+void hit(Deck&, Dealer&);
 
 //gameplay functions
-void startingDraw(Deck&, Player&, Character&);
-void dealerTurn(Deck&, Character&, const int);
-void gameLoop(Deck&, Player&, Character&, const int, bool&, bool&);
-bool replay(Deck&, Player&, Character&, bool&);
-void checkWinner(Player&, Character&, const int);
-void dealCard(Deck&, Character&);
+void startingDraw(Deck&, Player&, Dealer&);
+void dealerTurn(Deck&, Dealer&, const int);
+void gameLoop(Deck&, Player&, Dealer&, const int, bool&, bool&);
+bool replay(Deck&, Player&, Dealer&, bool&);
+void checkWinner(Player&, Dealer&, const int);
+void dealCard(Deck&, Dealer&);
 
 //menu system
 void menu();
-void menuSelection(Deck&, Player&, Character&, Stats&, const int, bool&);
+void menuSelection(Deck&, Player&, Dealer&, Stats&, const int, bool&);
 
 //save / load system
-void saveGame(Deck&, Player&, Character&);
-void loadGame(Deck&, Player&, Character&);
+void saveGame(Deck&, Player&, Dealer&);
+void loadGame(Deck&, Player&, Dealer&);
 #pragma endregion
 
 //Execution of Code Begins Here
@@ -98,7 +99,7 @@ int main(int argc, char** argv) {
     //Declare all variables for this function
     Deck deck;
     Player player;
-    Character dealer;
+    Dealer dealer;
     Stats stats;
     const int BLACKJACK = 21;
 
@@ -177,7 +178,7 @@ void shuffleDeck(Deck& d)
 }
 
 //starts game by dealing 2 cards to player and dealer
-void startingDraw(Deck& d, Player& player, Character& dealer)
+void startingDraw(Deck& d, Player& player, Dealer& dealer)
 {
     const int START_DEAL = 2;
 
@@ -201,7 +202,7 @@ void displayHand(Player& p)
 }
 
 //Displays the dealers hand
-void displayHand(Character& p)
+void displayHand(Dealer& p)
 {
     for (int i = 0; i < p.getHandSize(); i++)
     {
@@ -218,14 +219,14 @@ void hit(Deck& d, Player& p)
 }
 
 //draws card for dealer and displays hand after getting new card
-void hit(Deck& d, Character& p)
+void hit(Deck& d, Dealer& p)
 {
     dealCard(d, p);
     displayHand(p);
 }
 
 //determines winner of round
-void checkWinner(Player& player, Character& dealer, const int BLACKJACK)
+void checkWinner(Player& player, Dealer& dealer, const int BLACKJACK)
 {
     cout << endl;
     if (player.getTotal() == BLACKJACK && dealer.getTotal() == BLACKJACK)
@@ -273,7 +274,7 @@ void checkWinner(Player& player, Character& dealer, const int BLACKJACK)
 }
 
 //dealer logic
-void dealerTurn(Deck& d, Character& dealer, const int BLACKJACK)
+void dealerTurn(Deck& d, Dealer& dealer, const int BLACKJACK)
 {
     const int DEALER_HIT = 16;
 
@@ -307,7 +308,7 @@ void dealerTurn(Deck& d, Character& dealer, const int BLACKJACK)
 }
 
 //Controls hit/stand, dealer logic, and win conditions
-void gameLoop(Deck& d, Player& player, Character& dealer, const int BLACKJACK, bool& quit, bool& loaded)
+void gameLoop(Deck& d, Player& player, Dealer& dealer, const int BLACKJACK, bool& quit, bool& loaded)
 {
     int user;
     int betAmt;
@@ -465,7 +466,7 @@ void menu()
 }
 
 //handles menu selection logic
-void menuSelection(Deck& d, Player& player, Character& dealer, Stats& stats, const int BLACKJACK, bool& quit)
+void menuSelection(Deck& d, Player& player, Dealer& dealer, Stats& stats, const int BLACKJACK, bool& quit)
 {
     int user;
     bool running = true;
@@ -505,7 +506,7 @@ void menuSelection(Deck& d, Player& player, Character& dealer, Stats& stats, con
 }
 
 //replay
-bool replay(Deck& d, Player& player, Character& dealer, bool& quit)
+bool replay(Deck& d, Player& player, Dealer& dealer, bool& quit)
 {
     char choice;
 
@@ -532,7 +533,7 @@ bool replay(Deck& d, Player& player, Character& dealer, bool& quit)
 }
 
 //save game data
-void saveGame(Deck& d, Player& player, Character& dealer)
+void saveGame(Deck& d, Player& player, Dealer& dealer)
 {
     //open binary output file
     ofstream out("save.dat", ios::binary);
@@ -575,7 +576,7 @@ void saveGame(Deck& d, Player& player, Character& dealer)
 }
 
 //load game data
-void loadGame(Deck& d, Player& player, Character& dealer)
+void loadGame(Deck& d, Player& player, Dealer& dealer)
 {
     //open binary file
     ifstream saveData("save.dat", ios::binary);
@@ -629,7 +630,7 @@ void loadGame(Deck& d, Player& player, Character& dealer)
     cout << "Game loaded!" << endl << endl;
 }
 
-void dealCard(Deck& d, Character& recipient)
+void dealCard(Deck& d, Dealer& recipient)
 {
     recipient.addCard(d.cards[d.topCard]);
 
