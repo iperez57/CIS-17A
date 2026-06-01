@@ -340,7 +340,6 @@ void gameLoop(Deck& d, Player& player, Dealer& dealer, const int BLACKJACK, bool
             validB = false;
             try
             {
-                cout << endl;
                 cout << "Money: $" << player.getChips() << endl;
                 cout << "How much do you want to place a bet? (min 10)" << endl;
                 cin >> betAmt;

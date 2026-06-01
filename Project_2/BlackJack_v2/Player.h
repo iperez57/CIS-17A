@@ -39,10 +39,6 @@ public:
 	char* getName();
 	int getChips();
 	int getBet();
-	static int getGamesPlayed();
-	static int getGamesWon();
-	static int getGamesLost();
-	static int getGamesTied();
 
 	//betting functions
 	void winBet();

@@ -98,8 +98,28 @@ void Character::addCard(Card c)
 
     //Updates characters hand, total, and hand size
     hand = newHand;
-    total += c.value;
     handSize++;
+
+    //recalculate total for ace
+    total = 0;
+    int aceCount = 0;
+
+    for (int i = 0; i < handSize; i++)
+    {
+        total += hand[i].value;
+
+        if (strcmp(hand[i].rank, "Ace") == 0)
+        {
+            aceCount++;
+        }
+    }
+
+    //Change ace value from 1 to 11 when possible
+    while (aceCount > 0 && total + 10 <= 21)
+    {
+        total += 10;
+        aceCount--;
+    }
 }
 
 void Character::reset()
