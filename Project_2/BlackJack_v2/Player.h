@@ -27,6 +27,10 @@ public:
 	Player();
 	Player(char[]);
 
+	//exceptions
+	class InvalidBet {};
+	class NotEnoughChips {};
+
 	//setters
 	void setName(char[]);
 	void setBet(int);

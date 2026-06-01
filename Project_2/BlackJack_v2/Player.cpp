@@ -36,6 +36,16 @@ void Player::setName(char c[])
 
 void Player::setBet(int b)
 {
+	if (b < 10)
+	{
+		throw InvalidBet();
+	}
+
+	if (b > getAvailableChips())
+	{
+		throw NotEnoughChips();
+	}
+
 	currentBet = b;
 }
 
