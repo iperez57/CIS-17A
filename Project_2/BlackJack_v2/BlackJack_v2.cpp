@@ -54,6 +54,9 @@ struct SaveData
 {
     char name[20];
 
+    int chips;
+    int bet;
+
     Card playerHand[52];
     int playerHandSize;
     int playerTotal;
@@ -554,6 +557,8 @@ void saveGame(Deck& d, Player& player, Dealer& dealer)
     //copy player data
     strcpy_s(data.name, player.getName());
 
+    data.chips = player.getChips();
+    data.bet = player.getBet();
     data.playerHandSize = player.getHandSize();
     data.playerTotal = player.getTotal();
 
@@ -608,6 +613,8 @@ void loadGame(Deck& d, Player& player, Dealer& dealer)
 
     player.setName(data.name);
 
+    player.setBet(data.bet);
+    player.setChips(data.chips);
     player.setHandSize(data.playerHandSize);
     player.setTotal(data.playerTotal);
 
@@ -640,4 +647,3 @@ void loadGame(Deck& d, Player& player, Dealer& dealer)
 
     cout << "Game loaded!" << endl << endl;
 }
-
