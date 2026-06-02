@@ -18,7 +18,7 @@
 using namespace std;
 
 #pragma region User Libraries
-//User Libraries//struct for a single card
+//User Libraries
 #include "Card.h"
 #include "Player.h"
 #include "Stats.h"
@@ -32,6 +32,23 @@ struct Deck
     int topCard;
 };
 
+//template
+template <class T>
+void displayHand(T& obj)
+{
+    for (int i = 0; i < obj.getHandSize(); i++)
+    {
+        cout << obj.getHand()[i].rank << " of " << obj.getHand()[i].suit << endl;
+    }
+    obj.showInfo();
+}
+
+template <class T>
+void dealCard(Deck& d, T& recipient)
+{
+    recipient.addCard(d.cards[d.topCard]);
+    d.topCard++;
+}
 //struct used for saving and loading game data
 struct SaveData
 {
@@ -70,8 +87,6 @@ void shuffleDeck(Deck&);
 
 //player/ hand functions
 void getPlayer(Player&);
-void displayHand(Player&);
-void displayHand(Dealer&);
 void hit(Deck&, Player&);
 void hit(Deck&, Dealer&);
 
@@ -81,7 +96,6 @@ void dealerTurn(Deck&, Dealer&, const int);
 void gameLoop(Deck&, Player&, Dealer&, const int, bool&, bool&);
 bool replay(Deck&, Player&, Dealer&, bool&);
 void checkWinner(Player&, Dealer&, const int);
-void dealCard(Deck&, Character&);
 
 //menu system
 void menu();
@@ -189,26 +203,6 @@ void startingDraw(Deck& d, Player& player, Dealer& dealer)
         dealCard(d, player);
         dealCard(d, dealer);
     }
-}
-
-//Displays the players hand
-void displayHand(Player& p)
-{
-    for (int i = 0; i < p.getHandSize(); i++)
-    {
-        cout << p.getHand()[i].rank << " of " << p.getHand()[i].suit << endl;
-    }
-    p.showInfo();
-}
-
-//Displays the dealers hand
-void displayHand(Dealer& d)
-{
-    for (int i = 0; i < d.getHandSize(); i++)
-    {
-        cout << d.getHand()[i].rank << " of " << d.getHand()[i].suit << endl;
-    }
-    d.showInfo();
 }
 
 //draws card for player and displays hand after getting new card
@@ -647,11 +641,3 @@ void loadGame(Deck& d, Player& player, Dealer& dealer)
     cout << "Game loaded!" << endl << endl;
 }
 
-void dealCard(Deck& d, Character& recipient)
-{
-    recipient.addCard(d.cards[d.topCard]);
-
-    d.topCard++;
-}
-
-//fix ace 
