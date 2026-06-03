@@ -54,6 +54,7 @@ struct SaveData
 {
     char name[20];
 
+    //player bets
     int chips;
     int bet;
 
@@ -68,6 +69,12 @@ struct SaveData
     Card deckCards[52];
     int topCard;
     int size;
+
+    //game stats
+    int wins;
+    int loss;
+    int ties;
+    int gamesPlayed;
 };
 
 enum MenuOptions
@@ -585,6 +592,12 @@ void saveGame(Deck& d, Player& player, Dealer& dealer)
         data.deckCards[i] = d.cards[i];
     }
 
+    //copy game stats
+    data.gamesPlayed = player.getGamesPlayed();
+    data.wins = player.getGamesWon();
+    data.loss = player.getGamesLoss();
+    data.ties = player.getGamesTied();
+
     out.write(reinterpret_cast<char*>(&data), sizeof(SaveData));
     out.close();
 
@@ -642,6 +655,12 @@ void loadGame(Deck& d, Player& player, Dealer& dealer)
     {
         d.cards[i] = data.deckCards[i];
     }
+
+    //copy game stats
+    player.setGamesPlayed(data.gamesPlayed);
+    player.setGamesWon(data.wins);
+    player.setGamesLoss(data.loss);
+    player.setGamesTied(data.ties);
 
     saveData.close();
 

@@ -52,6 +52,26 @@ void Player::setChips(int c)
 	chips = c;
 }
 
+void Player::setGamesPlayed(int g)
+{
+	gamesPlayed = g;
+}
+
+void Player::setGamesWon(int g)
+{
+	gamesWon = g;
+}
+
+void Player::setGamesLoss(int g)
+{
+	gamesLoss = g;
+}
+
+void Player::setGamesTied(int g)
+{
+	gamesTied = g;
+}
+
 //getters
 char* Player::getName()
 {
@@ -66,6 +86,26 @@ int Player::getBet()
 int Player::getChips()
 {
 	return chips;
+}
+
+int Player::getGamesPlayed()
+{
+	return gamesPlayed;
+}
+
+int Player::getGamesWon()
+{
+	return gamesWon;
+}
+
+int Player::getGamesLoss()
+{
+	return gamesLoss;
+}
+
+int Player::getGamesTied()
+{
+	return gamesTied;
 }
 
 //betting functions

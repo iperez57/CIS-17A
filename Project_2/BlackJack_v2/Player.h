@@ -35,11 +35,19 @@ public:
 	void setName(char[]);
 	void setBet(int);
 	void setChips(int);
+	void setGamesPlayed(int);
+	void setGamesWon(int);
+	void setGamesLoss(int);
+	void setGamesTied(int);
 
 	//getters
 	char* getName();
 	int getChips();
 	int getBet();
+	int getGamesPlayed();
+	int getGamesWon();
+	int getGamesLoss();
+	int getGamesTied();
 
 	//betting functions
 	void winBet();
