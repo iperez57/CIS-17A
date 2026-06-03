@@ -25,6 +25,13 @@ void Dealer::dealerThinkingMsg()
 	cout << "Dealer is thinking ..." << endl;
 }
 
+void Dealer::dealerHiddenHand()
+{
+	cout << hand[0].rank << " of " << hand[0].suit << endl;
+
+	cout << "[Hidden Card]" << endl;
+}
+
 void Dealer::showInfo()
 {
 	cout << "Total: " << total << endl;

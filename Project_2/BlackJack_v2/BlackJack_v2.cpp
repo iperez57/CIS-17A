@@ -147,7 +147,6 @@ int main(int argc, char** argv) {
 }
 
 //Function Implementations
-
 //Creates and returns a 52 deck of cards
 Deck initializeDeck()
 {
