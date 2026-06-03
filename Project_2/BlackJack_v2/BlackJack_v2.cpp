@@ -456,7 +456,7 @@ void gameLoop(Deck& d, Player& player, Dealer& dealer, const int BLACKJACK, bool
         {
             cout << endl;
             cout << "You are out of money! Game Over!" << endl;
-            quit = true;
+            cout << endl;
             playAgain = false;
         }
 
@@ -547,7 +547,6 @@ bool replay(Deck& d, Player& player, Dealer& dealer, bool& quit)
     //fully exit game
     if (choice == 'n' || choice == 'N')
     {
-        quit = true;
         return false;
     }
     return false;
