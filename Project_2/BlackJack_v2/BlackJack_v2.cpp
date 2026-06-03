@@ -14,6 +14,7 @@
 #include <cstring>
 #include <thread>
 #include <chrono>
+#include <iomanip>
 
 using namespace std;
 
@@ -106,6 +107,7 @@ void dealerTurn(Deck&, Dealer&, const int);
 void gameLoop(Deck&, Player&, Dealer&, const int, bool&, bool&);
 bool replay(Deck&, Player&, Dealer&, bool&);
 void checkWinner(Player&, Dealer&, const int);
+void displayGameBoard(Player&, Dealer&);
 
 //menu system
 void menu();
@@ -281,7 +283,7 @@ void dealerTurn(Deck& d, Dealer& dealer, const int BLACKJACK)
 {
     const int DEALER_HIT = 16;
 
-    cout << endl;
+    cout << endl << "Dealer shows hidden card" << endl;
     dealer.dealerCardMsg();
     displayHand(dealer);
 
@@ -363,6 +365,10 @@ void gameLoop(Deck& d, Player& player, Dealer& dealer, const int BLACKJACK, bool
         } while (!validB);
         cout << player.getName() << " hand:" << endl;
         displayHand(player);
+        
+        cout << endl;
+        dealer.dealerCardMsg();
+        dealer.dealerHiddenHand();
 
         //instant blackjack check
         if (player.getTotal() == BLACKJACK && player.getHandSize() == 2)
