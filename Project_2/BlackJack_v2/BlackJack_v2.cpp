@@ -41,8 +41,6 @@ enum MenuOptions
 //Well known Science, Mathematical and Laboratory Constants
 
 #pragma region Function Prototypes
-//player/ hand functions
-void getPlayer(Player&);
 
 //menu system
 void menu();
@@ -106,7 +104,7 @@ void menuSelection(Deck& d, Player& player, Dealer& dealer, Stats& stats, const 
         switch (user)
         {
         case START:
-            getPlayer(player);
+            player.createPlayer(player);
             cout << "How many decks? (1-3): ";
             cin >> decks;
             d.buildDeck(decks);
