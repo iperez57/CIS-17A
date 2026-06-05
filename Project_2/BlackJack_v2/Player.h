@@ -48,6 +48,7 @@ public:
 	int getGamesWon();
 	int getGamesLoss();
 	int getGamesTied();
+	
 
 	//betting functions
 	void winBet();
@@ -64,6 +65,9 @@ public:
 
 	//overloaded operators
 	bool operator<=(int);
+
+	//asks for player username
+	void createPlayer(Player&);
 
 	void showInfo() override;
 };

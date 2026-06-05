@@ -78,20 +78,6 @@ int main(int argc, char** argv) {
 }
 
 //Function Implementations
-
-//ask for player info
-void getPlayer(Player& player)
-{
-    char temp[20];
-
-    cout << "Create Username: ";
-    cin.ignore();
-    cin.getline(temp, 20);
-    cout << endl;
-
-    player.setName(temp);
-}
-
 //display menu
 void menu()
 {

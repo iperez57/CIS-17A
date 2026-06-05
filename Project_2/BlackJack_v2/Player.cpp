@@ -166,6 +166,18 @@ bool Player::operator<=(int amount)
 	return chips <= amount;
 }
 
+void Player::createPlayer(Player& player)
+{
+	char temp[20];
+
+	cout << "Create Username: ";
+	cin.ignore();
+	cin.getline(temp, 20);
+	cout << endl;
+
+	player.setName(temp);
+}
+
 void Player::showInfo()
 {
 	cout << "Total: " << total << endl;
