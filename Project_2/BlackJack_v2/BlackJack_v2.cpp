@@ -24,14 +24,7 @@ using namespace std;
 #include "Player.h"
 #include "Stats.h"
 #include "Dealer.h"
-
-//struct for a deck of cards
-struct Deck
-{
-    Card* cards;
-    int size;
-    int topCard;
-};
+#include "Deck.h"
 
 //template
 template <class T>
@@ -47,8 +40,8 @@ void displayHand(T& obj)
 template <class T>
 void dealCard(Deck& d, T& recipient)
 {
-    recipient.addCard(d.cards[d.topCard]);
-    d.topCard++;
+    recipient.addCard(d.drawCard());
+
 }
 //struct used for saving and loading game data
 struct SaveData
@@ -92,10 +85,6 @@ enum MenuOptions
 //Well known Science, Mathematical and Laboratory Constants
 
 #pragma region Function Prototypes
-                // card/deck functions
-Deck initializeDeck();
-void shuffleDeck(Deck&);
-
 //player/ hand functions
 void getPlayer(Player&);
 void hit(Deck&, Player&);
@@ -136,78 +125,22 @@ int main(int argc, char** argv) {
     //Maps known values to the unknown objectives
 
     //Display the Inputs/Outputs
-    deck = initializeDeck();
     menuSelection(deck, player, dealer, stats, BLACKJACK, quit);
 
     //gameLoop(deck, player, dealer, BLACKJACK);
     //Clean up the code, close files, deallocate memory, etc....
     //Exit stage right
 
-    delete[] deck.cards;
-
     return 0;
 }
 
 //Function Implementations
-//Creates and returns a 52 deck of cards
-Deck initializeDeck()
-{
-    Deck d;
-
-    //array for values, ranks, and suit that a card will have
-    string ranks[] = { "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King" };
-    string suits[] = { "Hearts", "Spades", "Clubs", "Diamonds" };
-    int values[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10 };
-
-    //allocates memory for deck
-    d.cards = new Card[52];
-    d.size = 52;
-    d.topCard = 0;
-
-    //tracks position of card from 0 to 51
-    int indx = 0;
-
-    const int NUM_SUITS = 4;
-    const int NUM_RANKS = 13;
-
-    //Assigns a rank, suit, and value to a card
-    for (int i = 0; i < NUM_SUITS; i++)
-    {
-        for (int j = 0; j < NUM_RANKS; j++)
-        {
-            strcpy_s(d.cards[indx].suit, suits[i].c_str());
-            strcpy_s(d.cards[indx].rank, ranks[j].c_str());
-            d.cards[indx].value = values[j];
-
-            indx++;
-        }
-    }
-
-    return d;
-}
-
-//Shuffles the original deck using Fisher yates algorithm
-void shuffleDeck(Deck& d)
-{
-    Card temp;
-    int r;
-    //finds random index then swaps 
-    for (int i = d.size - 1; i > 0; i--)
-    {
-        r = rand() % (i + 1);
-
-        temp = d.cards[i];
-        d.cards[i] = d.cards[r];
-        d.cards[r] = temp;
-    }
-}
-
 //starts game by dealing 2 cards to player and dealer
 void startingDraw(Deck& d, Player& player, Dealer& dealer)
 {
     const int START_DEAL = 2;
 
-    shuffleDeck(d);
+    d.shuffle();
 
     for (int i = 0; i < START_DEAL; i++)
     {
@@ -325,9 +258,8 @@ void gameLoop(Deck& d, Player& player, Dealer& dealer, const int BLACKJACK, bool
     {
         //start new game or continue loaded game
         if (!loaded)
-        {
-            delete[] d.cards;
-            d = initializeDeck();
+        {   
+            d.reset();
             startingDraw(d, player, dealer);
 
             //demonstrate copy constructor
@@ -588,12 +520,12 @@ void saveGame(Deck& d, Player& player, Dealer& dealer)
     }
 
     //copy deck data
-    data.topCard = d.topCard;
-    data.size = d.size;
+    data.topCard = d.getTopCard();
+    data.size = d.getSize();
 
-    for (int i = 0; i < d.size; i++)
+    for (int i = 0; i < d.getSize(); i++)
     {
-        data.deckCards[i] = d.cards[i];
+        data.deckCards[i] = d.getCards()[i];
     }
 
     //copy game stats
@@ -648,17 +580,9 @@ void loadGame(Deck& d, Player& player, Dealer& dealer)
     dealer.setHand(data.dealerHand);
 
     //load deck
-    delete[] d.cards;
-
-    d.cards = new Card[data.size];
-    d.size = data.size;
-    d.topCard = data.topCard;
-
-    //copy deck cards
-    for (int i = 0; i < d.size; i++)
-    {
-        d.cards[i] = data.deckCards[i];
-    }
+    d.loadCards(data.deckCards, data.size);
+    d.setSize(data.size);
+    d.setTopCard(data.topCard);
 
     //copy game stats
     player.setGamesPlayed(data.gamesPlayed);
