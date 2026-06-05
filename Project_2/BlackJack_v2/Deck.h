@@ -11,8 +11,11 @@ private:
 	Card* cards;
 	int size;
 	int topCard;
+	int numDecks;
+
 public:
 	Deck();
+	Deck(int);
 	~Deck();
 
 	void shuffle();
@@ -27,7 +30,7 @@ public:
 
 	void loadCards(Card[], int);
 	void reset();
-	void buildDeck();
+	void buildDeck(int);
 };
 
 #endif

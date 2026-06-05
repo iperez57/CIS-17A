@@ -9,7 +9,18 @@ using namespace std;
 Deck::Deck()
 {
     cards = nullptr;
-    buildDeck();
+    numDecks = 1;
+    buildDeck(numDecks);
+}
+
+Deck::Deck(int decks)
+{
+    cards = nullptr;
+    if (decks < 1) decks = 1;
+    if (decks > 3) decks = 3;
+
+    numDecks = decks;
+    buildDeck(numDecks);
 }
 
 Deck::~Deck()
@@ -20,7 +31,6 @@ Deck::~Deck()
 //Shuffles the original deck using Fisher yates algorithm
 void Deck::shuffle()
 {
-    topCard = 0;
     Card temp;
     int r;
     //finds random index then swaps 
@@ -87,29 +97,34 @@ void Deck::loadCards(Card source[], int sz)
 void Deck::reset()
 {
     delete[] cards;
-    buildDeck();
+    buildDeck(numDecks);
 }
 
-void Deck::buildDeck()
+void Deck::buildDeck(int numDecks)
 {
     string ranks[] = { "Ace","2","3","4","5","6","7","8","9","10","Jack","Queen","King" };
     string suits[] = { "Hearts","Spades","Clubs","Diamonds" };
     int values[] = { 1,2,3,4,5,6,7,8,9,10,10,10,10 };
 
-    cards = new Card[52];
-    size = 52;
+    int totalCards = 52 * numDecks;
+
+    cards = new Card[totalCards];
+    size = totalCards;
     topCard = 0;
 
     int indx = 0;
 
-    for (int i = 0; i < 4; i++)
+    for (int d = 0; d < numDecks; d++)
     {
-        for (int j = 0; j < 13; j++)
+        for (int i = 0; i < 4; i++)
         {
-            strcpy_s(cards[indx].suit, suits[i].c_str());
-            strcpy_s(cards[indx].rank, ranks[j].c_str());
-            cards[indx].value = values[j];
-            indx++;
+            for (int j = 0; j < 13; j++)
+            {
+                strcpy_s(cards[indx].suit, suits[i].c_str());
+                strcpy_s(cards[indx].rank, ranks[j].c_str());
+                cards[indx].value = values[j];
+                indx++;
+            }
         }
     }
 }

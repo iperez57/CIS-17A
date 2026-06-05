@@ -429,6 +429,7 @@ void menuSelection(Deck& d, Player& player, Dealer& dealer, Stats& stats, const 
     int user;
     bool running = true;
     bool loaded = false;
+    int decks;
 
     while (running && !quit)
     {
@@ -440,6 +441,9 @@ void menuSelection(Deck& d, Player& player, Dealer& dealer, Stats& stats, const 
         {
         case START:
             getPlayer(player);
+            cout << "How many decks? (1-3): ";
+            cin >> decks;
+            d = Deck(decks);
             gameLoop(d, player, dealer, BLACKJACK, quit, loaded);
             break;
         case LOAD:
