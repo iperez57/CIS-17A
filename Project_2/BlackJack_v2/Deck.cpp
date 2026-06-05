@@ -96,12 +96,12 @@ void Deck::loadCards(Card source[], int sz)
 
 void Deck::reset()
 {
-    delete[] cards;
     buildDeck(numDecks);
 }
 
 void Deck::buildDeck(int numDecks)
 {
+    delete[] cards;
     string ranks[] = { "Ace","2","3","4","5","6","7","8","9","10","Jack","Queen","King" };
     string suits[] = { "Hearts","Spades","Clubs","Diamonds" };
     int values[] = { 1,2,3,4,5,6,7,8,9,10,10,10,10 };

@@ -443,7 +443,7 @@ void menuSelection(Deck& d, Player& player, Dealer& dealer, Stats& stats, const 
             getPlayer(player);
             cout << "How many decks? (1-3): ";
             cin >> decks;
-            d = Deck(decks);
+            d.buildDeck(decks);
             gameLoop(d, player, dealer, BLACKJACK, quit, loaded);
             break;
         case LOAD:
