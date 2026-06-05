@@ -13,16 +13,6 @@
 
 using namespace std;
 
-void GameEngine::dealCard(Deck& d, Player& p)
-{
-    p.addCard(d.drawCard());
-}
-
-void GameEngine::dealCard(Deck& d, Dealer& p)
-{
-    p.addCard(d.drawCard());
-}
-
 //Controls hit/stand, dealer logic, and win conditions
 void GameEngine::gameLoop(Deck& d, Player& player, Dealer& dealer, const int BLACKJACK, bool& quit, bool& loaded)
 {
@@ -311,7 +301,6 @@ bool GameEngine::replay(Deck& d, Player& player, Dealer& dealer, bool& quit)
     }
     return false;
 }
-
 
 //save game data
 void GameEngine::saveGame(Deck& d, Player& player, Dealer& dealer)

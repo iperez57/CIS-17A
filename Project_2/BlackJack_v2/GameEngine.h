@@ -23,8 +23,6 @@ private:
     void dealerTurn(Deck&, Dealer&, const int);
     void checkWinner(Player&, Dealer&, const int);
     bool replay(Deck&, Player&, Dealer&, bool&);
-    void dealCard(Deck&, Player&);
-    void dealCard(Deck&, Dealer&);
 
     void saveGame(Deck&, Player&, Dealer&);
 
@@ -36,6 +34,13 @@ private:
             cout << obj.getHand()[i].rank << " of " << obj.getHand()[i].suit << endl;
         }
         obj.showInfo();
+    }
+
+    template <class T>
+    void dealCard(Deck& d, T& recipient)
+    {
+        recipient.addCard(d.drawCard());
+
     }
 };
 #endif

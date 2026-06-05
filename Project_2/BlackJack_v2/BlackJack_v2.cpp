@@ -27,13 +27,6 @@ using namespace std;
 #include "Deck.h"
 #include "GameEngine.h"
 
-template <class T>
-void dealCard(Deck& d, T& recipient)
-{
-    recipient.addCard(d.drawCard());
-
-}
-
 enum MenuOptions
 {
     START = 1,
