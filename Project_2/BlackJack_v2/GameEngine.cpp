@@ -100,7 +100,7 @@ void GameEngine::gameLoop(Deck& d, Player& player, Dealer& dealer, const int BLA
             {
                 cout << endl;
                 cout << "Do you want to HIT or STAND?" << endl;
-                cout << "HIT = 1    STAND = 2   SAVE GAME = 3" << endl;
+                cout << "HIT = 1    STAND = 2   DOUBLE DOWN = 3   SAVE GAME = 4" << endl;
 
                 cin >> user;
 
@@ -123,6 +123,29 @@ void GameEngine::gameLoop(Deck& d, Player& player, Dealer& dealer, const int BLA
                     turn = false;
                     break;
                 case 3:
+                    try
+                    {
+
+                        player.doubleDown();
+                        cout << "Double Down!" << endl;
+
+                        hit(d, player);
+
+                        if (player.getTotal() > BLACKJACK)
+                        {
+                            cout << "BUST!" << endl;
+                            player.loseBet();
+                            player.addLoss();
+                        }
+
+                        turn = false;
+                    }
+                    catch (Player::NotEnoughChips)
+                    {
+                        cout << "Not enough shups to double down" << endl;
+                    }
+                    break;
+                case 4:
                     saveGame(d, player, dealer);
                     displayHand(player);
                     break;

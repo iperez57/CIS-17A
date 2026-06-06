@@ -183,3 +183,13 @@ void Player::showInfo()
 	cout << "Total: " << total << endl;
 	cout << "Money: $" << getAvailableChips() << endl;
 }
+
+void Player::doubleDown()
+{
+	if (chips < currentBet)
+	{
+		throw NotEnoughChips();
+	}
+
+	currentBet *= 2;
+}

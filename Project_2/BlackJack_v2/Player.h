@@ -70,5 +70,6 @@ public:
 	void createPlayer(Player&);
 
 	void showInfo() override;
+	void doubleDown();
 };
 #endif
