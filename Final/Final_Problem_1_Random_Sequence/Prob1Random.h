@@ -1,5 +1,8 @@
 //Prob1Random.h
 
+#ifndef PROB1RANDOM_H
+#define PROB1RANDOM_H
+
 class Prob1Random 
 {
 private:
@@ -17,3 +20,4 @@ public:
 	int getNumRand(void) const; //Gets the number of times randFromSet
 	//has been called
 };
+#endif

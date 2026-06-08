@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{fe7df99b-9ac5-4c7e-b7c0-a52a1cdb4b51}</ProjectGuid>
-    <RootNamespace>FinalProblem1RandomSequence</RootNamespace>
+    <ProjectGuid>{d285ed88-f44c-4cfa-8f15-b9b1d0ad7b6f}</ProjectGuid>
+    <RootNamespace>Prob1Randomcpp</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -123,11 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Final_Problem_1_Random_Sequence.cpp" />
-    <ClCompile Include="Prob1Random.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Prob1Random.h" />
+    <ClCompile Include="Prob1Random.cpp.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
