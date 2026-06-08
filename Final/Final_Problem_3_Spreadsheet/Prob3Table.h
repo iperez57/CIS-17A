@@ -39,6 +39,36 @@ Prob3Table<T>::Prob3Table(char* fileName, int r, int c)
 	file.close();
 
 	calcTable();
-
 }
+
+template<class T>
+void Prob3Table<T>::calcTable()
+{
+	grandTotal = 0;
+	for (int i = 0; i < rows; i++)
+	{
+		rowSum[i] = 0;
+
+		for (int j = 0; j < cols; j++)
+		{
+			rowSum[i] += table[i * cols + j];
+		}
+	}
+
+	for (int i = 0; i < cols; i++)
+	{
+		colSum[i] = 0;
+
+		for (int j = 0; j < rows; j++)
+		{
+			colSum[i] += table[j * cols + i];
+		}
+	}
+
+	for (int i = 0; i < rows * cols; i++)
+	{
+		grandTotal += table[i];
+	}
+}
+
 #endif
