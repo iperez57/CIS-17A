@@ -16,4 +16,28 @@ public:
 	T* sortArray(const T*, int, int, int, bool);//Sorts a 2 dimensional array
 	//represented as a 1 dim array
 };
+
+template<class T>
+Prob2Sort<T>::Prob2Sort()
+{
+	index = nullptr;
+}
+
+template<class T>
+Prob2Sort<T>::~Prob2Sort()
+{
+	delete[] index;
+}
+
+template<class T>
+T* Prob2Sort<T>::sortArray(const T*, int, bool)
+{
+
+}
+
+template<class T>
+T* Prob2Sort<T>::sortArray(const T* ch2p, int row, int col, int colSort, bool ascending)
+{
+
+}
 #endif

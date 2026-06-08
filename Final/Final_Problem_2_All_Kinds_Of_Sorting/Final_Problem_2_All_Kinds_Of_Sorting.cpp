@@ -22,7 +22,7 @@ using namespace std;
 //Execution of Code Begins Here
 int main(int argc, char** argv) {
     //Set the random number seed here
-    srand(time(0));
+    
     //Declare all variables for this function
 
     //Initialize all known variables
