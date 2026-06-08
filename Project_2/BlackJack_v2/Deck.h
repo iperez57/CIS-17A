@@ -32,5 +32,4 @@ public:
 	void reset();
 	void buildDeck(int);
 };
-
 #endif

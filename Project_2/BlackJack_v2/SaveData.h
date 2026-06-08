@@ -31,5 +31,4 @@ struct SaveData
     int ties;
     int gamesPlayed;
 };
-
 #endif
