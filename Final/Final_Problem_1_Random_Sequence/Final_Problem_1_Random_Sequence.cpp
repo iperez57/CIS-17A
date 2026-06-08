@@ -7,6 +7,8 @@
 
  //System Libraries
 #include <iostream>  //I/O Library
+#include <ctime>
+#include <cstdlib>
 
 using namespace std;
 
@@ -21,7 +23,7 @@ using namespace std;
 //Execution of Code Begins Here
 int main(int argc, char** argv) {
     //Set the random number seed here
-
+    srand(time(0));
     //Declare all variables for this function
     char n = 5;
     char rndseq[] = { 19,34,57,79,126 };

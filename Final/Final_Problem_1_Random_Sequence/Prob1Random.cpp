@@ -17,3 +17,8 @@ Prob1Random::~Prob1Random()
 	delete[] set;
 	delete[] freq;
 }
+
+char Prob1Random::randFromSet()
+{
+
+}
