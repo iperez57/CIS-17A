@@ -21,4 +21,24 @@ public:
 	const T* getColSum(void) { return colSum; };
 	T getGrandTotal(void) { return grandTotal; };
 };
+
+template<class T>
+Prob3Table<T>::Prob3Table(char* fileName, int r, int c)
+{
+	rows = r;
+	cols = c;
+	table = new T[rows * cols];
+	rowSum = new T[rows]();
+	colSum = new T[cols]();
+	grandTotal = 0;
+	ifstream file(fileName);
+	for (int i = 0; i < rows * cols; i++)
+	{
+		file >> table[i];
+	}
+	file.close();
+
+	calcTable();
+
+}
 #endif
