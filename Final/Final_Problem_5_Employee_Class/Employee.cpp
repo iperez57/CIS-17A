@@ -15,3 +15,29 @@ Employee::Employee(char name[], char job[], float pay)
 	GrossPay = 0;
 	NetPay = 0;
 }
+
+double Employee::Tax(float f)
+{
+	if (GrossPay < 500)
+	{
+
+	}
+	else if (GrossPay < 1000)
+	{
+
+	}
+	else
+	{
+
+	}
+}
+
+int Employee::setHoursWorked(int i)
+{
+	HoursWorked = i;
+}
+
+float Employee::setHourlyRate(float f)
+{
+	HourlyRate = f;
+}
