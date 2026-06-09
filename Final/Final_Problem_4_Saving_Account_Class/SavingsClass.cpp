@@ -1,6 +1,7 @@
 //SavingsClass.cpp
 
 #include "SavingsAccount.h"
+#include <iostream>
 
 using namespace std;
 
@@ -21,7 +22,28 @@ void SavingsAccount::Transaction(float f)
 	if (f > 0)
 	{
 		Deposit(f);
+		FreqDeposit++;
 	}
 	else
-		Withdraw(f);
+	{
+		if (Balance + f < 0)
+		{
+			cout << "Can't have a negative balance. WIthdrawal exceeds your balance.";
+		}
+		else
+		{
+			Withdraw(-f);
+			FreqWithDraw++;
+		}
+	}
+}
+
+float SavingsAccount::Withdraw(float f)
+{
+	Balance -= f;
+}
+
+float SavingsAccount::Deposit(float f)
+{
+	Balance += f;
 }
