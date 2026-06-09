@@ -123,6 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Employee.cpp" />
     <ClCompile Include="Final_Problem_5_Employee_Class.cpp" />
   </ItemGroup>
   <ItemGroup>
