@@ -6,7 +6,7 @@
 class Employee
 {
 public:
-	Employee(char[], char[], float); //Constructor
+	Employee( const char[], const char[], float); //Constructor
 	float CalculatePay(float, int); //Procedure
 	float getGrossPay(float, int); //Procedure
 	float getNetPay(float); //Procedure

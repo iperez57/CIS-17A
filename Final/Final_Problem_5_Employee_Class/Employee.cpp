@@ -5,12 +5,21 @@
 
 using namespace std;
 
-Employee::Employee(char name[], char job[], float pay)
+Employee::Employee(const char name[], const char job[], float pay)
 {
-	strcpy(MyName, name);
-	strcpy(JobTitle, job);
+	strcpy_s(MyName, name);
+	strcpy_s(JobTitle, job);
 
-	HourlyRate = pay;
+	if (pay > 0 && pay < 200)
+	{
+		HourlyRate = pay;
+	}
+	else
+	{
+		cout << "Unacceptable Hourly Rate" << endl;
+		HourlyRate = 0;
+	}
+	HourlyRate = 0;
 	HoursWorked = 0;
 	GrossPay = 0;
 	NetPay = 0;
