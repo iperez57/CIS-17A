@@ -41,3 +41,9 @@ float Employee::setHourlyRate(float f)
 {
 	HourlyRate = f;
 }
+
+void Employee::toString()
+{
+	cout << "Name = " << MyName << " Job Title = " << JobTitle << endl;
+	cout << "Hourly Rate = " << HourlyRate << " Hours Worked = " << HoursWorked << " Gross Pay = " << GrossPay << " Net Pay = " << NetPay << endl;
+}
