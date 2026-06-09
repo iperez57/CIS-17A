@@ -20,15 +20,15 @@ double Employee::Tax(float f)
 {
 	if (GrossPay < 500)
 	{
-
+		NetPay = GrossPay * 0.10;
 	}
 	else if (GrossPay < 1000)
 	{
-
+		NetPay = GrossPay * 0.20;
 	}
 	else
 	{
-
+		NetPay = GrossPay * 0.30;
 	}
 }
 
