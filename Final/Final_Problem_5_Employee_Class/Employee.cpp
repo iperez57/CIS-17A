@@ -19,11 +19,11 @@ Employee::Employee(char name[], char job[], float pay)
 double Employee::Tax(float f)
 {
 	float taxes;
-	if (GrossPay < 500)
+	if (f < 500)
 	{
 		taxes = f * 0.10;
 	}
-	else if (GrossPay < 1000)
+	else if (f < 1000)
 	{
 		taxes = f * 0.20;
 	}
@@ -37,13 +37,27 @@ double Employee::Tax(float f)
 
 int Employee::setHoursWorked(int i)
 {
-	HoursWorked = i;
+	if (i > 0 && i < 84)
+	{
+		HoursWorked = i;
+	}
+	else
+	{
+		cout << "Unacceptable Hours Worked" << endl;
+	}
 	return HoursWorked;
 }
 
 float Employee::setHourlyRate(float f)
 {
-	HourlyRate = f;
+	if (f > 0 && f < 200)
+	{
+		HourlyRate = f;
+	}
+	else
+	{
+		cout << "Unacceptable Hourly Rate" << endl;
+	}
 	return HourlyRate;
 }
 
@@ -76,6 +90,12 @@ float Employee::getGrossPay(float hrPay, int hrWorked)
 
 float Employee::getNetPay(float net)
 {
-	NetPay = GrossPay - Tax(GrossPay);
+	net = GrossPay - Tax(GrossPay);
+	NetPay = net;
 	return NetPay;
+}
+
+float Employee::CalculatePay(float pay, int hr)
+{
+	return getNetPay(getGrossPay(setHourlyRate(pay), setHoursWorked(hr)));
 }
