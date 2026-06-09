@@ -21,15 +21,15 @@ double Employee::Tax(float f)
 	float taxes;
 	if (GrossPay < 500)
 	{
-		taxes = GrossPay * 0.10;
+		taxes = f * 0.10;
 	}
 	else if (GrossPay < 1000)
 	{
-		taxes = GrossPay * 0.20;
+		taxes = f * 0.20;
 	}
 	else
 	{
-		taxes = GrossPay * 0.30;
+		taxes = f * 0.30;
 	}
 
 	return taxes;
