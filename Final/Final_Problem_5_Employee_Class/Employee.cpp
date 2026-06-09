@@ -18,28 +18,33 @@ Employee::Employee(char name[], char job[], float pay)
 
 double Employee::Tax(float f)
 {
+	float taxes;
 	if (GrossPay < 500)
 	{
-		NetPay = GrossPay * 0.10;
+		taxes = GrossPay * 0.10;
 	}
 	else if (GrossPay < 1000)
 	{
-		NetPay = GrossPay * 0.20;
+		taxes = GrossPay * 0.20;
 	}
 	else
 	{
-		NetPay = GrossPay * 0.30;
+		taxes = GrossPay * 0.30;
 	}
+
+	return taxes;
 }
 
 int Employee::setHoursWorked(int i)
 {
 	HoursWorked = i;
+	return HoursWorked;
 }
 
 float Employee::setHourlyRate(float f)
 {
 	HourlyRate = f;
+	return HourlyRate;
 }
 
 void Employee::toString()
@@ -56,10 +61,21 @@ float Employee::getGrossPay(float hrPay, int hrWorked)
 	}
 	else if (hrWorked < 50)
 	{
-		GrossPay = hrPay * (hrWorked * 1.5);
+		GrossPay = hrPay * 40;
+		GrossPay += (hrWorked - 40) * hrPay * 1.5;
 	}
 	else
 	{
-		GrossPay = hrPay * (hrWorked * 2);
+		GrossPay = hrPay * 40;
+		GrossPay += 10 * hrPay * 1.5;
+		GrossPay += (hrWorked - 50) * hrPay * 2;
 	}
+
+	return GrossPay;
+}
+
+float Employee::getNetPay(float net)
+{
+	NetPay = GrossPay - Tax(GrossPay);
+	return NetPay;
 }
