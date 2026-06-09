@@ -47,3 +47,19 @@ void Employee::toString()
 	cout << "Name = " << MyName << " Job Title = " << JobTitle << endl;
 	cout << "Hourly Rate = " << HourlyRate << " Hours Worked = " << HoursWorked << " Gross Pay = " << GrossPay << " Net Pay = " << NetPay << endl;
 }
+
+float Employee::getGrossPay(float hrPay, int hrWorked)
+{
+	if (hrWorked < 40)
+	{
+		GrossPay = hrPay * hrWorked;
+	}
+	else if (hrWorked < 50)
+	{
+		GrossPay = hrPay * (hrWorked * 1.5);
+	}
+	else
+	{
+		GrossPay = hrPay * (hrWorked * 2);
+	}
+}
