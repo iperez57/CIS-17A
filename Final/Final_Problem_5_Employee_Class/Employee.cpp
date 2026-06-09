@@ -34,11 +34,14 @@ double Employee::Tax(float f)
 	}
 	else if (f < 1000)
 	{
-		taxes = f * 0.20;
+		taxes = 500 * 0.10;
+		taxes += (f - 500) * 0.20;
 	}
 	else
 	{
-		taxes = f * 0.30;
+		taxes = 500 * 0.10;
+		taxes += 500 * 0.20;
+		taxes += (f - 1000) * 0.30;
 	}
 
 	return taxes;
