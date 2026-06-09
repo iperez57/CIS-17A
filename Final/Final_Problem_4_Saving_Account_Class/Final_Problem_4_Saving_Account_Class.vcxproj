@@ -124,6 +124,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Final_Problem_4_Saving_Account_Class.cpp" />
+    <ClCompile Include="SavingsClass.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SavingsAccount.h" />

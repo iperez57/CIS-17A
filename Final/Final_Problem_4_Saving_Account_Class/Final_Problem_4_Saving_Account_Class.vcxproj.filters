@@ -18,6 +18,9 @@
     <ClCompile Include="Final_Problem_4_Saving_Account_Class.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SavingsClass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SavingsAccount.h">
