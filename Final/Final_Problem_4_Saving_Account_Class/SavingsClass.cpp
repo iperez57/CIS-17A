@@ -47,3 +47,10 @@ float SavingsAccount::Deposit(float f)
 {
 	Balance += f;
 }
+
+void SavingsAccount::toString()
+{
+	cout << "Balance = " << Balance << endl;
+	cout << "Withdraw = " << FreqWithDraw << endl;
+	cout << "Deposit = " << FreqDeposit << endl;
+}
