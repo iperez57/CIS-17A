@@ -14,7 +14,7 @@ protected:
 	T grandTotal; //Grand total
 	void calcTable(void); //Calculate all the sums
 public:
-	Prob3Table(char*, int, int); //Constructor then Destructor
+	Prob3Table(const char*, int, int); //Constructor then Destructor
 	~Prob3Table() { delete[] table;delete[] rowSum;delete[] colSum; };
 	const T* getTable(void) { return table; };
 	const T* getRowSum(void) { return rowSum; };
@@ -23,7 +23,7 @@ public:
 };
 
 template<class T>
-Prob3Table<T>::Prob3Table(char* fileName, int r, int c)
+Prob3Table<T>::Prob3Table(const char* fileName, int r, int c)
 {
 	rows = r;
 	cols = c;
