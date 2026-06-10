@@ -125,13 +125,20 @@
   <ItemGroup>
     <ClCompile Include="Final_Problem_7_Menu.cpp" />
     <ClCompile Include="Prob1.cpp" />
+    <ClCompile Include="Prob4.cpp" />
+    <ClCompile Include="Prob5.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Prob1.h" />
     <ClInclude Include="Prob2.h" />
+    <ClInclude Include="Prob3.h" />
+    <ClInclude Include="Prob3Inherited.h" />
+    <ClInclude Include="Prob4.h" />
+    <ClInclude Include="Prob5.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Prob2.txt" />
+    <Text Include="Prob3.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -21,6 +21,12 @@
     <ClCompile Include="Prob1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Prob4.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Prob5.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Prob1.h">
@@ -29,8 +35,21 @@
     <ClInclude Include="Prob2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Prob3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Prob3Inherited.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Prob4.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Prob5.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Prob2.txt" />
+    <Text Include="Prob3.txt" />
   </ItemGroup>
 </Project>

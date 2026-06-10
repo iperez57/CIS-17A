@@ -17,6 +17,10 @@ using namespace std;
 //User Libraries
 #include "Prob1.h"
 #include "Prob2.h"
+#include "Prob3Inherited.h"
+#include "Prob4.h"
+#include "Prob5.h"
+
 //Global Constants Only
 //Well known Science, Mathematical and Laboratory Constants
 
@@ -141,6 +145,77 @@ void runProblem2()
     delete[]zc;
     cout << endl;
 }
+
+void runProblem3()
+{
+    cout << "Entering problem number 3" << endl;
+    int rows = 5;
+    int cols = 6;
+    Prob3TableInherited<int> tab("Prob3.txt", rows, cols);
+    const int* naugT = tab.getTable();
+    for (int i = 0;i < rows;i++) {
+        for (int j = 0;j < cols;j++) {
+            cout << naugT[i * cols + j] << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+    const int* augT = tab.getAugTable();
+    for (int i = 0;i <= rows;i++) {
+        for (int j = 0;j <= cols;j++) {
+            cout << augT[i * (cols + 1) + j] << " ";
+        }
+        cout << endl;
+    }
+}
+
+void runProblem4()
+{
+    //Set the random number seed here
+    srand(time(0));
+    //Declare all variables for this function
+
+    //Initialize all known variables
+
+    //Process Inputs to Outputs -> Mapping Process
+    //Maps known values to the unknown objectives
+
+    //Display the Inputs/Outputs
+    SavingsAccount mine(-300);
+    for (int i = 1;i <= 10;i++) {
+        mine.Transaction((float)(rand() % 500) * (rand() % 3 - 1));
+    }
+    mine.toString();
+    cout << "Balance after 7 years given 10% interest = "
+        << mine.Total((float)(0.10), 7) << endl;
+    cout << "Balance after 7 years given 10% interest = "
+        << mine.TotalRecursive((float)(0.10), 7)
+        << " Recursive Calculation " << endl;
+}
+
+void runProblem5()
+{
+    Employee Mark("Mark", "Boss", 215.50);
+    Mark.setHoursWorked(-3);
+    Mark.toString();
+    Mark.CalculatePay(Mark.setHourlyRate(20.0), Mark.setHoursWorked(25));
+    Mark.toString();
+    Mark.CalculatePay(Mark.setHourlyRate(40.0), Mark.setHoursWorked(25));
+    Mark.toString();
+    Mark.CalculatePay(Mark.setHourlyRate(60.0), Mark.setHoursWorked(25));
+    Mark.toString();
+
+    cout << endl;
+    Employee Mary("Mary", "VP", 50.0);
+    Mary.toString();
+    Mary.CalculatePay(Mary.setHourlyRate(50.0), Mary.setHoursWorked(40));
+    Mary.toString();
+    Mary.CalculatePay(Mary.setHourlyRate(50.0), Mary.setHoursWorked(50));
+    Mary.toString();
+    Mary.CalculatePay(Mary.setHourlyRate(50.0), Mary.setHoursWorked(60));
+    Mary.toString();
+}
+
 void runProblem6()
 {
     cout << " 5.75" << endl;
