@@ -127,7 +127,7 @@ void runProblem2()
     Prob2Sort<char> rc;
     bool ascending = true;
     ifstream infile;
-    infile.open("Problem2.txt", ios::in);
+    infile.open("Prob2.txt", ios::in);
     char* ch2 = new char[10 * 16];
     char* ch2p = ch2;
     while (infile.get(*ch2)) { cout << *ch2;ch2++; }
