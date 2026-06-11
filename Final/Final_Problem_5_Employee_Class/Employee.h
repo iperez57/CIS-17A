@@ -21,6 +21,9 @@ private:
 	int HoursWorked; //Property
 	float GrossPay; //Property
 	float NetPay; //Property
+
+	class InvalidHours {};
+	class InvalidRate {}:;
 };
 
 #endif

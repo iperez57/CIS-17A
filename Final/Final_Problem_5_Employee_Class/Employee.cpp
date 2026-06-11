@@ -10,15 +10,23 @@ Employee::Employee(const char name[], const char job[], float pay)
 	strcpy_s(MyName, name);
 	strcpy_s(JobTitle, job);
 
-	if (pay > 0 && pay < 200)
+	try
 	{
-		HourlyRate = pay;
+		if (pay > 0 && pay < 200)
+		{
+			HourlyRate = pay;
+		}
+		else
+		{
+			throw InvalidHours();
+		}
 	}
-	else
+	catch (InvalidHours)
 	{
 		cout << "Unacceptable Hourly Rate" << endl;
 		HourlyRate = 0;
 	}
+
 	HourlyRate = 0;
 	HoursWorked = 0;
 	GrossPay = 0;
@@ -49,28 +57,44 @@ double Employee::Tax(float f)
 
 int Employee::setHoursWorked(int i)
 {
-	if (i > 0 && i < 84)
+	try
 	{
-		HoursWorked = i;
+		if (i > 0 && i < 84)
+		{
+			HoursWorked = i;
+		}
+		else
+		{
+			throw InvalidHours();
+		}
+		return HoursWorked;
 	}
-	else
+	catch (InvalidHours)
 	{
 		cout << "Unacceptable Hours Worked" << endl;
+		return HoursWorked;
 	}
-	return HoursWorked;
 }
 
 float Employee::setHourlyRate(float f)
 {
-	if (f > 0 && f < 200)
+	try
 	{
-		HourlyRate = f;
+		if (f > 0 && f < 200)
+		{
+			HourlyRate = f;
+		}
+		else
+		{
+			throw InvalidRate();
+		}
+		return HourlyRate;
 	}
-	else
+	catch (InvalidRate)
 	{
 		cout << "Unacceptable Hourly Rate" << endl;
+		return HourlyRate;
 	}
-	return HourlyRate;
 }
 
 void Employee::toString()
