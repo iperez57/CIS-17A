@@ -30,9 +30,38 @@ Prob2Sort<T>::~Prob2Sort()
 }
 
 template<class T>
-T* Prob2Sort<T>::sortArray(const T*, int, bool)
+T* Prob2Sort<T>::sortArray(const T* ch2p, int size, bool ascending)
 {
+	index = new int[size];
+	for (int i = 0; i < size; i++)
+	{
+		index[i] = i;
+	}
 
+	for (int i = 0; i < size; i++)
+	{
+		for (int j = i + 1; j < size; j++)
+		{
+			if (ascending)
+			{
+				if (ch2p[index[i]] > ch2p[index[j]])
+				{
+					int temp = index[i];
+					index[i] = index[j];
+					index[j] = temp;
+				}
+			}
+			else
+			{
+				if (ch2p[index[i]] < ch2p[index[j]])
+				{
+					int temp2 = index[i];
+					index[i] = index[j];
+					index[j] = temp2;
+				}
+			}
+		}
+	}
 }
 
 template<class T>
