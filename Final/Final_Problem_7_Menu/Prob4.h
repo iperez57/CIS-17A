@@ -18,5 +18,8 @@ private:
 	float Balance; //Property
 	int FreqWithDraw; //Property
 	int FreqDeposit; //Property
+
+	class BalanceException {};
+
 };
 #endif

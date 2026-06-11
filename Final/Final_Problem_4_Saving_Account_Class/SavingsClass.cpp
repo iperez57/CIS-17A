@@ -27,14 +27,21 @@ void SavingsAccount::Transaction(float f)
 	}
 	else
 	{
-		if (Balance + f < 0)
+		try
 		{
-			cout << "Can't have a negative balance. WIthdrawal exceeds your balance.";
+			if (Balance + f < 0)
+			{
+				throw BalanceException();
+			}
+			else
+			{
+				Withdraw(-f);
+				FreqWithDraw++;
+			}
 		}
-		else
+		catch (BalanceException)
 		{
-			Withdraw(-f);
-			FreqWithDraw++;
+			cout << "Can't have a negative balance. WIthdrawal exceeds your balance." << endl;
 		}
 	}
 }
