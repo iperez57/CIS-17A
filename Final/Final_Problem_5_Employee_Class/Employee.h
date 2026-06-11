@@ -23,7 +23,7 @@ private:
 	float NetPay; //Property
 
 	class InvalidHours {};
-	class InvalidRate {}:;
+	class InvalidRate {};
 };
 
 #endif
