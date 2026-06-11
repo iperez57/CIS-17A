@@ -58,11 +58,15 @@ float SavingsAccount::Deposit(float f)
 	return Balance;
 }
 
-void SavingsAccount::toString()
+string SavingsAccount::toString()
 {
-	cout << "Balance = " << Balance << endl;
-	cout << "Withdraw = " << FreqWithDraw << endl;
-	cout << "Deposit = " << FreqDeposit << endl;
+	string ss;
+
+	ss += "Balance = " + to_string(Balance) + "\n";
+	ss += "Withdraw = " + to_string(FreqWithDraw) + "\n";
+	ss += "Deposit = " + to_string(FreqDeposit) + "\n";
+
+	return ss;
 }
 
 float SavingsAccount::Total(float saveint, int time)
@@ -72,7 +76,7 @@ float SavingsAccount::Total(float saveint, int time)
 	{
 		result *= (1 + saveint);
 	}
-	
+
 	return result;
 }
 
